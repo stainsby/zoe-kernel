@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 1200 500"
+   role="img"
+   aria-labelledby="title desc"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="zoe_logo.svg"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs4">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect4"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+  </defs>
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.646"
+     inkscape:cx="600.15117"
+     inkscape:cy="250"
+     inkscape:window-width="3840"
+     inkscape:window-height="1531"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <title
+     id="title">ZOE logo</title>
+  <desc
+     id="desc">A minimalist black ZOE wordmark with a hexagonal O and a medium grey horizontal bar behind the letters.</desc>
+  <rect
+     width="1200"
+     height="500"
+     fill="#ffffff"
+     id="rect1" />
+  <!-- Grey bar behind the text: aligned to the E middle bar, from the left edge of Z to the left side of E -->
+  <rect
+     x="170"
+     y="246"
+     width="720.69916"
+     height="48.361298"
+     fill="#9a9a9a"
+     id="rect2"
+     style="stroke-width:1.19264"
+     sodipodi:type="rect"
+     rx="12" />
+  <!-- Z -->
+  <path
+     d="m 170,155 c 0,-10 5,-15 15,-15 h 235 c 10,0 15,5 15,15 v 15 c 0,6.66667 -3,12.33333 -9,17 L 243.76266,345 H 420 c 10,0 15,5 15,15 v 15 c 0,10 -5,15 -15,15 H 185 c -10,0 -15,-5 -15,-15 v -15 c 0,-6.66667 3,-12.33333 9,-17 L 366.15042,185 H 185 c -10,0 -15,-5 -15,-15 z"
+     fill="#000000"
+     id="path2"
+     sodipodi:nodetypes="sssssccsssssssccsss" />
+  <!-- Hexagonal O -->
+  <path
+     d="M590 140            H710            Q730 140 740 157            L805 250            Q815 265 805 280            L740 373            Q730 390 710 390            H590            Q570 390 560 373            L495 280            Q485 265 495 250            L560 157            Q570 140 590 140            Z            M613 170            Q600 170 593 181            L531 264            L593 349            Q600 360 613 360            H687            Q700 360 707 349            L769 264            L707 181            Q700 170 687 170            Z"
+     fill="#000000"
+     fill-rule="evenodd"
+     id="path3" />
+  <!-- E -->
+  <path
+     d="M865 170            Q865 140 895 140            H1035            Q1050 140 1050 155            V170            Q1050 185 1035 185            H920            Q910 185 910 195            V246            H1035            Q1050 246 1050 261            V280            Q1050 295 1035 295            H910            V335            Q910 345 920 345            H1035            Q1050 345 1050 360            V375            Q1050 390 1035 390            H895            Q865 390 865 360            Z"
+     fill="#000000"
+     id="path4" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>ZOE logo</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
