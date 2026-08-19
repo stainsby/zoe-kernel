@@ -1,5 +1,11 @@
 # ZOE enterprise
 
+<!-- The import below resolves relative to this file, which belongs at the enterprise's
+     project root with the kernel tree at kernel/. Keeping the kernel somewhere else is
+     fine — change this one line to match. Nothing warns you if it resolves to nothing:
+     the session just starts without the ZOE instructions. See the adapter's README,
+     under "Install", for the check that catches that. -->
+
 @kernel/instructions/zoe.instructions.md
 
 Then read the charter and your index skill, and follow the cycle the instructions

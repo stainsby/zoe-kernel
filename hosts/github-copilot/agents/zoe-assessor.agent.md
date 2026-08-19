@@ -7,7 +7,9 @@ model-kind: quick-check
 Run the `zoe-assess` skill. The role logic lives in that skill, not here — this is a thin
 host stub.
 
-The ZOE instructions are loaded automatically. Read the `zoe-assess` skill, the charter,
+The ZOE instructions reach you through `.github/copilot-instructions.md`; if you cannot
+see them, stop and say so plainly rather than working without them. Read the
+`zoe-assess` skill, the charter,
 the index skill, and from the index: the state, log, and audit findings. Then follow
 `zoe-assess` exactly. Every rule of the role — what is read-only to you, what the report
 draws on, how it is written and kept — comes from `zoe-assess` and the instructions,

@@ -8,22 +8,109 @@ regardless; these files add packaging, not new behaviour.
 ## Contents
 
 - `CLAUDE.md` — stub that imports the kernel instructions. Copy to the enterprise's
-  project root (or merge the import line into an existing CLAUDE.md).
+  project root (or merge the import line into an existing CLAUDE.md). Its import is
+  written relative to that root and expects the kernel at `kernel/` — see *Install*.
 - `agents/` — three thin stubs that reference the kernel skills (`zoe`, `zoe-redesign`,
   `zoe-assess`) and carry the host-specific packaging (frontmatter, tool list,
   `model-kind`). Role logic lives in the skills, not duplicated here. Copy (or symlink)
   into `.claude/agents/`.
-- `settings.json` — suggested permissions. Merge into `.claude/settings.json`.
+- `settings.json` — an empty placeholder to merge into `.claude/settings.json`. It is
+  deliberately empty: ZOE prescribes no permissions, and what you allowlist is your
+  call, made against your own gates.
 
 ## Install
 
-1. Symlink the kernel skills into `.claude/skills/` (one link per skill folder — the
-   SKILL.md format is native to Claude Code).
-2. Copy `agents/*.md` into `.claude/agents/`.
-3. Copy `CLAUDE.md` to the project root, or add its import line to yours.
-4. Merge `settings.json` into `.claude/settings.json`.
-5. Start `claude` and say "run the ZOE cycle" — or ask it how to proceed if the
-   enterprise is new (setup will take over).
+ZOE needs the kernel tree reachable **from the file that imports it**. Get that wrong and
+the enterprise starts with no instructions, and therefore no gates, without saying so — which
+is why the checks in step 4 matter more than they look. Every command runs from your
+enterprise's project root, and `$ZOE` is wherever you cloned this repository — set it first:
+
+```sh
+ZOE=/path/to/your/clone/of/zoe-kernel
+```
+
+**1. Put the kernel tree in the project.** Either copy it in:
+
+```sh
+cp -r "$ZOE/kernel" .
+```
+
+or track it as a submodule, which pins the exact kernel commit you run on and makes an
+upgrade a reviewable change of that pin rather than a re-copy. The project root has to be a
+git repository already for this to work:
+
+```sh
+git init                       # only if it is not a repository yet
+git submodule add https://github.com/stainsby/zoe-kernel .zoe
+ln -sfn .zoe/kernel kernel
+```
+
+**2. Wire in the skills and agents.** Safe to re-run:
+
+```sh
+mkdir -p .claude/skills .claude/agents
+for d in kernel/skills/*/; do ln -sfn "../../$d" ".claude/skills/$(basename "$d")"; done
+cp "$ZOE"/hosts/claude-code/agents/*.md .claude/agents/
+```
+
+The `-fn` on `ln` is not decoration: a plain `ln -s` over a link that already exists writes
+the new link *inside* the directory it points at, which on the submodule path means writing
+into the kernel tree itself.
+
+**3. Add the instructions import — this is the step that can overwrite your own files.**
+If you have neither a `CLAUDE.md` nor a `.claude/settings.json`, copy the stubs:
+
+```sh
+cp -n "$ZOE/hosts/claude-code/CLAUDE.md" .
+cp -n "$ZOE/hosts/claude-code/settings.json" .claude/settings.json
+```
+
+`cp -n` refuses to overwrite, so nothing of yours is lost if you already had one. If you do
+already have either file, merge rather than copy: add the stub's single `@` import line into
+your own `CLAUDE.md`, and leave your settings alone. The shipped `settings.json` is an empty
+object on purpose — ZOE prescribes no permissions, and permitting an action in advance is one
+of the few ways to blunt a gate.
+
+**Where you put that import line decides what it resolves against.** A `@` import resolves
+relative to the file containing it. So `@kernel/instructions/zoe.instructions.md` is right in
+a `CLAUDE.md` at the project root, but wrong in `.claude/CLAUDE.md`, where it would look for
+`.claude/kernel/…` and quietly find nothing. From `.claude/CLAUDE.md`, write
+`@../kernel/instructions/zoe.instructions.md` instead.
+
+**4. Check the install took.** This tests the import as you actually wrote it, rather than
+assuming where you put it:
+
+```sh
+n=0
+for f in CLAUDE.md .claude/CLAUDE.md; do
+  [ -f "$f" ] || continue
+  for imp in $(grep -o '@[^[:space:]]*zoe\.instructions\.md' "$f"); do
+    n=$((n+1)); t="$(dirname "$f")/${imp#@}"
+    [ -f "$t" ] && echo "OK   $f -> $t" || echo "FAIL $f -> $t"
+  done
+done
+[ "$n" -gt 0 ] || echo "FAIL no ZOE import line anywhere — the instructions will not load"
+
+m=0
+for l in .claude/skills/*; do
+  [ -L "$l" ] || continue
+  m=$((m+1)); [ -e "$l" ] || echo "DANGLING: $l"
+done
+[ "$m" -gt 0 ] || echo "FAIL no skills linked into .claude/skills/"
+echo "checked $n import line(s), $m skill link(s)"
+```
+
+It must print no `FAIL` and no `DANGLING`, and the last line must read `checked 1 import
+line(s), 10 skill link(s)`. **The counts are the point, not decoration.** A check that only
+inspects what it finds passes silently when it finds nothing — which is exactly what happens
+if you were merging into an existing `CLAUDE.md` and the merge got missed. Claude Code gives
+no warning when an `@` import points at nothing, or when there is no import at all: it
+carries on without the kernel instructions, and the enterprise looks like it started
+perfectly normally.
+
+**5. Start it.** Run `claude` and say "run the ZOE cycle" — or, if the enterprise is new,
+simply ask it how to proceed, and `zoe-setup` will take over and interview you for the
+charter.
 
 ## Models
 
@@ -35,7 +122,7 @@ which age better than full names).
 
 ## Scheduling
 
-Claude Code runs headless: `claude -p "run the ZOE cycle" --agents zoe` from cron or CI
+Claude Code runs headless: `claude -p "run the ZOE cycle" --agent zoe` from cron or CI
 gives the kernel its "on a schedule" primitive. Gates survive headless runs because
 gated actions are simply not allowlisted: the run does all ungated work, writes its
 gate requests to the director channel named in the index, and exits. A director approves on

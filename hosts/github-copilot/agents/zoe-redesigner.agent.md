@@ -7,7 +7,9 @@ model-kind: heavy-planning
 Run the `zoe-redesign` skill. The role logic lives in that skill, not here — this is a thin
 host stub.
 
-The ZOE instructions are loaded automatically. Read the `zoe-redesign` skill, the charter,
+The ZOE instructions reach you through `.github/copilot-instructions.md`; if you cannot
+see them, stop and say so plainly rather than working without them. Read the
+`zoe-redesign` skill, the charter,
 and the index skill, then follow `zoe-redesign` exactly. Every rule of the role — what is
 read-only to you, where the plan lives, how an approval request is formed — comes from
 `zoe-redesign` and the instructions, never from this stub.

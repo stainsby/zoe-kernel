@@ -31,8 +31,54 @@ the skills, not duplicated here. The stubs enforce the kernel's separation rules
 
 ## Install
 
-Copy (or symlink) the `agents/*.agent.md` files to `.github/agents/` in the enterprise's
-workspace so VS Code discovers them, then select **zoe** in the chat agent dropdown.
+Copilot needs three separate things in the workspace: the agent files, the kernel tree and
+its skills, and a route by which the kernel instructions reach the assistant. The agent files
+alone are not enough — the stubs are thin by design and refer to kernel skills they do not
+contain, so without the other two the manager starts with nothing to run.
+
+**1. The agent files.** Copy (or symlink) `agents/*.agent.md` to `.github/agents/` in the
+enterprise's workspace so VS Code discovers them. **zoe** then appears in the chat agent
+dropdown.
+
+**2. The kernel tree and its skills.** Put the tree in the workspace at `kernel/`, either by
+copying the `kernel/` folder from this repository or by adding the repository as a submodule
+and linking to it. Then wire the skills in, exactly as the Claude Code adapter does — Copilot
+discovers Agent Skills in the same `SKILL.md` format, from `.github/skills/`, `.claude/skills/`
+or `.agents/skills/`:
+
+```sh
+mkdir -p .github/skills
+for d in kernel/skills/*/; do ln -sfn "../../$d" ".github/skills/$(basename "$d")"; done
+```
+
+Because `.claude/skills/` is one of the directories Copilot reads, a workspace already set up
+for the Claude Code adapter needs nothing further here — the two hosts can share one layout.
+
+**3. The instructions.** Create `.github/copilot-instructions.md`, which Copilot applies
+as repo-wide custom instructions. Copilot has no import directive, so either paste the
+contents of `kernel/instructions/zoe.instructions.md` into it, or point at the file and
+require it be read first:
+
+```markdown
+# ZOE enterprise
+
+Read `kernel/instructions/zoe.instructions.md` in full before acting. It is the
+operating instruction for this workspace. Then read the charter and the index skill.
+```
+
+Pasting the contents is the more reliable of the two, since it does not depend on the
+assistant choosing to follow a pointer; linking keeps one copy of the text, which matters
+when you upgrade the kernel. If you paste, re-paste on every kernel upgrade.
+
+You may also need `github.copilot.chat.codeGeneration.useInstructionFiles` enabled in VS
+Code settings for the instructions file to be applied.
+
+**Check it took.** Open the **zoe** agent and ask it what the ZOE precedence order is, and
+what it must do before it may run unattended. Both answers are in the instructions
+themselves — the charter's hard rules first, and the director channel recorded in the index —
+so the check works on a brand-new enterprise that has no charter yet, which is exactly the
+case these notes serve. If it cannot answer, the instructions have not reached it, and
+nothing else it tells you about its own gates can be relied on.
 
 ## Models
 

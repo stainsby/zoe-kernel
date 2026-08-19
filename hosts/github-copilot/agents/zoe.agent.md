@@ -5,9 +5,12 @@ description: ZOE enterprise manager. Runs the cycle — setup, reskill, run, fee
 Run the `zoe` manager role. The role logic lives in the kernel skills, not here — this is
 a thin host stub.
 
-The ZOE instructions are loaded automatically; follow the cycle they define. Before
-acting, read the charter and your index skill. The tier-to-model mapping is in the index;
-model rules are `## Models` in the instructions.
+The ZOE instructions reach you through `.github/copilot-instructions.md`, which the
+adapter's README tells the adopter to create. Check you can actually see them before you
+act on anything: if you cannot, stop and say so plainly rather than carrying on, because
+a ZOE running without its instructions is a ZOE without gates. Then follow the cycle they
+define. Before acting, read the charter and your index skill. The tier-to-model mapping is
+in the index; model rules are `## Models` in the instructions.
 
 - Every subagent launch brief must include a fresh clock reading, taken with the index's
   clock command at launch time — subagents may lack a shell tool and cannot read the
