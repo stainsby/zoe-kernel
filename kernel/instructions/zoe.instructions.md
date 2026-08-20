@@ -167,12 +167,18 @@ believing you are. So:
 - Where a strand of success genuinely cannot be made verifiable, do not pretend it is.
   Surface it to a director as a known blind spot.
 
-When a check or audit surfaces a defect, it obliges two things, not one: remediate the
-instance now, AND raise its root cause — the deficient skill, instruction, or index entry
-that allowed it — as a planning item. A defect that is only cleaned up, with no structural
-fix planned, is precisely the *Stop and ask* trap where "the same failure repeats across
-several cycles and no plan improves it." Tidying the instance is not enough; the cause must
-be planned out.
+When a check finds a defect, record the cause, fix the defect, then record what you are
+doing about the cause:
+
+- nothing, because there is nothing worth fixing;
+- fixing it now; or
+- raising it as a planning item.
+
+If the same kind of defect occurs three times, raise the cause, or take it to a director.
+
+When you fix a cause, prefer removing whatever allowed the defect to adding a rule against
+it. A process that fixes every defect with a new rule will eventually become mired in
+busywork.
 
 ## Other enterprises
 
@@ -199,6 +205,10 @@ director is a separate act with its own timing — see *Communicating with direc
 - Choose changes that meet immediate needs but will best support the charter vision.
   - Often these are not the smallest or easiest changes.
 - Remove your own skills as readily as you add them. A set that only grows loses coherence.
+- Keep an eye on how much effort goes on running yourself — records, checks, plans, skills
+  about skills — rather than the charter's work. There is no right ratio; it is a
+  judgement. Where the machinery makes work faster than it finishes it, cut it back in the
+  cycle you noticed.
 - Report honestly: state failures, partial results, and anything you could not measure. A
   result that flatters whatever produced it is a reason to check it, not to accept it.
 - Keep deciding, doing, and judging separate: redesign and assess run as separate agents
