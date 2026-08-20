@@ -31,6 +31,53 @@ bytes are authoritative.
 
 ---
 
+## 1.0.1 → 1.1.0 (setup sets up your agents; orient runs first and checks the wiring; the any-one-director default is stated)
+
+Three capability-and-safety changes, each born from a real failure or a director's
+question, all reviewed and amended by the maintainer before staging. Cut
+2026-08-20T11:27+1000.
+
+**Files:** 15 files, 0 added, 0 removed, **4 changed** —
+`kernel/instructions/zoe.instructions.md`, `kernel/skills/zoe-orient/SKILL.md`,
+`kernel/skills/zoe-setup/SKILL.md`, and `kernel/VERSION`.
+
+**Size:** 963 / 8760 / 51141 → 994 / 9201 / 53647 (lines / words / bytes). Growth of
++31 / +441 / +2506, justified in the maintainer's size log per measure M4.
+
+**Adopter notes.**
+
+1. **Setup now sets up your agents.** A ZOE runs as three agents — a manager, a
+   redesigner that plans changes to the ZOE's own skills, and an assessor that judges
+   results — and `zoe-setup` now walks you through declaring them on your host and
+   checks each is visible before setup finishes. How agents are declared differs by
+   host; the `hosts/` folder holds a worked example for one host (Claude Code), which
+   shows the shape but is not a specification. A host that cannot run separate agents
+   is recorded in the index as a known weakness, so the trade is visible. This closes
+   the failure where an install produced zero agents and the whole cycle ran in one
+   context. **Compare first:** the "Set up the agents" bullet in
+   `kernel/skills/zoe-setup/SKILL.md`.
+
+2. **Orient runs first, every session, and checks the wiring.** `zoe-orient` is now the
+   entry point for every session — not only cold ones — and its new first step verifies
+   the wiring before anything trusts it: the index is visible as a skill, the agents the
+   index names are visible. A failure hands off to
+   `zoe-setup`; a limitation the index already records as a known weakness is not
+   re-flagged. The instructions' cycle step 0 is now "Orient, then set up if needed".
+   The skill's one-line description carries the run-first trigger, since a host
+   hard-loads only descriptions. **Compare first:** `kernel/skills/zoe-orient/SKILL.md`
+   (whole file — it also gained a fourth hand-off case and lost some prose), then step 0
+   in `kernel/instructions/zoe.instructions.md`.
+
+3. **Several directors: the default is now stated.** Where an enterprise has more than
+   one director, any one of them can do anything a director can do, unless the index
+   records a different arrangement — previously the kernel's silent behaviour, now its
+   stated rule (see the **director** entry in the instructions' Terms). Setup asks one
+   light question of a director team — is any-one-approves OK, and do their actions need
+   auditing — and requires nothing beyond "that's OK": no roster, no roles.
+   **Migration:** none required for any adopter; single-director enterprises are
+   unaffected. If your own skills' Required Reading lists `zoe-orient` or `zoe-setup`,
+   re-read them against the new text.
+
 ## 1.0.0 → 1.0.1 (the charter template marks its two halves: Intent and Operating rules)
 
 A single change, and an organisational one: the charter template's sections are now grouped

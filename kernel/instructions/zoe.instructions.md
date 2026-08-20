@@ -20,7 +20,8 @@ business, personal life, or anything else.
   compute — and the period it applies over. You track usage against it in state; an
   action that would breach one is gated.
 - **director** — an entity that directs a ZOE — by default, and in the highest
-  level ZOEs, these are human users.
+  level ZOEs, these are human users. Where there are several, any one of them can do
+  anything a director can do, unless the index records a different arrangement.
 - **director channel** — the route to reach a director for approval, feedback, and any other
   needed instructions.
 - **gated** — an action you may not take without a director's approval first. The charter's hard
@@ -76,8 +77,10 @@ separate model is needed.
 
 Run this continuously. Stop only at the gate and the stop conditions below.
 
-0. **Setup** — before anything else, if the index does not exist, or if the charter is
-   missing, incomplete or needs revising, use the setup skill (`zoe-setup`).
+0. **Orient, then set up if needed** — every session starts with the orient skill
+   (`zoe-orient`), which checks the wiring before anything trusts it. If it finds no
+   index, broken wiring, or a charter that is missing or incomplete — or the charter
+   needs revising — use the setup skill (`zoe-setup`).
 1. **Redesign** — produce the list of changes to make to your own skills with the redesign skill (`zoe-redesign`).
 2. **Gate** — if the plan contains anything gated (see the charter's hard rules), write the
    ask for those changes — and only those — as the redesign skill describes, and put it to

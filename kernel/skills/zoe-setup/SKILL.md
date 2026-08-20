@@ -12,7 +12,9 @@ is if a director decides to revise their charter and asks for help.
 You run with a director present, to turn a blank enterprise into a runnable
 one. The normal cycle must not start without a completed charter.
 You close that gap and hand over. (Reconciling an EXISTING enterprise to a
-new kernel version is not this skill — see `zoe-reconcile`.)
+new kernel version is not this skill — see `zoe-reconcile`.) You may also arrive here
+from `zoe-orient`'s wiring check — a missing index, a skill or agent the host no
+longer shows; fix what it found with the director before handing back.
 
 Read: the charter and index templates under this skill in `assets`.
 
@@ -44,6 +46,21 @@ Do, with a director, through negotiation:
   place is allowed, but as a recorded decision, never a silent default.
 - Decide where new skills should be created.
   - The user may need help configuring their host to find these skills.
+- **Set up the agents.** A ZOE runs as three agents, not one: a **manager** that runs the
+  cycle, a **redesigner** that decides what to change in the ZOE's own skills, and an
+  **assessor** that judges the results. The redesigner and assessor are read-only to the
+  work and run separately from the manager. That separation is what keeps deciding, doing
+  and judging apart (`## Conduct` in the instructions), and it holds because they are
+  genuinely different agents rather than because anyone intends it.
+  - How an agent is declared differs from host to host. Work out with the director what
+    this host needs. The `hosts/` folder in the ZOE project holds a worked example for one
+    host — it shows the shape, but it is not a specification, and copying it onto a
+    different host will not work.
+  - Check each agent is visible and can be dispatched before you finish, the same way you
+    check the index is visible as a skill.
+  - If the host cannot run separate agents at all, a ZOE can still run, but the separation
+    then rests on the manager's own discipline. Record that in the index as a known
+    weakness so a director knows the trade they are making.
 - Create a new skill that **is** the index.
   - It is a skill, not a plain file, so that every host is guaranteed to show it to
     the agent; do not "simplify" it into a loose document.
@@ -54,7 +71,9 @@ Do, with a director, through negotiation:
 - Charter: ask for their vision, scope (in and out), what success looks like, and the hard
   rules — what the agent must never do, and what must get director approval first. Write the
   charter from their answers. They own and approve it; you do not invent the goal, and the
-  hard rules are theirs to set, not yours.
+  hard rules are theirs to set, not yours. Where more than one director will direct the
+  enterprise, ask if it is OK if any one of them can approve anything, and if their actions
+  need to be audited. If not, then discuss the alternatives.
 - Constraints: ask what resources are limited — money, time, compute, attention, anything
   spendable — and what the limits and periods are. Write them into the charter's
   Constraints section. If nothing is limited, say so there rather than leaving it blank.
