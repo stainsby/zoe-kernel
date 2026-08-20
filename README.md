@@ -4,65 +4,32 @@
 
 # ZOE — Zero Organisation Enterprises
 
-**A tiny kernel that grows into a whole operation.**
+A minimal set of agentic instructions and skills to turn any vision into a
+self-managing and self-improving **enterprise**. ZOE captures your ideas as a
+**charter**, and then builds, runs, and continuously improves whatever is
+needed to realise it. ZOE works as a kind of general manager, while you act
+in a 'director' role.
 
-ZOE is a minimal set of agentic instructions and ten skills — the *kernel*. You
-bring the vision: a business, a project, a portfolio, a life goal. ZOE turns it
-into a **charter**, then builds, runs, and continuously improves the processes
-needed to realise it — with you holding the controls that matter.
-
-A running instance is called **a ZOE**, and the goal it pursues is its
-**enterprise**. "Enterprise" here isn't corporate-speak; it's shorthand for any
-high-level goal, from running a corner store to running your reading list.
-
-Nothing else ships, and that's the point. The kernel assumes the AI is capable
-enough to provision everything else — state, logs, tools, its own new skills —
-as the enterprise demands it. Zero organisation in, a working organisation out.
+When we say "enterprise" we mean any high-level goal. Examples might be
+a personal life goal, or a commercial project. Anything where you want the
+drudgery managed by AI.
 
 ## How a ZOE works
 
-Once set up, a ZOE runs itself. You own the charter and approve the big calls;
-it does the rest. Here's the lifecycle.
+We call a running instance **a ZOE**. Once set up, a ZOE should almost run
+itself. You own the charter and approve the big calls; it does the rest.
 
 ### Getting started
 
-One conversation. The setup skill interviews you, drafts your charter — vision,
-scope, success criteria, hard rules, resource constraints — and stands up the
-**index**: the ZOE's own map of where everything lives and the settings it runs
-by. The charter is yours: the agent never edits it, ever. It also can't run
-unattended until it has a confirmed route to reach you, because without that,
-nothing can be approved.
+See *How to use* first.
 
-The charter is the whole input. Everything a ZOE does afterwards is traceable
-back to it, so it is worth seeing one. Abbreviated, for a small shop:
+The setup skill interviews you, drafts your charter: this contains the vision,
+scope, success criteria, hard rules, and resource constraints. It also creates
+**the index**: its own map of where everything lives and the settings it runs
+by.
 
-```markdown
-## Vision and Goals
-Keep the shop trading profitably without me working weekends.
-
-## Success
-- Weekly gross margin at or above 28%, measured from the till export.
-- No stockout of a top-20 line lasting more than 48 hours.
-- I work no more than one weekend in four.
-
-## Scope
-In scope: ordering, rostering, supplier chasing, price reviews.
-Out of scope: hiring and firing, anything involving the lease.
-
-## Hard rules
-- Ask first: any spend over $200; any change to supplier terms;
-  any message sent to a supplier or customer in my name.
-- Never discount below cost, even to clear stock.
-
-## Constraints
-- Money: $2,000 a month of stock spend, no more.
-- My attention: one batched check-in a day, not a stream of questions.
-```
-
-That is enough for a ZOE to start. Note what the hard rules do: they name the
-actions that stop and wait for a human. Everything not named there, the ZOE
-decides for itself — so a charter is as much about what you are happy to
-delegate as what you want done.
+A good charter is crucial: everything a ZOE does afterwards is traceable
+back to it.
 
 ### The cycle — how work gets done
 
@@ -98,41 +65,36 @@ ones that underperform, and deleting as readily as it adds, because a skill set
 that only grows loses coherence. Every change is verified before it goes live,
 and anything the charter gates waits for you.
 
-### Staying current — upgrades
+### Upgrades
 
-The kernel itself is read-only inside a ZOE — it never edits its own operating
-system. Instead, the upgrade skill checks upstream (the ZOE project, or a parent
-enterprise) for new kernel releases on a schedule you choose, and adopts one
-only with your approval. A companion skill then mechanically reconciles the
-ZOE's structure to the new version — never touching your charter.
+Skills inherited from parent ZOEs are never edited. The only time they change
+is from parent upgrades.
 
-### The feedback network
+The upgrade skill checks parents for new releases on a schedule you choose,
+and will always ask before upgrading.
 
-ZOEs talk. When a ZOE finds something the kernel — or a parent enterprise —
-should do better, it writes the feedback up and sends it upstream. Feedback
-arriving from downstream gets triaged and serviced. Improvements flow up;
-releases flow back down. Every ZOE makes the next one better.
+### Feedback
 
-### Scaling out — sub-enterprises
+When a ZOE finds something a parent or otherwise related ZOE should do better,
+it sends feedback upstream. Feedback arriving from downstream also gets
+handled. Improvements flow up and improved releases flow back down.
+
+### Sub-enterprises
 
 When a sub-goal grows its own definition of success and its own rules, a ZOE
 can propose spinning it off as a dependent enterprise — a peer or child ZOE
-with its own charter, still human-directed at the top. Trees of enterprises
-can evolve this way.
+with its own charter.
 
 ### Template ZOEs
 
 Some ZOEs are abstract and not meant to be run as-is. They act as a blueprint:
 a parent whose sub-ZOEs inherit instructions and skills the kernel cannot give
 them — how to run a software project, keep books, do research, and so on. We
-call these **template ZOEs**; *zoe-sdlc*, a template for software projects, is
-one. To its sub-ZOEs, a template ZOE works the way the kernel works for every
-ZOE: a versioned, read-only layer to build on without editing, send feedback
-up to, and take new releases from. By convention a template ZOE ships that
-layer in a folder called `base/` — deliberately not `kernel/`, which always
-means the ZOE kernel itself — with its own VERSION and CHANGELOG files, like
-the kernel's. A sub-ZOE built on a template then watches two places for
-updates: the ZOE project and its parent template.
+call these **template ZOEs**. For example: *zoe-sdlc* (coming soon), a template
+for software projects.
+
+To its sub-ZOEs, a template ZOE works the way the kernel works for every
+ZOE: as a layer to build on.
 
 ### Guardrails — gates and verification
 
@@ -143,16 +105,14 @@ Two things keep all this honest:
   gated action that isn't approved simply doesn't happen; the ZOE stops and
   asks.
 - **Verification.** ZOE treats "I can't verify this" as a problem to fix, not a
-  condition to accept. Success is measured by checks, metrics, and logged
-  outcomes — not by the agent's feeling that things went well — and independent
-  audits run on their own schedule, separate from the work they inspect. What
-  genuinely can't be measured gets flagged to you as a known blind spot rather
-  than papered over.
+  condition to accept. Success is measured by well-defined outcomes and audits
+  — not by the agent's feelings. What can't be measured gets flagged to you as
+  a known blind spot rather than ignored.
 
-## Design: one skill, one axis
+## Design
 
 The kernel's skills are built to work like an **orthonormal basis** — a concept
-borrowed from linear algebra. In geometry, an orthonormal basis is the smallest
+borrowed from mathematics: in geometry, an orthonormal basis is the smallest
 set of directions that lets you describe any point in a space: each direction
 is unit-length (no bigger than it needs to be), the directions don't overlap
 (each is at right angles to the others), and together they cover the whole
@@ -162,11 +122,12 @@ The kernel's skills aim for the same three properties:
 
 - **Minimal** — each skill is minimal: one job, done completely, nothing extra.
 - **Independent** — no two skills overlap; each covers ground no other touches.
-- **Complete** — together they span everything the cycle needs, so any behaviour
-  a ZOE requires is a *combination* of skills, never a near-duplicate of one.
+- **Complete** — together they span everything the cycle needs, so any
+  behaviour a ZOE requires is a *combination* of skills, never a near-duplicate
+  of one.
 
-This is why the kernel can stay tiny without being incomplete — and the same
-bar applies to the skills a ZOE builds for itself as it grows.
+This is how the kernel can stay small. The same criteria apply to the skills a
+ZOE builds for itself as it evolves.
 
 ## The skills
 
@@ -194,6 +155,9 @@ Point your AI host at the kernel — the instruction file and the skills under
 knows it has no goal yet, and it guides you through the first draft of your
 charter. From there, the cycle takes over.
 
+Alternatively, get your AI to read *this* file and help you wire in the
+instructions and skills.
+
 ## Host capabilities
 
 ### What the host must provide
@@ -217,17 +181,15 @@ charter. From there, the cycle takes over.
 ### Host adapters
 
 The kernel is host-neutral and is the only thing ZOE prescribes. `hosts/`
-carries adapters for specific hosts: agent files that enforce the decide / do /
-judge separation by mechanism, plus install notes covering each host's strengths
-and gaps. A *host* here is the assistant that runs the cycle, not the editor it
-sits in — both adapters below can run inside VS Code, and they differ by which
-assistant executes.
-
-- `hosts/claude-code/` — **Claude Code**, as CLI or VS Code extension. This is
-  the tested host: the ZOE project runs its own cycles on it.
-- `hosts/github-copilot/` — **GitHub Copilot** custom agents, in VS Code.
-  Best-effort and not yet exercised end to end; treat it as a starting point.
+carries adapters for specific hosts: agent files that keep deciding, doing
+and judging in separate agents, plus notes covering each host's strengths and
+gaps.
 
 Treat them as workable examples, not part of the kernel proper — adapt them
 freely to your setup, or write your own for another host. They may move to a
 separate ZOE-related project in time.
+
+Currently, there is only one host example:
+
+- `hosts/claude-code/` — **Claude Code**, as CLI or VS Code extension. This is
+  a thoroughly tested case.
