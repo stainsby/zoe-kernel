@@ -139,8 +139,8 @@ proceed, and `zoe-setup` will take over and interview you for the charter.
 ## Models
 
 How models are chosen is the kernel's rule, not this host's — see `## Models` in
-`kernel/instructions/zoe.instructions.md` and the tier-to-model mapping in the
-enterprise's index. Host-specific part only: to override a tier for your setup, add
+`kernel/instructions/zoe.instructions.md`, and the enterprise's index for which model
+does which job. Host-specific part only: to override a tier for your setup, add
 `model:` to your copies (Claude Code accepts aliases — `opus`, `sonnet`, `haiku` —
 which age better than full names).
 
@@ -149,6 +149,6 @@ which age better than full names).
 Claude Code runs headless: `claude -p "run the ZOE cycle" --agent zoe` from cron or CI
 gives the kernel its "on a schedule" primitive. Gates survive headless runs because
 gated actions are simply not allowlisted: the run does all ungated work, writes its
-gate requests to the director channel named in the index, and exits. A director approves on
-the next interactive session. Do not pass `--dangerously-skip-permissions`; that
-removes the gate.
+approval requests to the director channel named in the index, and exits. A director
+approves on the next interactive session. Do not pass `--dangerously-skip-permissions`;
+that removes the gate.
