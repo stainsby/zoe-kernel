@@ -28,7 +28,7 @@ an enterprise so new there is nothing to read.
 3. Read your index; everything else is located through it.
 4. Check the gate states your index's approval route names. An approved decision that
    has not yet been acted on is news to act on; anything still gated is waiting.
-5. Sweep the task store your index names: for each unfinished item, reconcile its status
+5. Sweep the task store your index points at: for each unfinished item, reconcile its status
    against its completion criterion and its evidence, not against memory. Record what you
    change in the store as you act. Flag any contradictions. Correct the record only;
    advancing the work itself waits for the hand-off.

@@ -13,14 +13,14 @@ draw on their findings; you do not replace them.
 
 You are read-only to the *work*: skills, the kernel, the charter, and the
 state that represents the world are off-limits to you. Write your report to
-the report store named in your index. But unlike a plan, a report is a
+where your index says reports are kept. But unlike a plan, a report is a
 verdict: once issued it is never changed. You may add a new report; you must
 never edit or overwrite a past one.
 
 Read: the charter's success and the measures derived from it; the results
 from run (`zoe-run`); the latest findings of any audits you have set up; your
-state and log (for trends); your list of skills; the task store named in your index
-(see `zoe-tasks`); the `upgrade-check schedule`
+state and log (for trends); your list of skills; where your index says tasks are kept
+(see `zoe-tasks`); the checking schedule
 and `last upgrade check` in your state (to judge whether a check is overdue).
 
 Produce a report:
@@ -38,7 +38,7 @@ Produce a report:
 - Stalled or unverifiable tasks: tasks that have not moved for longer than their size
   explains, and tasks whose completion criterion cannot be checked objectively — an
   unverifiable criterion is a defect to plan out, not a formality to wave through.
-- Unserviced: inbound feedback or direction (on the feedback intake or director channel) that
+- Unserviced: inbound feedback or direction (wherever feedback arrives, or on the director channel) that
   has sat past your schedule without triage or a recorded outcome — name each
   item and its age.
 - Drifted: template-derived files (the index, any other) that no longer match
@@ -51,7 +51,7 @@ Produce a report:
   work. If self-management dominates for several cycles running, say so —
   that is a failure sign, not diligence.
 - Overdue: anything past its schedule without being checked. In particular, if the index
-  sets an `upgrade-check schedule` (the full rule is in `zoe-upgrade`) and it has not been
+  sets a checking schedule (the full rule is in `zoe-upgrade`) and it has not been
   honoured since `last upgrade check`, raise an overdue finding. You only report it; you
   change nothing. Resetting the clock belongs to whoever acts on the finding, not to you.
 

@@ -9,12 +9,12 @@ description: Check whether a newer ZOE kernel is available upstream and, with di
 Keep this enterprise's kernel in step with where it came from — the ZOE
 project, or the parent enterprise that spawned this one.
 
-When you run: on the `upgrade-check schedule` in your index, or when upstream announces a
+When you run: on the checking schedule in your index, or when upstream announces a
 new version. If the recorded schedule is a deliberate "no", you do not run; keeping up is
 a director's choice, not an obligation.
 
-The upgrade-check schedule rule — the full rule is stated here; other skills point at it.
-The `upgrade-check schedule` covers both how often to check for a newer kernel/upstream and
+The checking-schedule rule — the full rule is stated here; other skills point at it.
+That schedule covers both how often to check for a newer kernel or upstream and
 whether non-kernel artifacts need reconciling against the current kernel. Its value is a
 real schedule (e.g. weekly, monthly) or an explicit, deliberate "no" — never silently
 unset; `zoe-setup` asks at setup. It applies to every enterprise, however its kernel
@@ -24,13 +24,13 @@ artifacts needing reconciliation. When the recorded schedule has not been honour
 time has passed since `last upgrade check` than the schedule allows. For one triggered by
 an event, it means the event happened and the reconcile never ran.
 
-Read: `kernel version`, `upstream`, and `upgrade-check schedule` in your index; upstream's
+Read: `kernel version`, `where the kernel came from`, and `how often to check for a newer kernel` in your index; upstream's
 current kernel and its `VERSION`.
 
 Do:
 - Compare versions. If upstream is not newer, stop.
 - Show a director what changed between the two kernels, from upstream's changelog (shipped
-  alongside the kernel; see `changelog location` in your index). Read the entries spanning your
+  alongside the kernel; your index records where it is). Read the entries spanning your
   current version up to upstream's — a long-lagging adopter catches up across several
   versions at once. If you keep a copy of the kernel, also diff your copy against the new
   tree; if you symlink it, the changelog span is the authoritative account of what moved
@@ -44,7 +44,7 @@ Do:
   ran or was declined. Recording the date is deliberate even when the check was declined:
   it is state, written by the part allowed to write, not an edit to a read-only kernel
   file.
-- Tell your sub-enterprises (see your index) an upgrade is available. Each
+- Tell the enterprises below you (see your index) an upgrade is available. Each
   gates its own adoption; do not push it on them.
 
 Never: adopt a kernel without approval; edit kernel files yourself.

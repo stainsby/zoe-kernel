@@ -19,7 +19,7 @@ task is done — not "seems finished".
 ## What any task store must provide
 
 The store itself is this enterprise's choice — files, a database, an issue tracker,
-anything — recorded in the index as `task store`. Whatever it is, it must be:
+anything — recorded in the index under `where tasks are kept`. Whatever it is, it must be:
 
 - **durable** — tasks survive dropped sessions;
 - **listable** — you can list what is open;

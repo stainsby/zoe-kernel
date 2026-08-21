@@ -68,7 +68,7 @@ approval route explicit. Without it, gates cannot be enforced.
 
 A skill may declare a `model-kind` — a capability tier (e.g. `heavy-planning`,
 `cheap-coding`, `quick-check`), never a concrete model name. Your index keeps a
-tier-to-model mapping; read it and launch each step on the mapped model. The top-level
+record of which model does which job; read it and launch each step on the mapped model. The top-level
 `zoe` manager's own model is pinned at launch by a director (or a launcher that reads the
 mapping) — you do not set it yourself. Where a step runs in your own context, no
 separate model is needed.

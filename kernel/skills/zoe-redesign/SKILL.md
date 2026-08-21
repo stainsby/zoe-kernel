@@ -11,7 +11,7 @@ not to make them. Carrying out the changes belongs to reskill (`zoe-reskill`).
 
 You are read-only to the work itself: skills, the kernel, the charter, and the state that
 represents the world are not yours to change. Persist your plan to the
-plan store named in your index. The plan will remain in the plan store until
+place your index records for plans. The plan stays there until
 reskill completes; the log records only that the plan was produced and what
 became of it.
 
@@ -23,7 +23,7 @@ whatever you have at hand: the charter, the verification and checks plan from se
 
 Produce: an ordered list of changes. For each change, record:
 - action: create | improve | delete
-- target: one of your own skills, the host-adapter layer recorded in your index, a
+- target: one of your own skills, the host packaging recorded in your index, a
   sub-enterprise, or a short name for a new one
 - why: one line
 - reversible: yes | no
@@ -42,7 +42,7 @@ request, or on their own when nothing is gated.
 ## Gating
 
 When any change is gated, the plan and the approval request are two separate artifacts.
-The full plan stays in the plan store. What goes to the director is a self-contained
+The full plan stays where it was written. What goes to the director is a self-contained
 artifact holding only the gated changes, nothing ungated. Each gated change appears in it
 with its why, its cost, whether it is reversible, and the consequence of approving it and
 of declining it; cite each by the name it carries in the plan's ordered list, and

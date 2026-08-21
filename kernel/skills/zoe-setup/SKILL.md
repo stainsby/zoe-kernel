@@ -37,7 +37,7 @@ Do, with a director, through negotiation:
   management, not to ignore.
 - Task tracking: ask whether the work is already tracked somewhere — an issue tracker, a
   board, files. Adopt what exists rather than replacing it; if nothing exists, decide the
-  store now. Either way record it in the index as `task store` (see `zoe-tasks`).
+  store now. Either way record it in the index under `where tasks are kept` (see `zoe-tasks`).
 - Storage: ask, for each kind of record the enterprise will produce — state, log,
   audit findings, tasks, anything else — where it should be kept and who needs to
   read it. Different kinds may belong in different places (in a corporate software
@@ -88,12 +88,12 @@ Do, with a director, through negotiation:
   schedule, the kernel version and upstream, and the director channel: the full route for
   approval, feedback, and direction, with the approval route explicit within it (you can
   record this because a director is here). Ask where inbound feedback should arrive and record
-  `feedback intake` — a real route or an explicit "none", never a silent blank. Leave
-  the rest (state store, log store, tools) unset; the cycle records those as
+  where feedback arrives — a real route, or "none" written out. Leave
+  the rest (where state and the log are kept, tools) unset; the cycle records those as
   it creates them.
 - Upgrade-checking: put this to a director as its own EXPLICIT question with a recommended
   schedule, and record either a real schedule or an explicit, deliberate "no" in the
-  index's `upgrade-check schedule` line — never leave it silently unset. Record the setup
+  index's checking-schedule line — never leave it silently unset. Record the setup
   date in state as the starting value of `last upgrade check`. What the schedule covers,
   and why no enterprise is exempt, is stated in full in `zoe-upgrade`.
 

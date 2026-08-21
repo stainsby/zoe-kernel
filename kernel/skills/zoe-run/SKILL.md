@@ -9,19 +9,19 @@ description: Execute the tasks and scheduled activities that are due, on schedul
 Your purpose here is to carry out the work that is due: tasks, and the
 scheduled activities the index names.
 
-Read: your skills, your state, and the task store named in your index
+Read: your skills, your state, and where your index says tasks are kept
 (see `zoe-tasks`).
 
 Do: work each task that is due, and carry out each scheduled activity the
 index says is due — an audit, a measure, a check — using the skill that owns
 it. Record what each produced — including failures and partial results — to
-your state and log, and record each task's status change in the task store
+your state and log, and record each task's status change in that store
 as you act, not afterwards. Record resource usage against the charter's
 constraints as you act; an action that would breach one is gated. Estimate
 material costs before acting: a cost you cannot estimate is unknown, and the
 action is gated wherever the unknown could plausibly breach a constraint.
 
-Events: an item arriving on the director channel or the feedback intake (see your
+Events: an item arriving on the director channel or wherever feedback arrives (see your
 index) is an event that triggers work. It becomes a task (triaged per
 `zoe-feedback` when it is feedback) and is worked when due, like any other.
 
