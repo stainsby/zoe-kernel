@@ -1,61 +1,57 @@
-> Copied and filled out at setup, then managed by AI.
+> Copy this into your own index and fill it in at setup. The AI keeps it current afterwards.
 > Source template: zoe-setup/assets/index.template.md
 
 # Index
 
-The one file you keep updating: where the parts of your world are, and the settings you
-run by. Record each item here as you set it up. Named locations, references, and settings
-only — no behaviour. Current state only — history lives in the log, never here. A store a
-skill will need but that is not yet created keeps its entry, marked "not yet created" — a
-deferred store is visible here, never a silent absence.
+Where everything is, and the settings you run by. Fill in each line as you set that thing up.
+
+Three rules for this file. Write down where things are and what they are set to; how they
+work belongs in a skill. Write only what is true now; what changed belongs in the log. Where
+you know you will need somewhere to keep something but have not set it up yet, keep the line
+and write "not yet created".
 
 ## Core
 
-- enterprise name: {unset — a name for this enterprise, used in your log and in feedback}
-- where the charter is
-- director channel: {unset — the route to reach a director for approval, feedback, and any other
-  needed instructions. Make the approval route explicit within it; it must be set before
-  you may run unattended.}
-- feedback intake: {unset — where inbound feedback from downstream/adopters arrives, if
-  anywhere; an explicit "none" is allowed, never a silent blank. Serviced by
-  `zoe-feedback`.}
-- schedule: {unset — what "due" and "this cycle" mean, and how often you run feedback and
-  your audits. Upgrade checks have their own entry below.}
-- date/time: {unset — the timezone to record and show times in (default: the director's
-  own), and the format. Record times with an explicit timezone offset so they stay
-  orderable, e.g. 2026-06-14T07:38:29+08:00.}
-- kernel version: {set at setup — the ZOE kernel version this enterprise runs on}
-- upstream: {unset — where this kernel came from and how to reach it: the ZOE project, or
-  the parent enterprise. An enterprise that produces its own kernel (the ZOE project itself)
-  records that here — the kernel IS the upstream for its adopters, even though there is no
-  parent above to pull from. A sub-ZOE built on a template ZOE (a ready-made enterprise
-  design it was started from) has more than one update source — the ZOE project
-  and its parent template: list each one here, with the version it is on. Used by
-  `zoe-feedback` and `zoe-upgrade`.}
-- changelog location: {unset — where the kernel's changelog lives: the shipped list of what
-  changed in each kernel version. Set at setup, or on first upgrade if the kernel arrived
-  without one.}
-- upgrade-check schedule: {unset — how often to check for a newer kernel and for needed
-  reconciliation; the rule is in `zoe-upgrade`}
-- host-adapter layer: {unset — where the per-host packaging lives (agent stubs, README,
-  settings). Lives alongside `kernel/`, NOT inside it. Role logic stays in the skills; the
-  stubs carry frontmatter, tool lists, and `model-kind` tiers.}
-- tier-to-model mapping: {unset — the concrete model for each `model-kind` capability tier
-  your skills declare. The full rule is stated in `## Models` in the instructions.}
-- state store: {unset}
-- log store: {unset}
-- task store: {unset — where tasks live: durable, listable, tracked, ordered (see
-  `zoe-tasks`). Files, a database, an issue tracker — the enterprise's choice; an existing
-  tracker is adopted at setup, not replaced.}
-- plan store: {unset — where redesign plans and their approval requests are kept until
-  reskill completes (see `zoe-redesign`)}
-- report store: {unset — where assessment reports are written, append-only (see
-  `zoe-assess`)}
-- audit findings: {unset — where your audits record their findings}
-- your skills: {unset — where the skills you create are kept — recommended separate from the ZOE skills}
-- sub-enterprises: {unset — each child: its charter location and how it reports to you}
-- tools: {unset — how you reach the outside world}
+- enterprise name: {a name for this enterprise, used in your log and when you send feedback}
+- where the charter is: {the file or place holding it}
+- how to reach a director: {how you contact them for approval, feedback and instructions, and
+  how they answer. You cannot run unattended until this is filled in.}
+- directors: {who they are — in general terms, or listed individually. Where there are
+  several, any one of them can do anything a director can do; if that is not how you want
+  it, say here what the arrangement is.}
+- where feedback arrives: {where messages from people using your work come in. Write "none"
+  if there is nowhere yet.}
+- schedule: {what "due" and "this cycle" mean here, and how often you run feedback and your
+  checks. Checking for a new kernel has its own line below.}
+- date and time: {the timezone to use — normally the director's — and the format. Always
+  record the offset, like 2026-06-14T07:38:29+08:00, so times stay in order.}
+- kernel version: {which version of the ZOE kernel you run on}
+- where the kernel came from: {the ZOE project, or the enterprise above you. If you build
+  your own kernel, say so. If you started from a ready-made enterprise design, you have two
+  sources — list both, each with its version.}
+- where the kernel's changelog is: {the list of what changed in each kernel version}
+- how often to check for a newer kernel: {see `zoe-upgrade`}
+- host packaging: {where the per-host files live — the stubs, README and settings that let a
+  particular AI platform run this. They sit beside the kernel, never inside it.}
+- which model does which job: {your skills ask for a kind of model, such as "heavy
+  planning". Say which real model each kind means. See `## Models` in the instructions.}
+- agents this enterprise runs: {which ones, and where their definitions live. Every session
+  starts by checking they are all there, so this line is what that check reads.}
+- known weaknesses: {anything about this setup that will keep looking like a fault but is
+  not — for example a host that cannot run separate agents. Recorded here so it is not
+  reported afresh every session.}
+- where state is kept: {what is currently true}
+- where the log is kept: {what has happened}
+- where tasks are kept: {they must survive a restart, be listable, carry a status and an
+  order — see `zoe-tasks`. Files, a database, an issue tracker: your choice, and if a
+  tracker is already in use, use it.}
+- where plans are kept: {redesign plans and the approvals they need, until the work is done}
+- where reports are kept: {assessments, added to and never edited}
+- where audit findings are kept:
+- where your own skills are kept: {keep them separate from the ZOE skills}
+- enterprises below you: {for each one, where its charter is and how it reports to you}
+- tools: {how you reach the outside world}
 
 ## Other
 
-{as needed}
+{anything else this enterprise needs a home for}

@@ -14,5 +14,6 @@ charter, and the index skill, and follow `zoe-redesign` exactly. Every rule of t
 role — what is read-only to you, where the plan lives, how an approval request is formed — comes
 from `zoe-redesign` and the instructions, never from this stub.
 
-You may lack a clock tool. Your launch brief carries a fresh clock reading — timestamp
-from it and label it as the launch-brief reading; never derive or estimate a time.
+Your tool list above has no shell, so you cannot read the clock. Take the time from
+whatever your launch brief gives you and say in the record where it came from; never
+estimate one.

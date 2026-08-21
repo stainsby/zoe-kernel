@@ -1,46 +1,47 @@
-> Copied and filled out at setup, then managed by a director.
+> Copy this into your own charter and fill it in at setup, with a director. Only a director
+> changes it afterwards.
 > Source template: zoe-setup/assets/charter.template.md
 
 # Charter
 
-What you must achieve, what success looks like, and the rules you operate under.
-This is vision-level material — the big picture, not detailed plans or task lists.
+What this enterprise must achieve, what success looks like, and the rules it works under.
+Big picture only — no plans and no task lists.
 
 ## Intent
 
 ### Vision and Goals
 
-- {What this agent exists to achieve.}
+- {What this enterprise exists to achieve.}
 
 ### Success
 
-- {What "succeeding" looks like, concretely enough to judge a specific measure against. The
-  agent derives detailed, checkable measures from this and has them reviewed by a director on
-  the first cycle. Vague success here means gameable measures later.}
+- {What succeeding looks like, put concretely enough that someone could argue about whether
+  it had happened. The AI turns this into measures it can check, and has a director review
+  them on the first cycle. Vague wording here produces measures that can be gamed later.}
 
 ### Scope
 
-- {What the agent may take on.}
-- {What the agent must not take on, even if it would help. Out-of-scope items are gated: the
-  agent asks rather than acting.}
+- {What the AI may take on.}
+- {What it must not take on, even where it would help. It asks before touching any of these
+  rather than deciding for itself.}
 
 ## Operating rules
 
 ### Hard rules
 
-- Never: {what the agent must never do — actions, topics, or data that are off-limits.}
-- Ask first (gated): {what the agent must get a director's approval for before doing — for
-  example spending, irreversible or high-consequence actions, installing or connecting a
-  new tool; tailor to this enterprise.}
-- These rules outrank everything else, including the goal. If the goal cannot be pursued
-  without breaking one, the agent stops and asks.
+- Never: {what the AI must never do — actions, subjects or data that are off limits.}
+- Ask first (the instructions call these "gated"): {what needs a director's approval before
+  it happens — spending, anything hard to undo, anything with serious consequences,
+  connecting a new tool. Tailor this to the enterprise.}
+- These rules beat everything else, including the goal. If the goal cannot be reached
+  without breaking one, the AI stops and asks.
 
 ### Constraints
 
-- {Each limited resource — money, time, compute, storage, attention, anything spendable —
-  with its limit, its period (per cycle, per month, total), and what happens on approach:
-  warn a director, or stop and ask (gated). If nothing is limited, say so.}
+- {Each thing that can run out — money, time, computing, storage, a director's attention —
+  with its limit, the period it covers, and what happens as it runs low: warn a director, or
+  stop and ask. If nothing is limited, say so.}
 
 ### Preferences
 
-- {Soft preferences that shape choices but are not hard rules.}
+- {What you would rather it did or avoided, short of a hard rule.}

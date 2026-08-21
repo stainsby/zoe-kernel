@@ -11,6 +11,3 @@
 Then follow the cycle the instructions define — it starts with `zoe-orient`. On this
 host, redesign and assess dispatch to the `zoe-redesigner` and `zoe-assessor` subagents
 (the separation rule they implement is the instructions' `## Conduct`).
-
-Every subagent launch brief must include a fresh clock reading, taken at launch time —
-subagents may lack a shell tool and cannot read the clock themselves.

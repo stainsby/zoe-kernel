@@ -31,6 +31,78 @@ bytes are authoritative.
 
 ---
 
+## 1.1.0 → 1.2.0 (bookkeeping is watched and cut back; a defect's cause is decided rather than always filed; the setup templates are in plain English)
+
+Three changes, all of them about a ZOE spending its effort on its own work rather than on
+itself. Two came from watching this project's own machinery grow to fourteen internal skills
+before being cut back to five; the third came from a director asking why the file every new
+director has to fill in was not written in plain English.
+
+**Files:** 15 files, 0 added, 0 removed, **4 changed** —
+`kernel/instructions/zoe.instructions.md`,
+`kernel/skills/zoe-setup/assets/index.template.md`,
+`kernel/skills/zoe-setup/assets/charter.template.md`, and `kernel/VERSION`.
+
+**Size:** 994 / 9201 / 53647 → 1001 / 9310 / 53791 (lines / words / bytes). Growth of
++7 / +109 / +144 — the smallest of any release so far, because two of the three changes
+replace text rather than adding it.
+
+**Adopter notes.**
+
+1. **Watch what your own bookkeeping costs you.** A new bullet in the instructions'
+   *Conduct* section asks you to keep an eye on how much effort goes on running yourself —
+   records, checks, plans, skills about skills — rather than on the charter's work, and to cut
+   it back in the cycle you notice it. It is deliberately a judgement and not a ratio: no
+   number can tell you, and some enterprises are right to carry heavy record-keeping. This is
+   encouragement, not a rule you can fail. **Compare first:** `## Conduct` in
+   `kernel/instructions/zoe.instructions.md`.
+
+2. **A defect's cause is decided, not automatically turned into a task.** The *Verification*
+   section used to require two things of every finding, however small: fix it, and raise its
+   root cause as a planning item. That manufactured work faster than any enterprise could
+   finish it. It now asks you to record the cause, fix the defect, and record what you are
+   doing about the cause — where "nothing, because there is nothing worth fixing" is a
+   complete answer. In exchange it is stricter about repetition: if the same kind of defect
+   turns up three times, the cause is raised or the matter goes to a director. And it states a
+   preference that was missing: fix a cause by removing whatever allowed the defect, rather
+   than by adding a rule against it.
+   **Migration:** none required. If you built a rule or a skill around the old "always raise a
+   planning item" wording, you may now retire it. **Compare first:** the paragraph after the
+   bullet list in `## Verification`.
+
+3. **The two setup templates are rewritten in plain English.** `index.template.md` and
+   `charter.template.md` are what a director fills in when starting a ZOE, and they were
+   written in the maintainer's shorthand — "host-adapter layer", "tier-to-model mapping",
+   "feedback intake", "plan store". Someone setting up a ZOE to run a shop should not have to
+   decode a phrase before filling in a line. The explanations are rewritten throughout and the
+   opaque field names are replaced with plain ones: `feedback intake` becomes
+   `where feedback arrives`, `tier-to-model mapping` becomes `which model does which job`,
+   `host-adapter layer` becomes `host packaging`, and the five `… store` fields become
+   `where … are kept`.
+
+   The index template also gains three lines that 1.1.0's own features needed and it never
+   provided: `directors` (the kernel says any one of several can act unless the index records
+   otherwise), `agents this enterprise runs` (every session's opening wiring check reads it),
+   and `known weaknesses` (without it, a host that cannot run separate agents is reported as a
+   fresh fault at the start of every session).
+
+   **Migration, if you already have an index:** rename the fields to match, keeping each
+   value as it is, and add the three new lines. Nothing else changes; no behaviour depends on
+   the old names. If you would rather keep your own field names, nothing breaks — the template
+   is a starting point, and your index is yours.
+
+**Also in this release, outside `kernel/`:** the Claude Code adapter's install instructions
+gained fixes for six defects an install audit found — a guard so a failed first step cannot
+leave a file named `*`, a runnable block for the final step, a derived rather than hardcoded
+skill count, a correction to how the adapter describes its own agent stubs, and clearer
+handling of the copy path, which installs files that refer to parts of the project the copy
+path does not bring with it. The adapter also stopped asserting a rule the kernel does not
+make, about clock readings in subagent launch briefs.
+
+**Releases are now tagged.** Each release carries an annotated git tag `v<version>` on its
+commit, so you can pin a submodule to a version rather than to a bare commit id. `v1.0.1` and
+`v1.1.0` have been added retrospectively.
+
 ## 1.0.1 → 1.1.0 (setup sets up your agents; orient runs first and checks the wiring; the any-one-director default is stated)
 
 Three capability-and-safety changes, each born from a real failure or a director's
