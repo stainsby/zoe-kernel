@@ -31,6 +31,54 @@ bytes are authoritative.
 
 ---
 
+## 1.2.0 → 1.2.1 (the kernel now asks for the index fields the 1.2.0 template actually creates)
+
+A repair release. 1.2.0 rewrote the two setup templates in plain English, renaming thirteen
+fields in the index template — and left the rest of the kernel telling you to read the old
+names. If you filled in an index from the 1.2.0 template, nine of its skills sent you looking
+for lines your index does not contain. Nothing crashed, and a capable agent bridges the gap,
+but the kernel was asking for fields it had also told you not to create.
+
+**Files:** 15 files, 0 added, 0 removed, **10 changed** — `kernel/VERSION`,
+`kernel/instructions/zoe.instructions.md`, and the `zoe-assess`, `zoe-feedback`, `zoe-orient`,
+`zoe-redesign`, `zoe-run`, `zoe-setup`, `zoe-tasks` and `zoe-upgrade` skills.
+
+**Size:** 1001 / 9310 / 53791 → 1001 / 9350 / 53954 (lines / words / bytes). Growth of
++0 / +40 / +163, entirely from replacing short field names with the longer plain-English ones.
+
+**Adopter notes.**
+
+1. **Forty-two references repointed.** Every place the kernel named an index field it now
+   names the one the template creates: `feedback intake` → where feedback arrives,
+   `upgrade-check schedule` → how often to check for a newer kernel, `plan store`,
+   `report store`, `state store`, `log store`, `task store` → where … are kept,
+   `changelog location` → where the kernel's changelog is, `host-adapter layer` →
+   host packaging, `tier-to-model mapping` → which model does which job, `sub-enterprises` →
+   enterprises below you, `upstream` → where the kernel came from.
+
+   Where a sentence only needed to point at something, it now describes it instead of quoting
+   the label — "where your index says tasks are kept" rather than the literal field name. That
+   leaves far fewer literal labels in the kernel, so a future rename breaks less.
+
+   **`director channel` is deliberately unchanged**, all seven times it appears. It is a
+   defined term in the instructions, not an index field label, and every use is the term.
+
+   **Migration:** none. If you are on 1.2.0 with an index built from its template, this
+   release simply stops sending you to fields that were never there. If your index predates
+   1.2.0 and still uses the old field names, nothing here forces you to rename them — your
+   index is yours, and the kernel reads whatever it says.
+
+2. **`zoe-feedback` now says when to open it.** Its description was "Send or receive
+   feedback.", which told a host nothing about when the skill applies — and since a host loads
+   only descriptions, nothing anywhere triggered it. It now reads: *"Send the feedback you have
+   gathered upstream, on the schedule your index sets. Also holds how feedback arriving from
+   others is triaged."* **Compare first:** the frontmatter of
+   `kernel/skills/zoe-feedback/SKILL.md`.
+
+3. **A small plain-language fix carried over.** `zoe-setup` still asked for a route "or an
+   explicit 'none', never a silent blank" — the same construction the 1.2.0 rewrite existed to
+   remove. It now just says: a real route, or "none" written out.
+
 ## 1.1.0 → 1.2.0 (bookkeeping is watched and cut back; a defect's cause is decided rather than always filed; the setup templates are in plain English)
 
 Three changes, all of them about a ZOE spending its effort on its own work rather than on
