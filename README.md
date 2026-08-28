@@ -4,32 +4,44 @@
 
 # ZOE — Zero Organisation Enterprises
 
-A minimal set of agentic instructions and skills to turn any vision into a
-self-managing and self-improving **enterprise**. ZOE captures your ideas as a
-**charter**, and then builds, runs, and continuously improves whatever is
-needed to realise it. ZOE works as a kind of general manager, while you act
-in a 'director' role.
+ZOE kernel is a minimal set of agentic instructions and skills to turn any
+idea or vision into a self-managing and self-improving process that we call an
+**enterprise**.
 
-When we say "enterprise" we mean any high-level goal. Examples might be
-a personal life goal, or a commercial project. Anything where you want the
-drudgery managed by AI.
+ZOE captures your vision as a **charter**, and then builds, runs, and
+continuously improves whatever is needed to realise it. ZOE works as a kind
+of general manager, while humans typically act in 'director' roles.
 
-## How a ZOE works
+When we say "enterprise" we mean the pursuit of any high-level goal, which
+could be as much a personal life goal as a commercial business project —
+anything where you want the boring, repetitive work — book-keeping and
+admin — managed by AI.
 
 We call a running instance **a ZOE**. Once set up, a ZOE should almost run
 itself. You own the charter and approve the big calls; it does the rest.
 
+## How to use
+
+Point your AI at the instruction file and the skills under `kernel/` and ask
+it how to proceed. ZOE opens the conversation itself: it knows it has no goal
+yet, and it guides you through the first draft of your charter. From there,
+the cycle takes over.
+
+Alternatively, get your AI to read *this* file and help you wire in the
+instructions and skills.
+
 ### Getting started
 
-See *How to use* first.
-
-The setup skill interviews you, drafts your charter: this contains the vision,
-scope, success criteria, hard rules, and resource constraints. It also creates
-**the index**: its own map of where everything lives and the settings it runs
-by.
+During setup the AI interviews you and drafts your charter: this contains the
+vision, scope, success criteria, hard rules, and resource constraints. It also
+creates **the index**: its own map of where everything lives and the settings
+it runs by.
 
 A good charter is crucial: everything a ZOE does afterwards is traceable
-back to it.
+back to it. It can be updated later of course, to improve it or as goals shift.
+
+A ZOE creates and maintains its own skills according to what the enterprise
+needs.
 
 ### The cycle — how work gets done
 
@@ -37,41 +49,54 @@ A ZOE runs a continuous loop:
 
 ```mermaid
 flowchart LR
-    R[1 Redesign] --> G{2 Gate}
-    G -- ungated, or approved --> S[3 Reskill]
-    G -- gated, not yet approved --> W([that item waits;<br/>the rest carries on])
-    S --> N[4 Run]
-    N --> A[5 Assess]
+    O((Orient)) --> R[Redesign]
+    O -.-> SU[Setup/Upgrade]
+    SU --> R
+    R --> G{needs approval?}
+    G -- no --> S[Reskill]
+    G -- yes --> W([Gate])
+    W -. approval .-> S
+    S --> N[Run]
+    N --> A[Assess]
     A -- report --> R
+    classDef entry stroke-width:3px
+    class O entry
 ```
 
-1. **Redesign** — decide what to change in its own skill set, based on the
-   charter and the last cycle's results.
-2. **Gate** — anything the charter marks as needing your approval stops here
-   until you say go. No exceptions: not for urgency, not for a clever shortcut.
-3. **Reskill** — carry out the approved changes, one at a time.
-4. **Run** — execute the skills and tasks that are due.
-5. **Assess** — judge the results against the charter's definition of success,
-   honestly, as a separate agent from the one that did the work.
+- **Orient** — every session starts here with some basic checking,
+  picking up from where it was last left.
+- **Setup/Upgrade** — used if running for the first time, or if the kernel or
+  a ZOE we depend on has been upgraded.
+- **Redesign** — decides what skills to add, change or delete, based on the
+  charter and the last cycle's results. Uses a separate agent.
+- **Gate** — anything the charter marks as needing approval waits
+  until a director gives the go ahead.
+- **Reskill** — make the approved skill changes.
+- **Run** — this is where the real work gets done: the work that makes
+  this ZOE fulfil the charter.
+- **Assess** — judge the results against the charter's definition of success,
+  honestly, using a separate agent from the one that did the work.
 
-Then back to step 1. Deciding, doing, and judging are deliberately kept apart —
-the thing that does the work never gets to be the thing that certifies it.
+Deciding, doing, and judging are deliberately kept apart — the agent that
+does the work never gets to be the agent that certifies it.
 
 ### Self-improvement
 
-Improvement isn't a feature bolted on; it's step 1 of every cycle. Each pass,
-the ZOE redesigns its own skill set — creating skills it's missing, sharpening
-ones that underperform, and deleting as readily as it adds, because a skill set
-that only grows loses coherence. Every change is verified before it goes live,
-and anything the charter gates waits for you.
+Improvement is the first thing each cycle does (*Redesign*). Each cycle,
+the ZOE redesigns its own skill set — creating skills it's missing,
+sharpening ones that underperform, and deleting any dead weight.
+
+### Sub-ZOEs
+
+When a sub-goal grows its own definition of success and its own rules, a ZOE
+can propose spinning it off as a sub-enterprise — a *sub-ZOE* with its
+own charter, operating under a parent ZOE.
 
 ### Upgrades
 
 Skills inherited from parent ZOEs are never edited. The only time they change
-is from parent upgrades.
-
-The upgrade skill checks parents for new releases on a schedule you choose,
-and will always ask before upgrading.
+is from parent upgrades. The upgrade skill checks upstream for new releases
+on a schedule you choose, and will always ask before upgrading.
 
 ### Feedback
 
@@ -79,84 +104,54 @@ When a ZOE finds something a parent or otherwise related ZOE should do better,
 it sends feedback upstream. Feedback arriving from downstream also gets
 handled. Improvements flow up and improved releases flow back down.
 
-### Sub-enterprises
-
-When a sub-goal grows its own definition of success and its own rules, a ZOE
-can propose spinning it off as a dependent enterprise — a peer or child ZOE
-with its own charter.
-
 ### Template ZOEs
 
-Some ZOEs are abstract and not meant to be run as-is. They act as a blueprint:
-a parent whose sub-ZOEs inherit instructions and skills the kernel cannot give
-them — how to run a software project, keep books, do research, and so on. We
-call these **template ZOEs**. For example: *zoe-sdlc* (coming soon), a template
-for software projects.
+Some ZOEs are abstract and not meant to be run as-is. They act as a parent
+whose sub-ZOEs inherit more specific instructions and skills. We call these
+**template ZOEs**. For example
+[ZOE SDLC](https://github.com/stainsby/zoe-sdlc) is a template for software
+engineering projects.
 
-To its sub-ZOEs, a template ZOE works the way the kernel works for every
-ZOE: as a layer to build on.
+### Guardrails
 
-### Guardrails — gates and verification
+Guardrails keep the AI from overstepping:
 
-Two things keep all this honest:
-
-- **Gates.** The charter's hard rules name the actions that need a human first
+- **Gating** — the charter's rules name the actions that need human oversight
   — spending money, publishing, changing key files, whatever you decide. A
-  gated action that isn't approved simply doesn't happen; the ZOE stops and
-  asks.
-- **Verification.** ZOE treats "I can't verify this" as a problem to fix, not a
-  condition to accept. Success is measured by well-defined outcomes and audits
-  — not by the agent's feelings. What can't be measured gets flagged to you as
-  a known blind spot rather than ignored.
+  gated action that isn't approved is prohibited; the ZOE must stop and
+  ask.
+- **Verification** — verifiability is key to automation. Success is measured
+  by well-defined outcomes that will be documented in the charter.
 
-## Design
+## The kernel skills
 
 The kernel's skills are built to work like an **orthonormal basis** — a concept
-borrowed from mathematics: in geometry, an orthonormal basis is the smallest
-set of directions that lets you describe any point in a space: each direction
-is unit-length (no bigger than it needs to be), the directions don't overlap
-(each is at right angles to the others), and together they cover the whole
-space.
+borrowed from *vector spaces* in mathematics: small, perpendicular directions
+that can be scaled to describe any point in a space. Similarly, the kernel's
+skills aim to be:
 
-The kernel's skills aim for the same three properties:
-
-- **Minimal** — each skill is minimal: one job, done completely, nothing extra.
-- **Independent** — no two skills overlap; each covers ground no other touches.
+- **Minimal** — each skill does one job, completely, nothing extra.
+- **Independent** — no skills overlap; each covers ground no other touches.
 - **Complete** — together they span everything the cycle needs, so any
-  behaviour a ZOE requires is a *combination* of skills, never a near-duplicate
-  of one.
+  behaviour a ZOE requires is a *combination* of skills.
 
 This is how the kernel can stay small. The same criteria apply to the skills a
 ZOE builds for itself as it evolves.
 
-## The skills
-
-The kernel is one instruction file plus these ten skills. Eight act; two
-(`zoe-tasks`, and the reconcile helper called by upgrade) exist mainly to be
-read or invoked by others.
+Here is the full set:
 
 | Skill | What it does |
 | --- | --- |
-| `zoe-setup` | First setup, with you present: writes the charter and index and makes a blank enterprise runnable. Also helps when you revise the charter later. |
+| `zoe-setup` | First setup, with a director present: writes the charter and index and makes the enterprise runnable. Also assists when you revise the charter later. |
 | `zoe-redesign` | Decides what to change in the ZOE's own skill set — create, improve, delete — at the start of each cycle, as a separate agent from the ones that carry changes out. |
-| `zoe-reskill` | Carries out one change from the plan: create, improve, or delete one of the ZOE's own skills. Never touches a kernel file. |
-| `zoe-orient` | Orients a cold or resumed session — clock, index, gate states, task-store sweep, log tail — then names the live trigger and hands off. Never runs the work itself. |
+| `zoe-reskill` | Carries out one change from the plan: create, improve, or delete one of the ZOE's own skills. Runs once for each change. |
+| `zoe-orient` | Picks up where it left off from the last session and gets ready to do work. |
 | `zoe-run` | Executes the skills and tasks that are due, on schedule or on an event; acquires a tool where a skill needs one and lacks it. |
 | `zoe-assess` | Judges each cycle's results against the charter's success criteria and issues an append-only report — as a separate agent from the ones whose work it judges. |
-| `zoe-tasks` | An *understanding* skill: the canonical statement of what a task is, what any task store must provide, and how long work is decomposed. Read, not run. |
-| `zoe-upgrade` | Checks whether a newer kernel is available upstream and, with your approval, adopts it. Optional — runs only if the index schedules it. |
-| `zoe-reconcile` | Mechanically reconciles the ZOE's structure — index fields, state stores — to a new kernel version. Called by `zoe-upgrade`; never touches charter content. |
-| `zoe-feedback` | The feedback loop, both directions: sends identified feedback upstream, and triages and services feedback arriving on the ZOE's intake. |
-
-## How to use
-
-Point your AI host at the kernel — the instruction file and the skills under
-`kernel/` — and ask it how to proceed. ZOE opens the conversation itself: it
-knows it has no goal yet, and it guides you through the first draft of your
-charter. From there, the cycle takes over.
-
-Alternatively, get your AI to read *this* file and help you wire in the
-instructions and skills.
+| `zoe-tasks` | An *understanding* skill: the canonical statement of what a task is, what any task store must provide, and how long work is decomposed. |
+| `zoe-upgrade` | Checks whether a newer kernel is available upstream and, with your approval, adopts it. |
+| `zoe-reconcile` | Updates the ZOE's own records to match a new kernel version. Called by `zoe-upgrade`. |
+| `zoe-feedback` | The feedback loop, both directions: sends identified feedback upstream, and deals with feedback arriving on the ZOE's intake. |
 
 ## Host capabilities
 
