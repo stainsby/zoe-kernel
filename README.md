@@ -22,13 +22,17 @@ itself. You own the charter and approve the big calls; it does the rest.
 
 ## How to use
 
-Point your AI at the instruction file and the skills under `kernel/` and ask
-it how to proceed. ZOE opens the conversation itself: it knows it has no goal
-yet, and it guides you through the first draft of your charter. From there,
-the cycle takes over.
+**In Claude Code or Cowork**, install ZOE as a plugin: add the marketplace
+`stainsby/zoe-plugins`, then install `zoe-kernel` from it. Plugins arrive
+switched off, so enable it in the project you want to run as an enterprise.
 
-Alternatively, get your AI to read *this* file and help you wire in the
-instructions and skills.
+**Anywhere else**, point your AI at the instruction file and the skills under
+`kernel/` and ask it how to proceed. Or get your AI to read *this* file and
+help you wire in the instructions and skills.
+
+Either way, ZOE opens the conversation itself: it knows it has no goal yet,
+and it guides you through the first draft of your charter. From there, the
+cycle takes over.
 
 ### Getting started
 
