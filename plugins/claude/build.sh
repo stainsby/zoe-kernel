@@ -5,19 +5,18 @@
 #
 #   plugins/claude/build.sh
 #
-# It assembles a plugin at dist/claude/plugin/ and packages it as
-# dist/claude/plugin.zip — fixed paths naming the provider whose plugin format
-# they hold, with no version in either, so anything pointing at the package keeps
+# It assembles the plugin in a temporary directory and packages it as
+# dist/claude/plugin.zip — a fixed path naming the provider whose plugin format
+# it holds, with no version in it, so anything pointing at the package keeps
 # pointing at it release after release.
 #
 # WHERE THE CATALOGUE IS, AND WHY THIS BUILD NEVER TOUCHES IT. The marketplace
-# listing this plugin lives in a separate repository, stainsby/zoe-plugins, and
-# its entry is STATIC: a url and nothing else, pointing at this file through the
-# moving `latest-release` tag. It needs no digest, because sha256 is optional and
-# has no role in update detection once plugin.json carries a version; and it needs
-# no version, because a version on the entry is silently overridden by the one in
-# plugin.json. So nothing here changes release to release, and the build has
-# nothing to tell the catalogue. Publishing is moving the tag.
+# listing this plugin lives in a separate repository, stainsby/zoe-plugins, which
+# hosts the plugins it lists: its scripts/update-plugin.py takes this zip, unpacks
+# it into that repository, and copies name, version, description and author from
+# plugin.json into the catalogue entry. So the catalogue is updated from the
+# package, never by this build, and the version is typed in exactly one place:
+# kernel/VERSION, read below.
 #
 # WHY IT ASSEMBLES rather than serving the repository as the plugin. plugin.json
 # can name where components live, and pointing "skills" at kernel/skills/ works
@@ -61,9 +60,9 @@ rm -rf "dist/claude/plugin" ".claude-plugin" "$src/skills" "$src/agents"
 
 # --------------------------------------------------------------- manifests --
 # The version is the update signal: an adopter receives a new kernel only when it
-# changes, so it is read from kernel/VERSION and never typed by hand. It must not
-# also appear in the marketplace entry — plugin.json's value wins there silently,
-# so a value in both is a trap rather than a redundancy.
+# changes, so it is read from kernel/VERSION and never typed by hand. The catalogue
+# entry carries a copy, written there by the marketplace's update script from this
+# manifest and checked against it by its validator — never typed by hand either.
 #
 # defaultEnabled is false deliberately. The field
 # defaults to true, which would load ZOE's skills in every project on the machine,
@@ -186,8 +185,7 @@ else
 fi
 
 # -------------------------------------------------------------- packaging --
-# For the surfaces that install a plugin from an uploaded file, and for trying a
-# build without installing it: claude --plugin-dir accepts the zip directly.
+# For the surfaces that install a plugin from an uploaded file.
 #
 # Built with python rather than zip(1) so it is reproducible: entries sorted and
 # every timestamp fixed. Without that the bytes change on every run and nothing

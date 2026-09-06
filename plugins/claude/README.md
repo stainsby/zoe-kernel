@@ -1,7 +1,7 @@
 # The ZOE plugin for Claude
 
 This folder packages ZOE as a plugin for Anthropic's Claude products, so that installing it is
-two steps instead of the manual wiring in `hosts/claude-code/README.md`. It sits beside
+three commands instead of the manual wiring in `hosts/claude-code/README.md`. It sits beside
 `kernel/`, not inside it: packaging is not part of the kernel, and the kernel's rules bind
 whichever way ZOE arrives.
 
@@ -13,9 +13,10 @@ changing anything here. Only the skills themselves are portable: the Agent Skill
 open standard, so `kernel/skills/` stays host-neutral where it lives and this folder merely
 copies it into the package at build time.
 
-The repository is the catalogue; the plugin is a package built from it.
-`.claude-plugin/marketplace.json` at the root lists one plugin, `zoe`, and points at
-`dist/claude/plugin.zip` at the tag of a released version, pinned by SHA-256.
+The catalogue is a separate repository, `stainsby/zoe-plugins`, which hosts the plugins it
+lists. Its `scripts/update-plugin.py` takes the package built here, unpacks it into that
+repository, and copies the name, version, description and author from the package's own
+`plugin.json` into the catalogue entry. What an adopter installs is that unpacked copy.
 
 **The package is assembled, not declared.** `plugin.json` can name where components live, and
 pointing `skills` at `kernel/skills/` does work in Claude Code — but it does not travel. Cowork
@@ -30,25 +31,25 @@ reproducible, so a drifted copy would show up as a changed file.
 Only the zip is committed. The assembled tree is staging, built in a temporary directory and
 thrown away, so nothing may depend on it existing.
 
-The agent stubs here are **not** the ones in `hosts/claude-code/agents/`, and the difference is
-deliberate rather than duplication to be tidied away. Those name a `CLAUDE.md` and a workspace
-path for the instructions, which is right for someone installing by hand on Claude Code and
-wrong on Claude's other surfaces. `hosts/` serves people who are not using a plugin at all, and
-is untouched by any of this. The stubs in `plugins/claude/agents/` name both routes and let the
-enterprise's index say which one it uses.
+The agent stubs are the ones in `hosts/claude-code/agents/`, copied in at build time. There is
+one set: there used to be two, and they drifted.
 
 ## Installing
 
-```
-/plugin marketplace add stainsby/zoe-kernel
-/plugin install zoe@zoe-kernel
+```sh
+claude plugin marketplace add stainsby/zoe-plugins
+claude plugin install zoe-kernel@zoe
+claude plugin enable zoe-kernel@zoe
 ```
 
-Then, in the workspace that is to become the enterprise, ask Claude to set ZOE up. That runs
-the `zoe-claude-init` skill, which is the other half of the install and is described below.
+The plugin arrives switched off — a ZOE is something you start on purpose, not something that
+loads into every project on the machine — so the third step enables it in the project that is
+to become the enterprise. Then ask Claude to set ZOE up. That runs the `zoe-claude-init` skill,
+which is the other half of the install and is described below.
 
-Where a surface offers no command line, the same two steps are in its own interface: add the
-marketplace by its repository address, install the plugin, then ask Claude to set ZOE up. A
+Where a surface offers no command line, the same steps are in its own interface: add the
+marketplace by its repository address, install the plugin, enable it, then ask Claude to set
+ZOE up. A
 package at `dist/claude/plugin.zip` can also be uploaded directly, on the surfaces that accept a
 plugin as a file — which is how to try ZOE in Cowork without registering anything.
 
@@ -96,8 +97,8 @@ What differs is only whether the surface will load that file for you:
   three, and the enterprise is told to record it as a known weakness of its host: nothing but
   discipline puts the rules in context before the model acts.
 
-The skill carries the instruction text in its own body as well, so it can write the file out
-even where nothing can be copied from disk. That is a fallback for the writing, not a second
+The instruction file travels inside the skill, under its `assets/`, so the skill can write it
+out even where nothing can be copied from disk. That is a source for the writing, not a second
 home for the instructions.
 
 ## Upgrades
@@ -105,8 +106,9 @@ home for the instructions.
 An adopter's kernel should never change without their director agreeing to it — that is the
 kernel's own rule, and adopting a new kernel replaces the rules the enterprise runs under.
 
-Two things keep that true here. The marketplace points at a release tag rather than at a
-branch, so what installs is a released kernel and never whatever `main` happens to hold. And
+Two things keep that true here. The marketplace holds the released package, unpacked, replaced
+only when a release is cut, so what installs is a released kernel and never whatever `main`
+happens to hold. And
 this is a third-party marketplace, for which automatic updates are off unless the adopter turns
 them on. An update is therefore something they ask for; when they do, the kernel's upgrade
 skill shows the changelog for the versions being crossed and asks the director before anything
@@ -123,8 +125,9 @@ plugins/claude/build.sh
 It reads the version from `kernel/VERSION` and writes it into the package's `plugin.json`,
 copies the kernel's skills in, generates `zoe-claude-init` from
 `zoe-claude-init.template.md` and the kernel's instruction files, copies the agent stubs and the
-licence, checks the counts add up, validates both manifests, writes the package, and finally
-points the catalogue at it with the digest of the bytes it just wrote.
+licence, checks the counts add up, validates the plugin, and writes the package. It does not
+touch the catalogue: that lives in the marketplace repository and is updated from the package
+it produces — see *Release ordering* below.
 
 **The package always lands at `dist/claude/plugin.zip`** — one fixed path, naming the provider
 whose plugin format it holds, with no version in the name or the path, so anything pointing at
@@ -133,19 +136,11 @@ fixed timestamps, which makes its bytes depend on content alone: rebuilding unch
 gives a byte-identical archive. That is what lets a release run the build and treat any
 unexpected modified path as a fault.
 
-**The digest is free here and worth having.** The usual argument against pinning `sha256` is
-that it means editing the catalogue every release — but this build rewrites that entry every
-time anyway. Without the pin, a stale copy served from a cache installs silently; with it, the
-install fails loudly instead.
-
-**Release ordering.** The catalogue names the zip at `v<version>`, a tag that does not exist
-until it is made. So the zip is committed, then the tag is made and published, and only then is
-the plugin installable from the marketplace. Until then the catalogue names a tag nobody can
-fetch.
-
-**Two limits of an archive source**, recorded so they are not rediscovered: it needs Claude Code
-v2.1.224 or later, and it is not an accepted source for distribution through claude.ai
-organisation settings, which take only `github`, `url`, `git-subdir` or a relative path.
+**Release ordering.** The package embeds the version from `kernel/VERSION`, so it is rebuilt
+after the version is bumped and committed with the release. Then, from the marketplace
+repository, `scripts/update-plugin.py <path to this plugin.zip>` unpacks it and brings the
+catalogue entry into line with it; that change is published after the kernel's release tag, so
+the marketplace never offers a version this repository has not released.
 
 Things worth knowing if you change it:
 
@@ -153,8 +148,9 @@ Things worth knowing if you change it:
   kernel's instructions, and build again. The instruction text is inserted by a literal
   replacement, never by `sed` or `awk`: both interpret `&` and backslash escapes in the
   *replacement*, so prose containing either is corrupted silently.
-- **The manifests need two validation runs, not one.** A tree holding a `marketplace.json` is
-  validated as a catalogue and the plugin is never looked at, so the script validates the
-  assembled plugin separately.
+- **The plugin and the catalogue are validated separately.** This build validates the
+  assembled plugin; the marketplace repository's `scripts/validate.py` validates the catalogue
+  against the plugins it holds. A tree holding a `marketplace.json` is validated as a catalogue
+  and the plugin inside it is never looked at, which is why the two are separate subjects.
 - **Do not declare component paths in `plugin.json`.** See above: the two surfaces disagree
   about what such a path means, and the disagreement is not resolvable.
