@@ -21,15 +21,50 @@ One terminology note, so older entries stay readable: what 1.0.0 calls an **appr
 request** — the self-contained artifact put to a director for a decision that needs their
 approval — earlier entries call a *gate ask*. Same thing; the term was retired in 1.0.0.
 
-Where a historical detail could not be recovered, the entry says so rather than inventing it
-(per the kernel's own verifiability rule). Entries for 0.1.0–0.5.0 were reconstructed on
-2026-06-21 from the maintainer's own approval records, size history and immutability
-baselines, which are not published.
+Where a historical detail could not be recovered, the entry says so rather than inventing it.
+Entries for 0.1.0–0.5.0 were reconstructed after the fact from the maintainer's records.
 
 Size figures are over the whole `kernel/` tree as `wc` reports them (lines / words / bytes);
 bytes are authoritative.
 
 ---
+
+## 1.2.1 → 1.3.0 (test a check both ways; ZOE installs as a plugin)
+
+**Files:** 15 files, 0 added, 0 removed, **2 changed** — `kernel/VERSION` and
+`kernel/instructions/zoe.instructions.md`.
+
+**Size:** 1001 / 9350 / 53954 → 1003 / 9379 / 54120 (lines / words / bytes). Growth of
++2 / +29 / +166: one bullet, added because the existing rules on checks did not catch a check
+that cannot fail.
+
+**Adopter notes.**
+
+1. **Test a check both ways.** The *Verification* section of the instructions gains one bullet,
+   after the one on making checks repeatable:
+
+   > Test a check before relying on it, both ways: confirm it passes when the subject is sound,
+   > and deliberately break the subject to confirm it reports the breakage.
+
+   **Compare first:** the *Verification* section of `kernel/instructions/zoe.instructions.md`.
+   **Migration:** none — nothing renamed, no template changed, no core skill changed.
+
+2. **ZOE installs as a plugin** (outside the kernel). On Claude Code or Cowork: add the
+   marketplace `stainsby/zoe-plugins`, install `zoe-kernel`, enable it in the project, then ask
+   Claude to set ZOE up. Details in `plugins/claude/README.md`. The manual route through
+   `hosts/claude-code/` is still available.
+
+3. **The Claude Code adapter changed.** The three agent stubs in `hosts/claude-code/agents/`
+   are now the only set (the plugin copies them at build time), and their text changed: each
+   stub now gets the kernel instructions in front of it before anything else — from the
+   workspace file, or from the plugin's `zoe-claude-init` skill — and stops if neither is
+   there; "gate request" is now "approval request"; the stubs no longer restate the skills.
+   The adapter's README was reworded to match. **Migration:** if you installed by hand,
+   re-copy the three stubs (step 2 of `hosts/claude-code/README.md`). Nothing else to do.
+
+*Correction to older entries, made at 1.3.0:* quotations, approval narrative, pointers to the
+maintainer's private records and a corrupted passage in the 0.14.1 entry were removed. No
+entry's account of what changed in its release was altered.
 
 ## 1.2.0 → 1.2.1 (the kernel now asks for the index fields the 1.2.0 template actually creates)
 
@@ -154,15 +189,14 @@ commit, so you can pin a submodule to a version rather than to a bare commit id.
 ## 1.0.1 → 1.1.0 (setup sets up your agents; orient runs first and checks the wiring; the any-one-director default is stated)
 
 Three capability-and-safety changes, each born from a real failure or a director's
-question, all reviewed and amended by the maintainer before staging. Cut
-2026-08-20T11:27+1000.
+question. Cut 2026-08-20T11:27+1000.
 
 **Files:** 15 files, 0 added, 0 removed, **4 changed** —
 `kernel/instructions/zoe.instructions.md`, `kernel/skills/zoe-orient/SKILL.md`,
 `kernel/skills/zoe-setup/SKILL.md`, and `kernel/VERSION`.
 
 **Size:** 963 / 8760 / 51141 → 994 / 9201 / 53647 (lines / words / bytes). Growth of
-+31 / +441 / +2506, justified in the maintainer's size log per measure M4.
++31 / +441 / +2506.
 
 **Adopter notes.**
 
@@ -239,11 +273,10 @@ kinds of thing. Cut 2026-08-19T13:19+1000.
 
 ## 0.19.0 → 1.0.0 (first public-track release: the director's full kernel revision, the review of it, and the limited-context fix)
 
-This release carries three pieces of work, all director-approved: a rewrite of the
-kernel's limited-context rule; the director's own full hand revision of the whole kernel;
-and an independent review of that revision, with the director's decisions on each of its
-findings. It is numbered 1.0.0 rather than 0.19.1 because the director decided the first
-release on the public track would be 1.0.0. Cut 2026-08-17T13:50+1000.
+This release carries three pieces of work: a rewrite of the kernel's limited-context
+rule; the director's own full hand revision of the whole kernel; and an independent
+review of that revision. It is numbered 1.0.0 rather than 0.19.1 because it is the first
+release on the public track. Cut 2026-08-17T13:50+1000.
 
 **Files:** 15 files, 0 added, 0 removed, **13 changed**. Unchanged:
 `kernel/skills/zoe-setup/assets/charter.template.md` and
@@ -318,17 +351,10 @@ note 6; the plain-language pass is roughly size-neutral.
    `zoe-redesign` also regained its read-list: it is told again to read your state, your
    log, and your existing skills before deciding what to change about them.
 
-## 0.18.0 → 0.19.0 (the review release: three director-tasked changes plus the full service of an independent kernel review — one blocker, seven major, thirteen minor fixes)
+## 0.18.0 → 0.19.0 (the review release: three changes plus the full service of an independent kernel review — one blocker, seven major, thirteen minor fixes)
 
-Source: the director's 2026-08-12 tasking (an AI review of the whole kernel ahead of a
-public release, plus three feedback-driven changes) — items
-three director-tasked changes, plus the findings of an independent review of the whole
-kernel (1 blocker, 7 major, 15 minor). Shipped after director approval (all six
-decisions approved in-channel 2026-08-14, plus a follow-up pointer fix approved with the
-director's read-through go) together with the morning approval of the three staged
-changes. Cut 2026-08-14T12:12+10:00.
-Kernel content is exactly the content the director approved, independently verified
-byte-identical, plus the VERSION bump.
+Three changes, plus the findings of an independent review of the whole kernel (1
+blocker, 7 major, 15 minor). Cut 2026-08-14T12:12+10:00.
 
 **Files:**
 - added: none.
@@ -373,8 +399,7 @@ byte-identical, plus the VERSION bump.
   change".
 - changed: `kernel/skills/zoe-redesign/SKILL.md` — the restated orthonormal-basis rule
   cut (pointer and the improve/merge mapping stay); the "Drifted" finding attributed
-  to the assessment report; reports-lead-with-director-needs change from the morning
-  gate.
+  to the assessment report; the reports-lead-with-director-needs change.
 - changed: `kernel/skills/zoe-reskill/SKILL.md` — notes that the `zoe-` skills predate
   the mandated frontmatter format and version through `VERSION`; "engines" → "hosts".
 - changed: `kernel/skills/zoe-orient/SKILL.md` — step 4's boundary made explicit:
@@ -384,9 +409,8 @@ byte-identical, plus the VERSION bump.
   byte-identical (same SHA-256) to the 0.18.0 baseline.
 
 **Size:** 907 / 8199 / 48249 → 931 / 8467 / 49887 (+24 lines / +268 words / +1638
-bytes; the three morning changes account for +13 lines and the review service +11 net —
-the review's deletions were taken except two director-approved defensive keeps;
-justification in the maintainer's size history).
+bytes; the three changes account for +13 lines and the review service +11 net — the
+review's deletions were taken except two defensive keeps).
 
 **Adopter notes.** One release, two threads; compare `zoe.instructions.md`, the two
 zoe-setup templates, and `zoe-upgrade` first — they carry the changes of substance.
@@ -414,16 +438,11 @@ zoe-setup templates, and `zoe-upgrade` first — they carry the changes of subst
 
 ## 0.17.0 → 0.18.0 (three adopter-evidenced fixes: index-template store entries, host-adapter plan target, import-resolution check)
 
-Source: three feedback items relayed through the feedback intake against 0.17.0 —
-deferred stores in the index template, the redesign skill's host-adapter target, and
-silent import failures (two passed on from phaisor-synth, an
-enterprise built on ZOE SDLC's base) — each independently confirmed against our own
-kernel files, drafted on a staging branch, and shipped with director approval (all five
-decisions approved in-channel
-2026-08-09, including the standing trim commitment
-a queued kernel-trim item, which rode this draft and closed with it).
-Cut 2026-08-09T12:01+10:00. Kernel content is exactly the content the director approved,
-plus the VERSION bump.
+Three feedback items relayed through the feedback intake against 0.17.0 — deferred
+stores in the index template, the redesign skill's host-adapter target, and silent
+import failures (two passed on from phaisor-synth, an enterprise built on ZOE SDLC's
+base) — each independently confirmed against our own kernel files. A queued kernel-trim
+item rode the same release and closed with it. Cut 2026-08-09T12:01+10:00.
 
 **Files:**
 - added: none.
@@ -440,8 +459,8 @@ plus the VERSION bump.
 - All 11 other `kernel/` files byte-identical (same SHA-256) to the 0.17.0 baseline.
 
 **Size:** 902 / 8163 / 47993 → 907 / 8199 / 48249 (+5 lines / +36 words / +256 bytes;
-the approved trims of the three touched files held the fixes to +5 lines where they
-would otherwise have been roughly +16; justification in the maintainer's size history).
+the trims of the three touched files held the fixes to +5 lines where they would
+otherwise have been roughly +16).
 
 **Adopter notes.** Three independent fixes, each against a real adopter incident;
 compare the three changed files above first — no other kernel file moved.
@@ -479,12 +498,8 @@ compare the three changed files above first — no other kernel file moved.
 
 ## 0.16.0 → 0.17.0 (the gate ask is split from the redesign plan; ungated work no longer waits)
 
-Source: a director-directed design item ("I def dont want
-to see noise about what is not gated, and I don't want things held up that don't need
-to be"), drafted with in-channel approval 2026-07-24 ("Yes, draft it"), and shipped after
-the director was shown the complete diff and answered in-channel 2026-07-24: "Yes, ship it". Cut
-2026-07-24T16:17+10:00. Kernel content is exactly that one staged commit plus the
-VERSION bump.
+One change to how gated changes are put to a director and to what waits on the decision.
+Cut 2026-07-24T16:17+10:00.
 
 **Files:**
 - added: none.
@@ -496,7 +511,7 @@ VERSION bump.
 - All 12 other `kernel/` files byte-identical (same SHA-256) to the 0.16.0 baseline.
 
 **Size:** 884 / 7928 / 46705 → 902 / 8163 / 47993 (+18 lines / +235 words / +1288
-bytes; justification in the maintainer's size history).
+bytes).
 
 **Adopter notes.** One behavioural change to how every ZOE runs its gate; compare
 `zoe-redesign` (the new *The gate ask* paragraphs and the revised hand-off) first,
@@ -529,12 +544,8 @@ then cycle step 2 of the instructions.
 
 ## 0.15.0 → 0.16.0 (director's hand revision — director terminology, plain-language pass, plan-store and run-skill corrections)
 
-Source: the director hand-revised the whole kernel in-session over 2026-07-19 to
-2026-07-23 and directed release preparation in-channel 2026-07-23 ("prepare to cut a new
-kernel release"). The content needed no approval bundle — it is the director's own
-edit; the action needing approval is the cut itself, approved in-channel and cut
-2026-07-23T15:11+10:00. The release also carries a separately-approved edit (director "Fix now" 2026-07-19), noted
-below.
+The director hand-revised the whole kernel. Cut 2026-07-23T15:11+10:00. The release also
+carries one further edit, noted below.
 
 **Files:**
 - added: none.
@@ -542,9 +553,9 @@ below.
   `kernel/VERSION` (0.15.0 → 0.16.0).
 - removed: none.
 
-**Size:** 860 / 7989 / 46930 → 884 / 7928 / 46705 (+24 lines / −61 words / −225 bytes;
-justification in the maintainer's size history). Bytes are authoritative: the kernel
-shrank. The line increase is re-wrapping of long lines to a narrower width.
+**Size:** 860 / 7989 / 46930 → 884 / 7928 / 46705 (+24 lines / −61 words / −225 bytes).
+Bytes are authoritative: the kernel shrank. The line increase is re-wrapping of long
+lines to a narrower width.
 
 **Adopter notes.** A director-authored, whole-kernel revision: terminology, prose
 register, and several rule corrections. Compare the instructions' *Terms* section
@@ -579,7 +590,7 @@ first, then `zoe-redesign` and `zoe-run`.
 - **`zoe-orient` loosened.** It runs at the start of any session where no specific
   direction was given, not only on "go".
 - **Index template: the `upstream` entry now allows one update source per installed
-  base** (staged edit dfc8e94, director-approved 2026-07-19 from ZOE SDLC feedback).
+  base** (from ZOE SDLC feedback).
   A sub-ZOE built on a template ZOE has more than one update source — the ZOE project
   and its parent template: list each, with the version it is on. Migration: if your
   enterprise sits under a template ZOE, list both sources in your index's `upstream`
@@ -590,11 +601,8 @@ first, then `zoe-redesign` and `zoe-run`.
 
 ## 0.14.1 → 0.15.0 (three adopter-evidenced instruction edits)
 
-Source: a director-approved bundle of decisions (D1, D2, D4 approved
-in-channel 2026-07-10T16:56:44+10:00) plus the already-approved work item
-an adopter-evidenced item (MyMoney feedback, approved in-channel
-2026-07-06). Cut 2026-07-10T17:08+10:00. All edits were staged separately and merged only at
-this approved cut.
+Three instruction edits, including an adopter-evidenced item (MyMoney feedback). Cut
+2026-07-10T17:08+10:00.
 
 **Files:**
 - added: none.
@@ -604,9 +612,8 @@ this approved cut.
 - removed: none.
 - All 13 other `kernel/` files byte-identical (same SHA-256) to the 0.14.1 baseline.
 
-**Size:** 848 / 7854 / 46139 → 860 / 7989 / 46930 (+12 lines / +135 words / +791 bytes;
-justification in the maintainer's size history). The growth is entirely the instruction
-edits; the VERSION string is the same length.
+**Size:** 848 / 7854 / 46139 → 860 / 7989 / 46930 (+12 lines / +135 words / +791 bytes).
+The growth is entirely the instruction edits; the VERSION string is the same length.
 
 **Adopter notes.** Instructions only — no skill changed, no renames, no template file
 changed. All three edits tighten existing rules on evidence from adopter incidents;
@@ -620,31 +627,30 @@ up*, and *Template-derived files* first.
   is recorded alongside the result. Either way, a store's usage conventions must be
   owned by a skill, new or existing, so its rules surface through normal skill reading.
   Migration: if any of your stores has conventions living only in a README or nowhere,
-  give them a skill owner (this enterprise did the same for its own work store at this
-  release). Evidence: an adopter built a new store in one session and its director
+  give them a skill owner (this enterprise did the same for one of its own stores at
+  this release). Evidence: an adopter built a new store in one session and its director
   challenged it as out of process.
 - **Self-contained artifacts must use plain professional language** (*Setting yourself
   up*, third paragraph). The rule now reads: write the artifact in plain professional
   language and define every internal term at first use — not only the terms it coins.
   This widens the old "define the terms it coins", which did not catch kernel vocabulary
   used unexplained. Evidence: two director corrections at one adopter inside two weeks.
-- **Rules stated in template prose are binding** (two related edits staged after 0.14.x). The *Terms* definition of **log** now states the operative
-  rule directly: history lives only in the log — the charter, the index, and state carry
-  what is currently true, never a narrative of past events. And *Template-derived files*
-  extends the contract from a template's sections to the rules its prose states (the
-  index template's "current state only — history lives in the log, never here" is the
-  named example): those rules bind the derived file for its whole life, including
-  through revisions. Migration: check your index and state files for narrative history
-  and move any into the log. Evidence: an adopter treated template-embedded rules as
-  decorative once the derived file existed.
+- **Rules stated in template prose are binding.** The *Terms* definition of **log** now
+  states the operative rule directly: history lives only in the log — the charter, the
+  index, and state carry what is currently true, never a narrative of past events. And
+  *Template-derived files* extends the contract from a template's sections to the rules
+  its prose states (the index template's "current state only — history lives in the log,
+  never here" is the named example): those rules bind the derived file for its whole
+  life, including through revisions. Migration: check your index and state files for
+  narrative history and move any into the log. Evidence: an adopter treated
+  template-embedded rules as decorative once the derived file existed.
 - **No Required-Reading breakage.** No kernel skill's content changed, so no own skill's
   Required Reading of a core skill is affected. The changed file is the instructions,
   which every ZOE reads each session anyway — the new rules take effect on next read.
 
 ## 0.14.0 → 0.14.1 (VERSION-only — Zoe→ZOE terminology fix outside kernel/)
 
-Source: director request in-channel, this session (2026-07-06): apply a director-supplied
-patch correcting "Zoe" → "ZOE" terminology, then cut a release. Cut 2026-07-06T06:33+10:00.
+A terminology correction outside `kernel/`: "Zoe" → "ZOE". Cut 2026-07-06T06:33+10:00.
 
 **Files:**
 - added: none.
@@ -652,18 +658,15 @@ patch correcting "Zoe" → "ZOE" terminology, then cut a release. Cut 2026-07-06
 - removed: none.
 - All 14 other `kernel/` files byte-identical (same SHA-256) to the 0.14.0 baseline.
 
-**Size:** 848 / 7854 / 46139 → 848 / 7854 / 46139 (+0 lines / +0 words / +0 bytes;
-justification in the maintainer's size history). The VERSION string is the same length
-("0.14.0" → "0.14.1"), so the measured tree is byte-identical.
+**Size:** 848 / 7854 / 46139 → 848 / 7854 / 46139 (+0 lines / +0 words / +0 bytes). The
+VERSION string is the same length ("0.14.0" → "0.14.1"), so the measured tree is
+byte-identical.
 
 **Adopter notes.** No kernel content changed — this release exists solely to record a
-terminology correction made OUTSIDE `kernel/`, in this enterprise's own non-kernel
-documents: "Zoe" → "ZOE" (matching the charter's own defined term) in `README.md`,
-`docs/charter.md`, the maintainer's measures skillSKILL.md`,
-the maintainer's index, and the maintainer's adopter-ratings state.
-History-tracking documents (this CHANGELOG's own past entries, the maintainer's work store*`,
-the maintainer's log archive*`, the maintainer's size history) were deliberately left as-is — corrected
-prose only, no history rewritten.
+terminology correction made OUTSIDE `kernel/`: "Zoe" → "ZOE" (matching the charter's own
+defined term) in the README and the charter.
+History-tracking documents, this changelog's past entries among them, were deliberately
+left as they were — corrected prose only, no history rewritten.
 
 - **No Required-Reading breakage.** No kernel skill's content changed, so no own skill's
   Required Reading of a core skill is affected.
@@ -675,10 +678,7 @@ prose only, no history rewritten.
 
 ## 0.13.0 → 0.14.0 (zoe-orient — deterministic session entry)
 
-Source: a director-approved bundle of decisions (change 5, approved
-in-channel: "Accept; cut 0.14.0 this cycle"; kernel-skill form confirmed). Cut
-2026-07-03T13:26+10:00. Staged on branch `kernel/0.14.0` in a separate worktree (the
-enterprise's kernel-staging mechanism); merged to master only at this approved cut.
+One new skill, `zoe-orient`. Cut 2026-07-03T13:26+10:00.
 
 **Files:**
 - added: `kernel/skills/zoe-orient/SKILL.md` — a new skill: a deterministic session
@@ -691,8 +691,8 @@ enterprise's kernel-staging mechanism); merged to master only at this approved c
 - changed: `kernel/VERSION` — 0.13.0 → 0.14.0.
 - removed: none.
 
-**Size:** 807 / 7511 / 44168 → 848 / 7854 / 46139 (+41 lines / +343 words / +1971 bytes;
-justification in the maintainer's size history). The growth is exactly the 41-line new skill.
+**Size:** 807 / 7511 / 44168 → 848 / 7854 / 46139 (+41 lines / +343 words / +1971
+bytes). The growth is exactly the 41-line new skill.
 
 **Adopter notes.** One new skill, no renames, no template change, no migration steps.
 
@@ -713,9 +713,7 @@ justification in the maintainer's size history). The growth is exactly the 41-li
 
 ## 0.12.0 → 0.13.0 (bounded-artifact wording)
 
-Source: director-approved, with the exact diffs shown before approval. Evidence: index-narrative
-and task-store drift observed in the kernel's own dogfooding enterprise on 2026-07-03. Cut 2026-07-03T11:16+10:00. First release staged on
-a branch in a separate worktree (the enterprise's new kernel-staging mechanism).
+Evidence: index-narrative and task-store drift observed in use. Cut 2026-07-03T11:16+10:00.
 
 **Files:**
 - changed: `kernel/skills/zoe-setup/assets/index.template.md` — the header contract now
@@ -727,8 +725,7 @@ a branch in a separate worktree (the enterprise's new kernel-staging mechanism).
 - changed: `kernel/VERSION` — 0.12.0 → 0.13.0.
 - added / removed: none.
 
-**Size:** 807 / 7498 / 44092 → 807 / 7511 / 44168 (+0 lines / +13 words / +76 bytes;
-justification in the maintainer's size history).
+**Size:** 807 / 7498 / 44092 → 807 / 7511 / 44168 (+0 lines / +13 words / +76 bytes).
 
 **Adopter notes:** no migration steps. If your index carries history (rename notes,
 "added after X" annotations, adoption dates), move it to your log — the index is
@@ -737,8 +734,8 @@ always-loaded context and now explicitly current-state-only. Check your artifact
 
 ## 0.11.0 → 0.12.0 (orthonormal basis)
 
-Source: director-approved. The same concept entered the charter and README the same day, by
-director direction. Cut 2026-07-03T10:50+10:00.
+The same concept entered the charter and README the same day. Cut
+2026-07-03T10:50+10:00.
 
 **Files:**
 - changed: `kernel/instructions/zoe.instructions.md` — one bullet added to `## Adding to
@@ -756,8 +753,7 @@ director direction. Cut 2026-07-03T10:50+10:00.
 - changed: `kernel/VERSION` — 0.11.0 → 0.12.0.
 - added / removed: none.
 
-**Size:** 795 / 7359 / 43235 → 807 / 7498 / 44092 (+12 lines / +139 words / +857 bytes;
-justification in the maintainer's size history).
+**Size:** 795 / 7359 / 43235 → 807 / 7498 / 44092 (+12 lines / +139 words / +857 bytes).
 
 **Adopter notes:** no migration steps and no renames — this release only sharpens the
 rules for skills you create yourself. Compare `## Adding to yourself` in the
@@ -766,48 +762,46 @@ it. If your own skills' Required Reading names `zoe-redesign` or `zoe-reskill`, 
 them against the new orthogonality rule: a pair of your skills that overlap is now
 explicitly a defect to narrow or merge. Skill file format is unchanged.
 
-## 0.10.0 → 0.11.0 (Release F — coherence + renames)
+## 0.10.0 → 0.11.0 (coherence + renames)
 
-Source: a director-approved bundle of kernel critique findings (Release F scope). Cut 2026-07-03T06:44+10:00 under the director-approved bundle. Third
-and final release of the bundle.
+Cut 2026-07-03T06:44+10:00.
 
-**Files (Release F scope):**
-- removed: `kernel/skills/zoe-plan/SKILL.md` — RENAMED to `zoe-redesign` (F7a). The skill
+**Files:**
+- removed: `kernel/skills/zoe-plan/SKILL.md` — RENAMED to `zoe-redesign`. The skill
   decides changes to your own skill set; it never planned the enterprise's work, and with
   tasks (0.9.0) in the kernel, "plan" collided with work-planning.
-- removed: `kernel/skills/zoe-check/SKILL.md` — RENAMED to `zoe-assess` (F7b). The kernel
+- removed: `kernel/skills/zoe-check/SKILL.md` — RENAMED to `zoe-assess`. The kernel
   reserves "check" for deterministic, repeatable procedures (see `## Verification`); this
   skill is the one non-deterministic judgement skill, so it no longer carries that word.
 - added: `kernel/skills/zoe-redesign/SKILL.md`, `kernel/skills/zoe-assess/SKILL.md` — the
   renames; content unchanged apart from name, re-budgeted description, and hand-off names.
-- added: `kernel/skills/zoe-reconcile/SKILL.md` — split from `zoe-setup` (F1): the
+- added: `kernel/skills/zoe-reconcile/SKILL.md` — split from `zoe-setup`: the
   mechanical, idempotent structure-reconcile on a kernel version change, called by
   `zoe-upgrade`. Follows the changelog span's migration steps; never touches charter
   content.
 - changed: `kernel/skills/zoe-setup/SKILL.md` — reconcile mode removed (see
   `zoe-reconcile`); setup keeps first-setup + charter-revision help; upgrade-check bullet
-  now points at the canonical index-template entry (F1, F2).
+  now points at the canonical index-template entry.
 - changed: `kernel/skills/zoe-setup/assets/index.template.md` — the `upgrade-check
   cadence` entry is now the canonical statement (including time-based vs event-based
-  overdue semantics); `tier→model mapping` points at `## Models` (F2, F3).
+  overdue semantics); `tier→model mapping` points at `## Models`.
 - changed: `kernel/instructions/zoe.instructions.md` — cycle step labels now track the
-  skill names: Setup, Redesign, Gate, Reskill, Run, Assess (F7c; "Author" had been stale
+  skill names: Setup, Redesign, Gate, Reskill, Run, Assess ("Author" had been stale
   since 0.7.0); one new sentence: an interrupted or failed step resumes from state and
-  log, and repeated failure is a stop condition (F5); `## Adding to yourself` is the
-  canonical specialise statement (F4).
+  log, and repeated failure is a stop condition; `## Adding to yourself` is the
+  canonical specialise statement.
 - changed: `kernel/skills/zoe-reskill/SKILL.md` — model-kind and specialise paragraphs
-  become pointers to their canonical statements (F3, F4).
+  become pointers to their canonical statements.
 - changed: `kernel/skills/zoe-run/SKILL.md` — estimate material costs before acting; an
-  unestimable cost is unknown and gated where a constraint could plausibly be breached
-  (F6); hand-off to `zoe-assess`.
+  unestimable cost is unknown and gated where a constraint could plausibly be breached;
+  hand-off to `zoe-assess`.
 - changed: `kernel/skills/zoe-upgrade/SKILL.md` — calls `zoe-reconcile` (was "zoe-setup in
   reconcile mode"); own-skill re-read moved into reconcile; hand-off to `zoe-redesign`.
 - changed: `kernel/VERSION` — 0.10.0 → 0.11.0.
 
 Size: 786 → 795 lines / 7418 → 7359 words / 43510 → 43235 bytes (+9 / −59 / −275) — a new
 skill added, yet net smaller in words/bytes because the dedup landed in the same pass.
-Bundle total (0.8.0 → 0.11.0): +107 lines / +954 words / +5830 bytes, above the bundle's
-+45..+75-line estimate; per-release justifications are in the maintainer's size history.
+Total across 0.8.0 → 0.11.0: +107 lines / +954 words / +5830 bytes.
 
 **Adopter notes.** Two skill RENAMES and a new skill; migration steps:
 
@@ -827,34 +821,31 @@ Bundle total (0.8.0 → 0.11.0): +107 lines / +954 words / +5830 bytes, above th
 5. The cycle's step names in the instructions are now Setup, Redesign, Gate, Reskill, Run,
    Assess — update any of your own prose that used "Plan/Author/Check" for the steps.
 
-## 0.9.0 → 0.10.0 (Release E — channels)
+## 0.9.0 → 0.10.0 (channels)
 
-Source: a director-approved bundle of kernel critique findings (Release E scope). Cut
-2026-07-03T06:36+10:00 under the director-approved bundle. Second of three sequenced
-releases; Release F (coherence) follows.
+Cut 2026-07-03T06:36+10:00.
 
-**Files (Release E scope):**
+**Files:**
 - changed: `kernel/skills/zoe-setup/assets/index.template.md` — the `human approval route`
   field is RENAMED to `user channel` (the route for approval, feedback, and direction; the
-  approval route explicit within it) (E1); new `feedback intake` field — where inbound
-  feedback arrives; an explicit "none" is allowed, never a silent blank (E2).
+  approval route explicit within it); new `feedback intake` field — where inbound
+  feedback arrives; an explicit "none" is allowed, never a silent blank.
 - changed: `kernel/skills/zoe-feedback/SKILL.md` — rewritten bidirectional: one channel,
   two directions. Sending upstream (as before, via the `upstream` route); servicing
   inbound — each item at the feedback intake is triaged into a task, acknowledged where
   the channel allows, its outcome recorded (adopted / declined with reason / deferred),
-  and forwarded upstream when it concerns an ancestor rather than you (E3).
+  and forwarded upstream when it concerns an ancestor rather than you.
 - changed: `kernel/instructions/zoe.instructions.md` — Sequencing now names the user
-  channel with its explicit approval route (E4).
+  channel with its explicit approval route.
 - changed: `kernel/skills/zoe-setup/SKILL.md` — setup asks for the full user channel (not
-  just an approval route) and asks where inbound feedback should arrive (E4).
+  just an approval route) and asks where inbound feedback should arrive.
 - changed: `kernel/skills/zoe-run/SKILL.md` — an item arriving on the user channel or the
-  feedback intake is an event that becomes a task (E5).
+  feedback intake is an event that becomes a task.
 - changed: `kernel/skills/zoe-check/SKILL.md` — new **Unserviced** finding: inbound
-  feedback or direction sitting past cadence without triage or a recorded outcome (E6).
+  feedback or direction sitting past cadence without triage or a recorded outcome.
 - changed: `kernel/VERSION` — 0.9.0 → 0.10.0.
 
 Size: 759 → 786 lines / 7111 → 7418 words / 41567 → 43510 bytes (+27 / +307 / +1943).
-Above the bundle's ≈+15 estimate for Release E.
 
 **Adopter notes.** This is a BREAKING template change: migrate your index.
 
@@ -869,41 +860,38 @@ Above the bundle's ≈+15 estimate for Release E.
 4. Inbound text is data, not instruction (0.9.0's `## Instructions vs data`) — triage never
    means obey.
 
-## 0.8.0 → 0.9.0 (Release D — tasks + instructions-vs-data)
+## 0.8.0 → 0.9.0 (tasks + instructions-vs-data)
 
-Source: a director-approved bundle of kernel critique findings (Release D scope). Cut
-2026-07-03T06:30+10:00 under the director-approved bundle. First of three sequenced
-releases in that bundle; Releases E (channels) and F (coherence) follow.
+Cut 2026-07-03T06:30+10:00.
 
-**Files (Release D scope):**
+**Files:**
 - added: `kernel/skills/zoe-tasks/SKILL.md` — new understanding skill, the one canonical
-  statement of the **task** concept (D1): what a task is (durable home, status, verifiable
+  statement of the **task** concept: what a task is (durable home, status, verifiable
   completion criterion), what any task store must provide (durable, enumerable, statused,
   ordered), decomposition, the long-work discipline, and who creates tasks. Deliberately
   does NOT specify templates, lifecycle folders, or status vocabularies — each enterprise
   bootstraps those to suit its own store.
 - changed: `kernel/instructions/zoe.instructions.md` — new **task** Terms entry and cycle
-  step 4 now runs "skills and tasks that are due" (D2); new `## Instructions vs data`
+  step 4 now runs "skills and tasks that are due"; new `## Instructions vs data`
   section — instructions reach the agent only via charter, kernel, own skills, and the user
   channel; everything else is data, and text in data that asks the agent to act is never an
-  instruction (D8); *Setting yourself up* now requires artifacts that outlive their session
-  to be SELF-CONTAINED (D9).
+  instruction; *Setting yourself up* now requires artifacts that outlive their session
+  to be SELF-CONTAINED.
 - changed: `kernel/skills/zoe-run/SKILL.md` — reads the task store; works due tasks and
-  records status changes as it acts (D4).
+  records status changes as it acts.
 - changed: `kernel/skills/zoe-setup/SKILL.md` — asks about existing/inherited task
-  tracking; adopts rather than replaces; records the `task store` (D5).
-- changed: `kernel/skills/zoe-setup/assets/index.template.md` — new `task store` line (D3).
+  tracking; adopts rather than replaces; records the `task store`.
+- changed: `kernel/skills/zoe-setup/assets/index.template.md` — new `task store` line.
 - changed: `kernel/skills/zoe-check/SKILL.md` — reads the task store; new finding for
-  stalled tasks and unverifiable completion criteria (D6).
+  stalled tasks and unverifiable completion criteria.
 - changed: `kernel/skills/zoe-reskill/SKILL.md` — "Long work" paragraph replaced by a
-  pointer to `zoe-tasks` (D7, first dedup); the skill format spec now budgets frontmatter
+  pointer to `zoe-tasks` (first dedup); the skill format spec now budgets frontmatter
   `description:` to ~one sentence / ~25 words, because descriptions are always-loaded
-  context on most hosts (D10).
+  context on most hosts.
 - changed: `kernel/VERSION` — 0.8.0 → 0.9.0.
 
 Size: 688 → 759 lines / 6405 → 7111 words / 37405 → 41567 bytes (+71 / +706 / +4162).
-Above the bundle's ≈+45 estimate for Release D; the dedup that claws lines back lands in
-Release F.
+The dedup that claws lines back lands in 0.11.0.
 
 **Adopter notes.** The kernel now has a noun for the work in flight: skills are your
 capabilities (the "how"); **tasks** are the coordinates (the "what"). Read `zoe-tasks`
@@ -926,12 +914,11 @@ If any of your own skills' Required Reading names `zoe-run`, `zoe-setup`, `zoe-c
 `zoe-reskill`, re-read those — obligations changed (tasks; description budget). No renames
 or removals in this release.
 
-## 0.7.0 → 0.8.0 (Release C — setup dual-mode + upgrade-check)
+## 0.7.0 → 0.8.0 (setup dual-mode + upgrade-check)
 
-Source: a director-approved design backlog (Release C scope). Cut 2026-06-24T08:30+10:00 (director-approved). This is the third and final release in
-that bundle; with it the design-backlog bundle is complete.
+Cut 2026-06-24T08:30+10:00.
 
-**Files (Release C scope):**
+**Files:**
 - changed: `kernel/skills/zoe-setup/SKILL.md` — `zoe-setup` now does BOTH init and reconcile.
   On a first setup it creates from templates as before; on a reconcile (triggered by
   `zoe-upgrade` after a kernel version change) it re-reads the index template and brings the
@@ -958,7 +945,7 @@ that bundle; with it the design-backlog bundle is complete.
 - changed: `kernel/VERSION` — 0.7.0 → 0.8.0.
 
 Size: 643 → 688 lines / 5827 → 6405 words / 33669 → 37405 bytes (+45 / +578 / +3736). Growth
-is the Release C additions (dual-mode setup, reconcile step, upgrade-check cadence, overdue
+is the additions above (dual-mode setup, reconcile step, upgrade-check cadence, overdue
 nudge). Justified by capability: post-upgrade enterprises are no longer silently
 out-of-conformance with the kernel they run on, and upgrade-checking is no longer
 silent-off-by-default.
@@ -976,9 +963,8 @@ after a kernel version change), and upgrade-checking defaulted to silent-off. Co
    automatically. Record either a real cadence (e.g. weekly, monthly) or an explicit,
    deliberate "no" — never leave it silently unset. `zoe-setup` now puts this to you as its
    own question at setup.
-3. **Add a `last-upgrade-check` state file** if you do not have one
-   (the maintainer's upgrade-check state is this enterprise's home). `zoe-upgrade` resets it to
-   now on each check/decline; `zoe-check` reads it against the cadence.
+3. **Add a `last-upgrade-check` state file** if you do not have one. `zoe-upgrade` resets
+   it to now on each check/decline; `zoe-check` reads it against the cadence.
 4. **Update your `zoe-upgrade`** to call `zoe-setup` in reconcile mode after a kernel swap,
    and to reset `last-upgrade-check` from the real clock.
 5. **Update your `zoe-check`** to raise an OVERDUE FINDING on a cadence breach.
@@ -986,28 +972,24 @@ after a kernel version change), and upgrade-checking defaulted to silent-off. Co
 If any of your own skills' Required Reading names `zoe-setup`, `zoe-upgrade`, or `zoe-check`,
 re-read them — the reconcile mode and the overdue nudge are new behaviour.
 
-With this release the design backlog that defined Releases A, B and C is complete.
-
 ---
 
-## 0.6.0 → 0.7.0 (Release B — structural refactor)
+## 0.6.0 → 0.7.0 (structural refactor)
 
-Source: a director-approved design backlog (Release B scope).
-Cut 2026-06-23T08:50+10:00 (director-approved). This is the second of three sequenced
-releases in that bundle; Release C follows as its own gated release.
+Cut 2026-06-23T08:50+10:00.
 
-**Files (Release B scope):**
-- removed: all 10 `kernel/hosts/**` files — moved to a sibling `hosts/` directory (#4). The
+**Files:**
+- removed: all 10 `kernel/hosts/**` files — moved to a sibling `hosts/` directory. The
   host-adapter layer is no longer part of `kernel/`; it lives alongside it.
-- removed: `kernel/skills/zoe-author/SKILL.md` — renamed to `zoe-reskill` (#3).
+- removed: `kernel/skills/zoe-author/SKILL.md` — renamed to `zoe-reskill`.
 - added: `kernel/skills/zoe-reskill/SKILL.md` — the rename, with the `name:` field updated
-  and the `model-kind` format spec added to the skill format (#1).
+  and the `model-kind` format spec added to the skill format.
 - changed: `kernel/instructions/zoe.instructions.md` — added a `## Models` section (tier→model
-  mapping in the index; the manager's own model is pinned at launch by the user) (#1); updated
-  cycle step 3 `zoe-author`→`zoe-reskill` (#3).
-- changed: `kernel/skills/zoe-plan/SKILL.md` — hand-off line `zoe-author`→`zoe-reskill` (#3).
+  mapping in the index; the manager's own model is pinned at launch by the user); updated
+  cycle step 3 `zoe-author`→`zoe-reskill`.
+- changed: `kernel/skills/zoe-plan/SKILL.md` — hand-off line `zoe-author`→`zoe-reskill`.
 - changed: `kernel/skills/zoe-setup/assets/index.template.md` — added `host-adapter layer` and
-  `tier→model mapping` lines so new enterprises get them at setup (#1/#4).
+  `tier→model mapping` lines so new enterprises get them at setup.
 - changed: `kernel/VERSION` — 0.6.0 → 0.7.0.
 
 Size: 811 → 643 lines / 7007 → 5827 words / 41043 → 33669 bytes (−168 / −1180 / −7374). The
@@ -1041,18 +1023,13 @@ If any name a `kernel/hosts/...` path, update it to `hosts/...`. The `kernel-con
 and `kernel-size-measure` own-skills in this enterprise were rescoped for the new boundary;
 if you carry equivalents, rescope theirs too.
 
-Release C (setup dual-mode + explicit upgrade-check cadence/nudge) is approved in design but
-**not yet authored** — it ships as its own gated release.
-
 ---
 
-## 0.5.0 → 0.6.0 (Release A — durable artifacts)
+## 0.5.0 → 0.6.0 (durable artifacts)
 
-Source: a director-approved design backlog (Release A scope).
-Cut 2026-06-21T20:55+10:00 (director-approved). This is the first of three sequenced releases
-in that bundle; Releases B and C follow as their own gated releases.
+Cut 2026-06-21T20:55+10:00.
 
-**Files (Release A scope):**
+**Files:**
 - changed: `kernel/instructions/zoe.instructions.md` — added the locatability invariant
   (every produced resource has a defined home; the index is the registry) under *Setting
   yourself up*, and the defect-handling discipline (a finding obliges instance-remediation
@@ -1076,15 +1053,9 @@ they relied on is now "read-only to the work, not to your own output." If you sy
 kernel and have no plan/report store recorded in your index, add one. The changelog
 (this file) and any host-adapter layer now live outside `kernel/`.
 
-Release B (agents→skills by model-kind; `zoe-author`→`zoe-reskill`; host layer out of
-`kernel/`) and Release C (setup dual-mode; explicit upgrade-check cadence) are approved in
-design but **not yet authored** — each ships as its own gated release.
-
 ---
 
 ## 0.4.0 → 0.5.0 — agent hint
-
-Source: director-approved.
 
 **Files:**
 - changed: `kernel/instructions/zoe.instructions.md` — one bullet appended to *Adding to
@@ -1095,13 +1066,12 @@ Source: director-approved.
 Size: 774 → 771 lines / 6485 → 6532 words / 38165 → 38343 bytes (net lines fell despite the
 added prose because of the host churn below).
 
-*Host-rendering churn, not part of the delta (recorded as director-accepted, 2026-06-21):*
+*Host-rendering churn, not part of the delta:*
 three `kernel/hosts/claude-code/agents/*.md` files were reserialised (frontmatter quoting,
 `color:` keys, a stripped blank line), and `kernel/hosts/claude-code/settings.json` was
 emptied to `{ }` (its `permissions.deny` block removed). The emptied deny is **intended** for
-this dogfooding repo — editing `kernel/**` on approval is its whole purpose — and is not a
-regression for downstream Zoes, where the read-only-kernel rule still applies. See
-the maintainer's immutability baseline.
+the kernel's own repository — editing `kernel/**` is its whole purpose — and is not a
+regression for downstream Zoes, where the read-only-kernel rule still applies.
 
 **Adopter notes.** If you stand up independent audits/judges, *Adding to yourself* now names
 the agent option explicitly. No migration needed. No own-skill Required Reading is affected.
@@ -1109,8 +1079,6 @@ the agent option explicitly. No migration needed. No own-skill Required Reading 
 ---
 
 ## 0.3.0 → 0.4.0 — charter coherence + reuse-first
-
-Source: director-approved.
 
 **Files:**
 - changed: `kernel/skills/zoe-plan/SKILL.md` — added a **charter notes** output slot to the
@@ -1134,8 +1102,6 @@ and the checker's drift detection is wider. No structural migration.
 
 ## 0.2.0 → 0.3.0 — limited-context blind spot
 
-Source: director-approved.
-
 **Files:**
 - changed: `kernel/instructions/zoe.instructions.md` — third bullet appended to *Tools*:
   working artifacts (log, state, findings) grow without bound and crowd out context; keep
@@ -1152,8 +1118,6 @@ If your index has no limited-context entry, add one. No own-skill Required Readi
 ---
 
 ## 0.1.0 → 0.2.0 — Tools section + repeatable checks
-
-Source: director-approved.
 
 **Files:**
 - changed: `kernel/instructions/zoe.instructions.md` — added the *Tools* section (no model
@@ -1179,11 +1143,10 @@ The first version with a recorded immutability baseline and size measure (743 li
 6123 words / 36000 bytes over `kernel/`), established 2026-06-13.
 
 **Pre-0.1.0 bootstrap — partial record (honest blind spot).** The kernel's initial authoring
-predates this project's approval and logging discipline. The version-control history before
-the bootstrap commit is squashed, there are no version tags, and no approval records exist
+predates this project's record-keeping discipline. The version-control history before
+the bootstrap commit is squashed, there are no version tags, and no records exist
 for it. The shape of 0.1.0 is therefore knowable (the baseline
 manifest and size are recorded) but the *sequence of pre-0.1.0 changes that produced it* is
 not reconstructable file-by-file. This is stated rather than invented. An adopter on a
 pre-0.1.0 / "~v1" kernel should diff their tree directly against the 0.1.0 baseline manifest
-in the maintainer's immutability baseline (re-baselined per release) rather than rely on a narrative
-that does not exist.
+rather than rely on a narrative that does not exist.

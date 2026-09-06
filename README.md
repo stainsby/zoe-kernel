@@ -25,6 +25,8 @@ itself. You own the charter and approve the big calls; it does the rest.
 **In Claude Code or Cowork**, install ZOE as a plugin: add the marketplace
 `stainsby/zoe-plugins`, then install `zoe-kernel` from it. Plugins arrive
 switched off, so enable it in the project you want to run as an enterprise.
+Then ask Claude to set ZOE up: that writes the kernel's instructions into the
+workspace and wires them in. `plugins/claude/README.md` has the detail.
 
 **Anywhere else**, point your AI at the instruction file and the skills under
 `kernel/` and ask it how to proceed. Or get your AI to read *this* file and

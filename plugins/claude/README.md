@@ -49,9 +49,11 @@ which is the other half of the install and is described below.
 
 Where a surface offers no command line, the same steps are in its own interface: add the
 marketplace by its repository address, install the plugin, enable it, then ask Claude to set
-ZOE up. A
-package at `dist/claude/plugin.zip` can also be uploaded directly, on the surfaces that accept a
-plugin as a file — which is how to try ZOE in Cowork without registering anything.
+ZOE up. A package at `dist/claude/plugin.zip` can also be uploaded directly, on the surfaces
+that accept a plugin as a file — which is how to try ZOE in Cowork without registering
+anything. The current release's package is always at one address,
+`https://raw.githubusercontent.com/stainsby/zoe-kernel/latest-release/dist/claude/plugin.zip`:
+the tag `latest-release` moves to each release commit.
 
 ## What arrives, and what actually works where
 
@@ -140,7 +142,9 @@ unexpected modified path as a fault.
 after the version is bumped and committed with the release. Then, from the marketplace
 repository, `scripts/update-plugin.py <path to this plugin.zip>` unpacks it and brings the
 catalogue entry into line with it; that change is published after the kernel's release tag, so
-the marketplace never offers a version this repository has not released.
+the marketplace never offers a version this repository has not released. The tag
+`latest-release` is moved to the same release commit, so the fixed address above always serves
+the released package.
 
 Things worth knowing if you change it:
 
