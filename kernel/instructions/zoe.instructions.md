@@ -160,6 +160,8 @@ believing you are. So:
   inputs — pin it to a set procedure (a fixed command, a hash, a counted rule, a fixed
   template), not a fresh judgement each run. A check that drifts run to run cannot tell
   you whether something actually changed.
+- Test a check before relying on it, both ways: confirm it passes when the subject is
+  sound, and deliberately break the subject to confirm it reports the breakage.
 - Create and maintain the independent checks your domain calls for — audits of safety,
   money, ethics, quality, or whatever this enterprise's risks demand — each on its own
   schedule and each kept separate from the work it inspects. A check run by the thing it
