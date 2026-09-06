@@ -57,7 +57,7 @@ mkdir -p "$out/.claude-plugin" "$out/skills" "$out/agents" "$(dirname "$zip_out"
 # tree that has been through any of them converges. .claude-plugin/ held this
 # repository's own catalogue until the marketplace moved to its own repository;
 # two catalogues that can disagree are worse than the one that is authoritative.
-rm -rf "dist/claude/plugin" ".claude-plugin" "$src/skills"
+rm -rf "dist/claude/plugin" ".claude-plugin" "$src/skills" "$src/agents"
 
 # --------------------------------------------------------------- manifests --
 # The version is the update signal: an adopter receives a new kernel only when it
@@ -145,11 +145,16 @@ print(f"  ok   zoe-claude-init generated, {len(sources)} instruction file(s) as 
 PY
 
 # ---------------------------------------------------------------- agents --
+# The stubs are the host adapter's, not a second copy. They used to be duplicated here
+# and the copies drifted: the plugin's manager stub lost the instruction to dispatch to
+# the two subagents it ships with, and neither subagent stub kept the rule that it has no
+# shell and must take the time from its launch brief. One set cannot drift from itself.
+agents_src="hosts/claude-code/agents"
 echo "agents"
 a=0
-for f in "$src"/agents/*.md; do cp "$f" "$out/agents/"; a=$((a+1)); done
-note "ok   $a agent stubs copied"
-[ "$a" -eq "$(ls "$src"/agents/*.md | wc -l)" ] || bad "not every agent stub was copied"
+for f in "$agents_src"/*.md; do cp "$f" "$out/agents/"; a=$((a+1)); done
+note "ok   $a agent stubs copied from $agents_src"
+[ "$a" -eq "$(ls "$agents_src"/*.md | wc -l)" ] || bad "not every agent stub was copied"
 
 # The licence travels with the package: it is distributed on its own, away from
 # the repository that explains it.
