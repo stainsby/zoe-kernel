@@ -49,6 +49,7 @@ planning. If you are about to do something gated and unapproved, do not do it:
 record the request and move to work that does not depend on it (see
 `## Stop and ask a director when` in the instructions).
 
-Hand off: where an assessment is due, the results go to assess (`zoe-assess`), which makes
-this a management session; otherwise the session ends with its records written, and the next
-management session assesses them.
+Hand off: where an assessment is due, the results go to assess (`zoe-assess`) — in this
+session if it is already a management session, otherwise in the next one, which opens only as
+your index says. A work session does not open one by its own act; it ends with its records
+written.
