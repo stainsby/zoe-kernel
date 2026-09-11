@@ -76,7 +76,9 @@ If you cannot tell which you are, say so and ask, rather than guessing.
    `kernel/instructions/zoe.instructions.md` exists with no `kernel/skills/` beside it, the
    enterprise is on the plugin layout of kernel 1.3.0: carry out the move the changelog's 1.4.0
    entry describes — the file to `.zoe/instructions/`, the empty `kernel/` removed, the old
-   import line replaced — rather than writing a second copy beside the first.
+   import line replaced — rather than writing a second copy beside the first; and once step 3
+   has run, set `.zoe/VERSION` back to `1.3.0`, the version they were on, so the upgrade skill
+   reads the whole span rather than the plugin's own version.
 
 2. **See what instructions the workspace already has, and talk to the person about them.** It
    may carry its own — a `CLAUDE.md`, an `AGENTS.md`, anything either of them imports — written
