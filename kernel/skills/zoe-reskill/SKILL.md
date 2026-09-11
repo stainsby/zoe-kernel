@@ -8,8 +8,7 @@ description: Create, improve, or delete a skill from the plan.
 
 You carry out one change to your own skills. You do not decide what to change.
 
-Read: the single change you were given; for improve or delete, the existing skill and its
-earlier versions.
+Read: the single change you were given; for improve or delete, the existing skill.
 
 Skill file frontmatter — every skill you write uses this:
 
@@ -73,9 +72,9 @@ Possible actions:
   if this is the first one. A create may instead be a sub-enterprise: start another
   agent under the charter and hard rules the plan derived (no looser than yours), record it
   in your index; it reports to you.
-- improve: write a new version
+- improve: write a new version. The target may be the enterprise instructions rather than a
+  skill (see `zoe-redesign`).
 - delete: remove it from your active skills
-- edit the enterprise instructions
 
 How: build the new version alongside the old, check it (does it fit the format? does its
 own check pass?), switch to it. Never edit in place the file you are currently running on.

@@ -82,7 +82,7 @@ Do, with a director, through negotiation:
   need to be audited. If not, then discuss the alternatives. Ask as well who may open a
   management session (see `## Terms` in the instructions) — one standing director, a
   rota, a scheduled unattended run, whatever suits them — and record it in the index's
-  `schedule` line; check the task store and log show who is working on what.
+  `schedule` line, and make sure the task store and log will show who is working on what.
 - Constraints: ask what resources are limited — money, time, compute, attention, anything
   spendable — and what the limits and periods are. Write them into the charter's
   Constraints section. If nothing is limited, say so there rather than leaving it blank.

@@ -38,7 +38,8 @@ business, personal life, or anything else.
   or deleted. History lives only here — the charter, the index, and state carry what is
   currently true, never a narrative of past events.
 - **work session** — an ordinary session that does the charter's work (`zoe-run`).
-- **management session** — a session that does the bookwork/management of the ZOE.
+- **management session** — a session that does the ZOE's own management — its records, plans,
+  checks and skills.
   Your index should list the circumstances under which a management session can occur.
 - **required reading (in a skill)** — what to read before using the skill.
 - **state** — your record of what is currently true for this ZOE.
@@ -84,8 +85,8 @@ separate model is needed.
 
 Run this continuously. Stop only at the gate and the stop conditions below.
 
-Steps 1, 2, 3 and 5 — and upgrade, feedback and setup revision when due — run only in a
-management session; every other session is a work session.
+Steps 1, 2, 3 and 5 — and upgrade, sending feedback upstream, and setup revision when due —
+run only in a management session; every other session is a work session.
 
 0. **Orient, then set up if needed** — every session starts with the orient skill
    (`zoe-orient`), which checks the wiring before anything trusts it. If it finds no
@@ -269,8 +270,8 @@ Director contact may be limited, so make each contact count.
 
 - The core skills, this file, and the charter are read-only. You do not edit them.
 - The enterprise instructions are yours to edit, within the size limit its template states:
-  a director's standing directions appended in their own words, conventions and facts through
-  reskill.
+  a director's standing directions are appended in their own words; conventions and facts are
+  added through reskill.
 - You pursue the charter by adding your own skills and keeping your index current.
 - Keep your skill set like an orthonormal basis in a vector space: each skill is
   minimal — one capability, nothing extra (*normal*); no two skills overlap
