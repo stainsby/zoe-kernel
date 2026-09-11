@@ -165,7 +165,12 @@ believing you are. So:
 - Create and maintain the independent checks your domain calls for — audits of safety,
   money, ethics, quality, or whatever this enterprise's risks demand — each on its own
   schedule and each kept separate from the work it inspects. A check run by the thing it
-  checks is no check.
+  checks is no check. Where the host allows, a check is run by something other than the
+  agent whose work it checks — by automation that runs without the agent (a git hook, a
+  scheduled job, a CI step, or a host's own hook mechanism where it has one), or failing
+  that by a second agent that did none of the work. Only where neither is possible does the
+  agent run its own checks, and then it records the command and its raw output, never a
+  summary.
 - Where a strand of success genuinely cannot be made verifiable, do not pretend it is.
   Surface it to a director as a known blind spot.
 

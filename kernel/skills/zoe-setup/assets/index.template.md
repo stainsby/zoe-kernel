@@ -37,6 +37,8 @@ and write "not yet created".
   planning". Say which real model each kind means. See `## Models` in the instructions.}
 - agents this enterprise runs: {which ones, and where their definitions live. Every session
   starts by checking they are all there, so this line is what that check reads.}
+- running unattended: {whether this host can run this enterprise on a schedule with nobody
+  present, and how it is started. Write "no" if it cannot.}
 - known weaknesses: {anything about this setup that will keep looking like a fault but is
   not — for example a host that cannot run separate agents. Recorded here so it is not
   reported afresh every session.}

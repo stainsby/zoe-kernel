@@ -61,6 +61,8 @@ Do, with a director, through negotiation:
   - If the host cannot run separate agents at all, a ZOE can still run, but the separation
     then rests on the manager's own discipline. Record that in the index as a known
     weakness so a director knows the trade they are making.
+- Ask whether this host can run the enterprise on a schedule with nobody present, and how it
+  is started; record the answer, or a plain "no", in the index under `running unattended`.
 - Create a new skill that **is** the index.
   - It is a skill, not a plain file, so that every host is guaranteed to show it to
     the agent; do not "simplify" it into a loose document.
