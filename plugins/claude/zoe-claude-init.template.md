@@ -5,22 +5,45 @@ description: Sets up a ZOE in any Claude environment, including Cowork and Claud
 
 # Starting ZOE in a Claude environment
 
-This is a one-off. It puts the kernel's instructions into the workspace and makes the
-environment load them, after which the enterprise runs on its own skills and this one is done.
+This is a one-off. It puts the kernel's instructions and the kernel's version into the
+workspace and makes the environment load the instructions, after which the enterprise runs on
+its own skills and this one is done.
 
-The other time to run it is to repair an enterprise whose instructions have gone missing — an
-install that half finished, or a workspace moved to an environment that loads them differently.
-That is safe: every step below either changes nothing or fixes a difference.
+The other times to run it are to repair an enterprise whose instructions have gone missing —
+an install that half finished, or a workspace moved to an environment that loads them
+differently — and to apply a kernel upgrade the director has approved, when the kernel's
+upgrade skill calls this one to write the new instruction file and `VERSION`. Both are safe:
+every step below either changes nothing or fixes a difference.
 
-The instruction files travel with this skill, in its own `assets/` folder, so what lands in the
-workspace is a copy of the released text rather than anything retyped.
+The instruction files and `VERSION` travel with this skill, in its own `assets/` folder, so
+what lands in the workspace is a copy of the released text rather than anything retyped.
+
+## What this route is
+
+The kernel's skills run from this plugin. They are not copied into the workspace: one plugin
+cache per user serves every enterprise on the machine, a plugin update replaces the skills for
+all of them, and removing the plugin removes the skills and the three agents. The other route,
+`hosts/claude-code/README.md` in the kernel's repository, puts the whole kernel tree in the
+project and pins it; it is Claude Code only. This route works on any Claude environment and is
+the weaker of the two on version control. That is acceptable because the instructions outrank
+the skills, and the instructions are the part this skill pins.
 
 ## What differs between environments
 
-**Every environment gets the same file in the workspace**: `kernel/instructions/zoe.instructions.md`.
-That is what the enterprise reads, what its index points at, and what its upgrade comparison is
-made against. It must not live only inside this plugin — a plugin is replaced when it updates,
-and an enterprise must never have the rules it runs under changed underneath it.
+**Every environment gets the same two files in the workspace**, under `.zoe/`:
+
+- `.zoe/instructions/zoe.instructions.md` — the kernel's instructions, a pinned copy. This is
+  what the enterprise reads, what its index points at, and the only thing that runs from the
+  workspace rather than the plugin.
+- `.zoe/VERSION` — the kernel version those instructions and the plugin's skills came from.
+
+`.zoe/` is what this enterprise holds of ZOE. It is not the kernel — the skills are in the
+plugin — and it is not named as if it were. The kernel's upgrade skill compares `.zoe/VERSION`
+with the plugin's own `VERSION` (at the plugin's root, beside its `CHANGELOG/`), reads the
+changelog entries between the two, and on the director's approval runs this skill again to
+write the new files. Two index lines follow from this, for setup to record: `where the kernel
+came from` is this plugin, and `where the kernel's changelog is` is `${CLAUDE_PLUGIN_ROOT}/CHANGELOG/`, which the host
+resolves to whichever plugin version is installed.
 
 What differs is only how the environment is told to load it:
 
@@ -41,7 +64,9 @@ If you cannot tell which you are, say so and ask, rather than guessing.
 
 1. **Confirm where.** State the directory you are about to write into and have the person
    confirm it is the enterprise's project root. Do not infer it from where a shell happens to
-   be.
+   be. If `.zoe/kernel/` already exists there, the enterprise was installed by the manual
+   route with the whole kernel in the project, and this skill is not for it: stop and say so,
+   rather than writing a second instruction file beside the first.
 
 2. **See what instructions the workspace already has, and talk to the person about them.** It
    may carry its own — a `CLAUDE.md`, an `AGENTS.md`, anything either of them imports — written
@@ -63,28 +88,30 @@ If you cannot tell which you are, say so and ask, rather than guessing.
    approval, to push or publish unprompted; that belongs in the conversation whether or not they
    raise it. Record whatever you settle on, so a later session is not left guessing.
 
-3. **Put the instruction file in the workspace.** Where you can run commands:
+3. **Put the instruction file and `VERSION` in the workspace.** Where you can run commands:
 
    ```sh
-   mkdir -p kernel/instructions
-   cp "${CLAUDE_PLUGIN_ROOT}"/skills/zoe-claude-init/assets/*.md kernel/instructions/
+   mkdir -p .zoe/instructions
+   cp "${CLAUDE_PLUGIN_ROOT}"/skills/zoe-claude-init/assets/*.md .zoe/instructions/
+   cp "${CLAUDE_PLUGIN_ROOT}"/skills/zoe-claude-init/assets/VERSION .zoe/VERSION
    ```
 
-   The plugin's own files sit outside the workspace, so that copy may be refused until you are
-   given access to them. If it is, say so plainly and offer the fix rather than working around
-   it: the person approves the read when prompted, or runs `/add-dir ${CLAUDE_PLUGIN_ROOT}`
-   first. Where you have no shell, read each file in this skill's `assets/` folder and write it
-   into `kernel/instructions/` under the same name, and say that is what you did. Either way it
-   is a copy: never retype the text, and never summarise or tidy it.
+   Reading the plugin's files may be refused until you are given access to them. If it is, say
+   so plainly and offer the fix rather than working around it: the person approves the read
+   when prompted, or runs `/add-dir ${CLAUDE_PLUGIN_ROOT}` first. Where you have no shell, read
+   each file in this skill's `assets/` folder and write it into `.zoe/` under the same name —
+   the `.md` files into `.zoe/instructions/`, `VERSION` beside that folder — and say that is
+   what you did. Either way it is a copy: never retype the text, and never summarise or tidy it.
 
-   **Do not go on to step 4 until the file is really there.** An import pointing at a file that
-   is not there fails silently, and the enterprise then starts with no instructions and no
+   **Do not go on to step 4 until both files are really there.** An import pointing at a file
+   that is not there fails silently, and the enterprise then starts with no instructions and no
    gates, looking entirely normal.
 
-   The copy is deliberate, not a link. A plugin is replaced when it updates, and an enterprise
-   must never have the rules it runs under changed underneath it. When the plugin's version
-   changes, compare the two files: that comparison is what the kernel's upgrade skill acts on,
-   and adopting a new kernel needs the director's approval.
+   The copy is deliberate, not a link, and it is pinned: nothing replaces it but the kernel's
+   upgrade skill, on the director's approval, by running this skill again. A plugin update
+   replaces the skills underneath the enterprise; it does not replace these files. `VERSION`
+   records which release the pinned instructions — and the skills that were current with
+   them — came from, so the upgrade skill can tell what moved.
 
 4. **Make the environment load it.** Which of these applies was settled above.
 
@@ -92,7 +119,11 @@ If you cannot tell which you are, say so and ask, rather than guessing.
    **Instructions**, then confirm they have done it before you go on:
 
    > This project is a ZOE enterprise. At the start of every session, before anything else,
-   > read `kernel/instructions/zoe.instructions.md` from this project's folder and follow it.
+   > read `.zoe/instructions/zoe.instructions.md` from this project's folder and follow it.
+
+   Only the person can edit that field, so the path in it is settled for good: a later kernel
+   does not move it. If the project is ever archived and re-created, the folder and its files
+   survive but the field does not; say that it must be pasted again.
 
    You cannot set that field yourself, so do not claim it is done on their word alone — ask them
    to confirm, and say in your report that it rests on their confirmation.
@@ -101,14 +132,14 @@ If you cannot tell which you are, say so and ask, rather than guessing.
    there is none:
 
    ```
-   @kernel/instructions/zoe.instructions.md
+   @.zoe/instructions/zoe.instructions.md
    ```
 
    If a `CLAUDE.md` already exists, **add that line and change nothing else.** Never overwrite a
    file you did not create.
 
    An import resolves relative to the file holding it. At the workspace root the line above is
-   right; inside `.claude/CLAUDE.md` it must read `@../kernel/instructions/zoe.instructions.md`.
+   right; inside `.claude/CLAUDE.md` it must read `@../.zoe/instructions/zoe.instructions.md`.
 
    **Where the environment offers neither**, there is nothing to add here. Record in the
    enterprise's index that its instructions are read from the workspace at the start of every
@@ -118,13 +149,16 @@ If you cannot tell which you are, say so and ask, rather than guessing.
 
    ```sh
    grep -rn 'zoe\.instructions\.md' CLAUDE.md .claude/CLAUDE.md 2>/dev/null
-   ls -l kernel/instructions/zoe.instructions.md
+   ls -l .zoe/instructions/zoe.instructions.md .zoe/VERSION
+   diff .zoe/VERSION "${CLAUDE_PLUGIN_ROOT}/VERSION" && echo VERSION-MATCHES
    ```
 
    Where step 4 added an import line, every such line must name a file that exists and there
    must be **at least one**; where it added a project instruction, the check is that the person
    has confirmed it and that you have said the check rests on their word; where it added
-   neither, the check is that the instruction file is in the workspace and complete. **The count is the point, not the listing** — a check that only inspects what it finds
+   neither, the check is that the instruction file is in the workspace and complete. In every
+   case `.zoe/VERSION` must exist and match the plugin's — the `diff` prints `VERSION-MATCHES`
+   and nothing else. **The count is the point, not the listing** — a check that only inspects what it finds
    passes silently when it finds nothing, which is exactly what happens when the merge in step 4
    was missed. If part of that is refused, enumerate the same things with your file tools and
    say which you used. State a count and a verdict, not an impression.

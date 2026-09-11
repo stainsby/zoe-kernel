@@ -5,6 +5,10 @@ It lives **alongside** `kernel/`, not inside it — host-specific packaging is n
 the kernel proper. Adapt it freely to your setup. The kernel's prose rules bind
 regardless; these files add packaging, not new behaviour.
 
+With this method, the whole kernel tree goes into your project, pinned by copy or by
+submodule, and Claude Code loads the skills from there. Another way is via the plugin
+described in `plugins/claude/README.md`.
+
 ## Contents
 
 - `CLAUDE.md` — stub that imports the kernel instructions. Copy to the enterprise's
@@ -36,11 +40,6 @@ ZOE=/path/to/your/clone/of/zoe-kernel
 cp -r "$ZOE/kernel" .
 ```
 
-Copying brings the kernel and nothing else. Several files you are about to install refer to
-things that live elsewhere in the ZOE project — the host examples, this README, the
-changelog — so keep your clone at `$ZOE` rather than deleting it once you are done. The
-submodule path below avoids this: everything sits under `.zoe/`.
-
 or track it as a submodule, which pins the exact kernel commit you run on and makes an
 upgrade a reviewable change of that pin rather than a re-copy. The project root has to be a
 git repository already for this to work:
@@ -55,6 +54,13 @@ ZOE=.zoe                       # the rest of the steps read $ZOE
 Each release is tagged `v<version>`, so you can pin to one rather than to a bare commit:
 `git -C .zoe checkout v1.1.0`, then commit the changed submodule pointer. Upgrading is then
 checking out the next tag.
+
+Copying brings the kernel and nothing else. Several files you are about to install refer to
+things that live elsewhere in the ZOE project — the host examples, this README, the
+changelog — so keep your clone at `$ZOE` rather than deleting it once you are done. The
+submodule path avoids this: the whole clone sits under `.zoe/`, which is then what your
+enterprise holds of ZOE (on the plugin route, `.zoe/` holds only the pinned instruction file
+and a `VERSION`). Your index's `where the kernel came from` line says which you chose.
 
 **2. Wire in the skills and agents.** Safe to re-run:
 

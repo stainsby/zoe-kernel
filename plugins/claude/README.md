@@ -5,6 +5,12 @@ three commands instead of the manual wiring in `hosts/claude-code/README.md`. It
 `kernel/`, not inside it: packaging is not part of the kernel, and the kernel's rules bind
 whichever way ZOE arrives.
 
+The two routes differ in where the kernel lives. The manual route puts the whole kernel tree in
+the enterprise's project and pins it, by copy or by submodule; it is Claude Code only. This
+route runs the kernel's skills from the plugin, on any Claude environment; only the
+instructions and a version file are written into the project. It is the weaker of the two on
+version control — see *Upgrades* below for why that is acceptable.
+
 **Everything here is specific to one provider, and the paths say so.** `plugins/claude/` holds
 the packaging and `dist/claude/` holds what it builds. `plugin.json`, `marketplace.json` and
 the `.claude-plugin/` directory are Anthropic's formats, not an open standard, and another
@@ -61,6 +67,7 @@ the tag `latest-release` moves to each release commit.
 |---|---|---|---|
 | The kernel's ten skills | yes | yes | unclear |
 | `zoe-claude-init`, the one skill added | yes | yes | unclear |
+| `VERSION` and `CHANGELOG/`, for the kernel's upgrade skill | yes | yes | unclear |
 | The three agents | yes | yes | no |
 | Standing per-project instructions | yes, `CLAUDE.md` | yes, a project's **Instructions** field | no |
 
@@ -76,14 +83,18 @@ it. Treat Claude Code and Cowork as the supported pair until someone does.
 **The instructions are the part that needs care.** They carry the gates, so they have to be in
 front of the model before it decides anything — and a plugin cannot make that happen by itself,
 because a `CLAUDE.md` at a plugin's root is not read as project context. The one added skill,
-`zoe-claude-init`, closes that gap, and it is a one-off: run once when the ZOE is started, and
-never again.
+`zoe-claude-init`, closes that gap. It runs once when the ZOE is started; the only other
+times are to repair a missing instruction file, and to apply an approved kernel upgrade (see
+*Upgrades*).
 
-**It always writes the same file into the workspace**, `kernel/instructions/zoe.instructions.md`,
-whatever the surface. That file is what the enterprise reads, what its index points at, and what
-its upgrade comparison is made against. It deliberately does not live only in the plugin: a
-plugin is replaced when it updates, and an enterprise must never have the rules it runs under
-changed underneath it.
+**It always writes the same two files into the workspace**, whatever the surface:
+`.zoe/instructions/zoe.instructions.md`, a pinned copy of the kernel's instructions, and
+`.zoe/VERSION`, the kernel version they and the plugin's skills came from. The instruction
+file is what the enterprise reads and what its index points at; the version file is what its
+upgrade comparison starts from. Neither lives only in the plugin: a plugin update replaces the
+skills, and an enterprise must never have the rules it runs under changed underneath it.
+`.zoe/` is named for what it is — what this enterprise holds of ZOE — and not `kernel/`, because
+the kernel is the instructions *and* the skills, and the skills stay in the plugin.
 
 What differs is only whether the surface will load that file for you:
 
@@ -99,22 +110,33 @@ What differs is only whether the surface will load that file for you:
   three, and the enterprise is told to record it as a known weakness of its host: nothing but
   discipline puts the rules in context before the model acts.
 
-The instruction file travels inside the skill, under its `assets/`, so the skill can write it
-out even where nothing can be copied from disk. That is a source for the writing, not a second
-home for the instructions.
+The instruction file and `VERSION` travel inside the skill, under its `assets/`, so the skill
+can write them out even where nothing can be copied from disk. That is a source for the
+writing, not a second home for the instructions.
 
 ## Upgrades
 
 An adopter's kernel should never change without their director agreeing to it — that is the
 kernel's own rule, and adopting a new kernel replaces the rules the enterprise runs under.
 
-Two things keep that true here. The marketplace holds the released package, unpacked, replaced
-only when a release is cut, so what installs is a released kernel and never whatever `main`
-happens to hold. And
-this is a third-party marketplace, for which automatic updates are off unless the adopter turns
-them on. An update is therefore something they ask for; when they do, the kernel's upgrade
-skill shows the changelog for the versions being crossed and asks the director before anything
-is replaced.
+Three things keep that true here. The marketplace holds the released package, unpacked,
+replaced only when a release is cut, so what installs is a released kernel and never whatever
+`main` happens to hold. The package carries `VERSION` and `CHANGELOG/` at its root, so the
+kernel's upgrade skill has what it needs without leaving the plugin: it compares the project's
+`.zoe/VERSION` with the plugin's `VERSION`, reads the changelog entries between the two, and
+asks the director before the instruction file and `VERSION` are rewritten (by running
+`zoe-claude-init` again). And on Claude Code an update is the adopter's own act: Anthropic's
+documentation states that third-party marketplaces have auto-update disabled by default, and
+an update then happens only when the adopter turns it on for the marketplace, installs
+explicitly, or an administrator enables it in managed settings for the organisation. Cowork's documentation describes an **Update** control on a marketplace and says
+Cowork "checks for plugin updates", but does not say whether one can apply without the
+person's action; until it does, treat a Cowork plugin update as something to confirm with the
+director, not something that cannot happen unasked.
+
+What a plugin update does replace is the skills, for every enterprise on the machine at once,
+since one plugin cache per user serves them all. The pinned instructions outrank the skills
+under the kernel's own precedence, and the changelog span accounts for what moved in the
+skills; that is why the weaker pin is acceptable on this route.
 
 ## Building
 
@@ -126,8 +148,9 @@ plugins/claude/build.sh
 
 It reads the version from `kernel/VERSION` and writes it into the package's `plugin.json`,
 copies the kernel's skills in, generates `zoe-claude-init` from
-`zoe-claude-init.template.md` and the kernel's instruction files, copies the agent stubs and the
-licence, checks the counts add up, validates the plugin, and writes the package. It does not
+`zoe-claude-init.template.md`, the kernel's instruction files and `kernel/VERSION`, copies the
+agent stubs, the licence, `VERSION` and the `CHANGELOG/` directory, checks the counts add up
+and the version files agree, validates the plugin, and writes the package. It does not
 touch the catalogue: that lives in the marketplace repository and is updated from the package
 it produces — see *Release ordering* below.
 
