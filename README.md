@@ -4,6 +4,8 @@
 
 # ZOE — Zero Organisation Enterprises
 
+Home: <https://github.com/stainsby/zoe-kernel>
+
 ZOE kernel is a minimal set of agentic instructions and skills to turn any
 idea or vision into a self-managing and self-improving process that we call an
 **enterprise**.

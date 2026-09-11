@@ -272,8 +272,8 @@ Director contact may be limited, so make each contact count.
 A file you create from a template (the index, the charter at setup, any other) keeps a
 line naming its source template. Before editing such a file, re-read its template: the
 template's sections are the contract — never drop, rename, or rewrite them — and so are
-the rules its prose states (for example the index template's "current state only —
-history lives in the log, never here"): they bind the derived file for its whole life,
+the rules its prose states (for example the index template's "Write only what is true now;
+what changed belongs in the log"): they bind the derived file for its whole life,
 including through revisions. If a file no longer matches its template, restore the
 structure as well as making your change.
 
