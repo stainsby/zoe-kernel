@@ -75,6 +75,7 @@ Do:
   in your index; it reports to you.
 - improve: write a new version; keep the old.
 - delete: remove it from your active skills; keep its file so it can be restored.
+- edit the enterprise instructions
 
 How: build the new version alongside the old, check it (does it fit the format? does its
 own check pass?), switch to it, keep the old for rollback. Never edit in place the file you

@@ -16,7 +16,7 @@ new kernel version is not this skill — see `zoe-reconcile`.) You may also arri
 from `zoe-orient`'s wiring check — a missing index, a skill or agent the host no
 longer shows; fix what it found with the director before handing back.
 
-Read: the charter and index templates under this skill in `assets`.
+Read: the charter, index and enterprise instructions templates under this skill in `assets`.
 
 Open the conversation yourself; do not wait to be asked. Greet the director,
 say you are set up to pursue a goal but do not have one yet, and invite them
@@ -70,6 +70,10 @@ Do, with a director, through negotiation:
   - Check the new skill is visible to you AS A SKILL — the director may need to give more setup help if it's not.
   - Immediately add the charter location and the kernel version (see `VERSION` beside the
     kernel's instructions and skills).
+- Create the enterprise instructions from the template in `assets`. Ask the director for any
+  standing directions to start it with, in their own words. Record where the file is in the
+  index, and make sure this host loads it every session, the same way it loads the kernel's
+  instructions. Remember: instructions are not specific to a particular skill.
 - Charter: ask for their vision, scope (in and out), what success looks like, and the hard
   rules — what the agent must never do, and what must get director approval first. Write the
   charter from their answers. They own and approve it; you do not invent the goal, and the

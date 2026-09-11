@@ -99,6 +99,14 @@ a `CLAUDE.md` at the project root, but wrong in `.claude/CLAUDE.md`, where it wo
 `.claude/kernel/…` and quietly find nothing. From `.claude/CLAUDE.md`, write
 `@../kernel/instructions/zoe.instructions.md` instead.
 
+The enterprise's own instructions — its standing directions, conventions and facts, created by
+`zoe-setup` — are loaded the same way: a second `@` line beside the kernel's, naming the file
+the index records (`@enterprise.instructions.md` for a file at the project root).
+
+If you added that second line, check it too: `ls -l enterprise.instructions.md`, or the path
+your index records. The step-4 count below deliberately counts only the kernel's import, so
+this one is on you.
+
 **4. Check the install took.** This tests the import as you actually wrote it, rather than
 assuming where you put it:
 

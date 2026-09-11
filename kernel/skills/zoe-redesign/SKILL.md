@@ -23,8 +23,8 @@ whatever you have at hand: the charter, the verification and checks plan from se
 
 Produce: an ordered list of changes. For each change, record:
 - action: create | improve | delete
-- target: one of your own skills, the host packaging recorded in your index, a
-  sub-enterprise, or a short name for a new one
+- target: one of your own skills, the enterprise instructions, the host packaging recorded in
+  your index, a sub-enterprise, or a short name for a new one
 - why: one line
 - reversible: yes | no
 - cost: negligible | notable | breaches a constraint | unknown  (judged against the

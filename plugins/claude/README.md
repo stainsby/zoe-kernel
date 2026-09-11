@@ -84,29 +84,32 @@ it. Treat Claude Code and Cowork as the supported pair until someone does.
 front of the model before it decides anything — and a plugin cannot make that happen by itself,
 because a `CLAUDE.md` at a plugin's root is not read as project context. The one added skill,
 `zoe-claude-init`, closes that gap. It runs once when the ZOE is started; the only other
-times are to repair a missing instruction file, and to apply an approved kernel upgrade (see
-*Upgrades*).
+times are to repair a missing instruction file, to apply an approved kernel upgrade (see
+*Upgrades*), and to write the enterprise's instructions file where none exists.
 
-**It always writes the same two files into the workspace**, whatever the surface:
+**It always writes the same two files into the workspace**, whatever the surface, and may
+write a third:
 `.zoe/instructions/zoe.instructions.md`, a pinned copy of the kernel's instructions, and
-`.zoe/VERSION`, the kernel version they and the plugin's skills came from. The instruction
-file is what the enterprise reads and what its index points at; the version file is what its
-upgrade comparison starts from. Neither lives only in the plugin: a plugin update replaces the
+`.zoe/VERSION`, the kernel version they and the plugin's skills came from. Where the
+enterprise has no instructions file of its own, it writes an empty one from the kernel's
+template as well, for `zoe-setup` to fill in with the director. The instruction file is what
+the enterprise reads and what its index points at; the version file is what its upgrade
+comparison starts from. Neither lives only in the plugin: a plugin update replaces the
 skills, and an enterprise must never have the rules it runs under changed underneath it.
 `.zoe/` is named for what it is — what this enterprise holds of ZOE — and not `kernel/`, because
 the kernel is the instructions *and* the skills, and the skills stay in the plugin.
 
-What differs is only whether the surface will load that file for you:
+What differs is only whether the surface will load those files for you:
 
-- **Claude Code** reads a project `CLAUDE.md` every session, so the skill adds the one-line
-  import and the instructions become unconditional — the same property the manual install has.
+- **Claude Code** reads a project `CLAUDE.md` every session, so the skill adds the import
+  lines and the instructions become unconditional — the same property the manual install has.
 - **Cowork** has no `CLAUDE.md`, but a Cowork *project* has an **Instructions** field —
   standing guidance applied to every session in that project — which does the same job. The
-  skill cannot write that field, so it hands the person the exact line and asks them to paste it
+  skill cannot write that field, so it hands the person the exact lines and asks them to paste them
   into the project's settings, and says in its report that the check rests on their
   confirmation.
-- **Anywhere with neither**, the instruction file still goes into the workspace and the
-  enterprise's index records that every session reads it first. That is the weakest of the
+- **Anywhere with neither**, the instruction files still go into the workspace and the
+  enterprise's index records that every session reads them first. That is the weakest of the
   three, and the enterprise is told to record it as a known weakness of its host: nothing but
   discipline puts the rules in context before the model acts.
 

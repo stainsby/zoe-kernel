@@ -14,6 +14,8 @@ and write "not yet created".
 
 - enterprise name: {a name for this enterprise, used in your log and when you send feedback}
 - where the charter is: {the file or place holding it}
+- where the enterprise instructions are: {your own standing directions, conventions and facts,
+  read every session beside the kernel's instructions}
 - how to reach a director: {how you contact them for approval, feedback and instructions, and
   how they answer. You cannot run unattended until this is filled in.}
 - directors: {who they are — in general terms, or listed individually. Where there are

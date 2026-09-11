@@ -30,12 +30,17 @@ the skills, and the instructions are the part this skill pins.
 
 ## What differs between environments
 
-**Every environment gets the same two files in the workspace**, under `.zoe/`:
+**Every environment gets the same two files in the workspace**, under `.zoe/`, and may get
+a third:
 
 - `.zoe/instructions/zoe.instructions.md` — the kernel's instructions, a pinned copy. This is
   what the enterprise reads, what its index points at, and the only thing that runs from the
   workspace rather than the plugin.
 - `.zoe/VERSION` — the kernel version those instructions and the plugin's skills came from.
+
+A third file, the enterprise's own `enterprise.instructions.md` at the workspace root, is
+written only if it is not already there, and left unfilled for `zoe-setup`. It is the
+enterprise's, not the kernel's, which is why it does not live under `.zoe/`.
 
 `.zoe/` is what this enterprise holds of ZOE. It is not the kernel — the skills are in the
 plugin — and it is not named as if it were. The kernel's upgrade skill compares `.zoe/VERSION`
@@ -115,11 +120,23 @@ If you cannot tell which you are, say so and ask, rather than guessing.
 
 4. **Make the environment load it.** Which of these applies was settled above.
 
+   **The enterprise's own instructions** — its standing directions, conventions and facts —
+   are loaded by whichever of the three routes below applies, alongside the kernel's: a
+   second `@` line in Claude Code, a second sentence in Cowork's **Instructions** field, and
+   nothing to add where the environment offers neither. In every case the file is
+   `enterprise.instructions.md` at the workspace root; in Claude Code the line is
+   `@enterprise.instructions.md` (from `.claude/CLAUDE.md`, `@../enterprise.instructions.md`),
+   and step 5 lists the file. If it is not there, write it from
+   `instructions.template.md` in `zoe-setup`'s `assets/` (under
+   `${CLAUDE_PLUGIN_ROOT}/skills/`) and leave it unfilled: `zoe-setup` fills it in with the
+   director.
+
    **In Cowork**, ask the person to open the project's settings and add this to its
    **Instructions**, then confirm they have done it before you go on:
 
    > This project is a ZOE enterprise. At the start of every session, before anything else,
    > read `.zoe/instructions/zoe.instructions.md` from this project's folder and follow it.
+   > Then read `enterprise.instructions.md` from the same folder.
 
    Only the person can edit that field, so the path in it is settled for good: a later kernel
    does not move it. If the project is ever archived and re-created, the folder and its files
@@ -148,8 +165,8 @@ If you cannot tell which you are, say so and ask, rather than guessing.
 5. **Check it, and give a count.** Nothing warns you when an import points at nothing.
 
    ```sh
-   grep -rn 'zoe\.instructions\.md' CLAUDE.md .claude/CLAUDE.md 2>/dev/null
-   ls -l .zoe/instructions/zoe.instructions.md .zoe/VERSION
+   grep -rn 'instructions\.md' CLAUDE.md .claude/CLAUDE.md 2>/dev/null
+   ls -l .zoe/instructions/zoe.instructions.md .zoe/VERSION enterprise.instructions.md
    diff .zoe/VERSION "${CLAUDE_PLUGIN_ROOT}/VERSION" && echo VERSION-MATCHES
    ```
 
