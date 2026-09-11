@@ -126,10 +126,16 @@ If you cannot tell which you are, say so and ask, rather than guessing.
    nothing to add where the environment offers neither. In every case the file is
    `enterprise.instructions.md` at the workspace root; in Claude Code the line is
    `@enterprise.instructions.md` (from `.claude/CLAUDE.md`, `@../enterprise.instructions.md`),
-   and step 5 lists the file. If it is not there, write it from
-   `instructions.template.md` in `zoe-setup`'s `assets/` (under
-   `${CLAUDE_PLUGIN_ROOT}/skills/`) and leave it unfilled: `zoe-setup` fills it in with the
-   director.
+   and step 5 checks that the line resolves. If the file is not there, write it from
+   `instructions.template.md` in `zoe-setup`'s `assets/` and leave it unfilled: `zoe-setup`
+   fills it in with the director. Where you can run commands:
+
+   ```sh
+   [ -e enterprise.instructions.md ] || cp "${CLAUDE_PLUGIN_ROOT}"/skills/zoe-setup/assets/instructions.template.md enterprise.instructions.md
+   ```
+
+   Where you have no shell, read that template and write it into the workspace root under
+   the name `enterprise.instructions.md`, unchanged — only if no file of that name is there.
 
    **In Cowork**, ask the person to open the project's settings and add this to its
    **Instructions**, then confirm they have done it before you go on:
@@ -145,18 +151,20 @@ If you cannot tell which you are, say so and ask, rather than guessing.
    You cannot set that field yourself, so do not claim it is done on their word alone — ask them
    to confirm, and say in your report that it rests on their confirmation.
 
-   **In Claude Code**, add this one line to the workspace's `CLAUDE.md`, creating that file if
-   there is none:
+   **In Claude Code**, add these two lines to the workspace's `CLAUDE.md`, creating that file
+   if there is none:
 
    ```
    @.zoe/instructions/zoe.instructions.md
+   @enterprise.instructions.md
    ```
 
-   If a `CLAUDE.md` already exists, **add that line and change nothing else.** Never overwrite a
-   file you did not create.
+   If a `CLAUDE.md` already exists, **add those lines and change nothing else.** Never
+   overwrite a file you did not create.
 
-   An import resolves relative to the file holding it. At the workspace root the line above is
-   right; inside `.claude/CLAUDE.md` it must read `@../.zoe/instructions/zoe.instructions.md`.
+   An import resolves relative to the file holding it. At the workspace root the lines above
+   are right; inside `.claude/CLAUDE.md` they must read
+   `@../.zoe/instructions/zoe.instructions.md` and `@../enterprise.instructions.md`.
 
    **Where the environment offers neither**, there is nothing to add here. Record in the
    enterprise's index that its instructions are read from the workspace at the start of every
@@ -165,13 +173,18 @@ If you cannot tell which you are, say so and ask, rather than guessing.
 5. **Check it, and give a count.** Nothing warns you when an import points at nothing.
 
    ```sh
-   grep -rn 'instructions\.md' CLAUDE.md .claude/CLAUDE.md 2>/dev/null
+   for f in CLAUDE.md .claude/CLAUDE.md; do
+     [ -f "$f" ] || continue
+     grep -o '^@[^ ]*instructions\.md' "$f" | while IFS= read -r l; do
+       if [ -f "$(dirname "$f")/${l#@}" ]; then echo "RESOLVES  $f: $l"; else echo "DANGLING  $f: $l"; fi
+     done
+   done
    ls -l .zoe/instructions/zoe.instructions.md .zoe/VERSION enterprise.instructions.md
    diff .zoe/VERSION "${CLAUDE_PLUGIN_ROOT}/VERSION" && echo VERSION-MATCHES
    ```
 
-   Where step 4 added an import line, every such line must name a file that exists and there
-   must be **at least one**; where it added a project instruction, the check is that the person
+   Where step 4 added import lines, every one must print `RESOLVES` and none `DANGLING`, and
+   there must be **at least two** — the kernel's file and the enterprise's; where it added a project instruction, the check is that the person
    has confirmed it and that you have said the check rests on their word; where it added
    neither, the check is that the instruction file is in the workspace and complete. In every
    case `.zoe/VERSION` must exist and match the plugin's — the `diff` prints `VERSION-MATCHES`
