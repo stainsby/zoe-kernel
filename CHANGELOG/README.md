@@ -42,6 +42,7 @@ bytes are authoritative.
 
 ## Releases, newest first
 
+- [1.4.0](1.4.0.md) — 1.3.0 → 1.4.0 (work and management sessions; tasks go to workers; an enterprise instructions file; checks run by something other than the agent; the changelog is a directory; the plugin ships VERSION and the changelog)
 - [1.3.0](1.3.0.md) — 1.2.1 → 1.3.0 (test a check both ways; ZOE installs as a plugin)
 - [1.2.1](1.2.1.md) — 1.2.0 → 1.2.1 (the kernel now asks for the index fields the 1.2.0 template actually creates)
 - [1.2.0](1.2.0.md) — 1.1.0 → 1.2.0 (bookkeeping is watched and cut back; a defect's cause is decided rather than always filed; the setup templates are in plain English)
