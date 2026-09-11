@@ -41,6 +41,7 @@ and write "not yet created".
   starts by checking they are all there, so this line is what that check reads.}
 - running unattended: {whether this host can run this enterprise on a schedule with nobody
   present, and how it is started. Write "no" if it cannot.}
+- concurrency limit: {how many workers may run at once}
 - known weaknesses: {anything about this setup that will keep looking like a fault but is
   not — for example a host that cannot run separate agents. Recorded here so it is not
   reported afresh every session.}

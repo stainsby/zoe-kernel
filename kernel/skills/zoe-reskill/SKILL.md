@@ -61,8 +61,6 @@ check and make it pass before the skill becomes active — do not rely on eyebal
 Where it cannot be checked that way, say so in the skill, and lean on the slower measures
 and audits instead.
 
-Long work: see `zoe-tasks` — one item at a time, never batch, checkpoint after each.
-
 Specialising a `zoe-` skill: per `## Adding to yourself` in the instructions (where the
 full rule is stated) — the enterprise-specific detail goes in the new dependent skill.
 

@@ -150,6 +150,13 @@ does which job. Host-specific part only: to override a tier for your setup, add
 `model:` to your copies (Claude Code accepts aliases — `opus`, `sonnet`, `haiku` —
 which age better than full names).
 
+## Workers
+
+`zoe-run` dispatches a task to a worker by launching a subagent with the Agent tool, giving
+the brief that skill defines as its prompt and taking what it returns. No standing worker
+definition is needed; the stubs in `agents/` show the shape of one if you want it. How many
+may run at once is the index's `concurrency limit`.
+
 ## Scheduling
 
 Claude Code runs headless: `claude -p "run the ZOE cycle" --agent zoe` from cron or CI

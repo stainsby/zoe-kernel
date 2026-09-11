@@ -33,9 +33,9 @@ it, do not replace it.
 
 - **Decomposition**: a task too large or complex for one session is broken into sub-tasks
   until each is sized for the work.
-- **Long or many-item work**: keep the item list in the store, work one item at a time —
-  never batch — and checkpoint after each, so the work survives a dropped session. Newly
-  discovered items join the list.
+- **Long or many-item work**: keep the item list in the store, record one item at a time and
+  checkpoint after each, so the work survives a dropped session; independent items may run
+  together. Newly discovered items join the list.
 - **Creation**: tasks are created by whatever identifies work — the plan, the director via
   the director channel, discoveries during run, inbound feedback.
 

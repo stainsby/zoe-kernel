@@ -40,6 +40,7 @@ business, personal life, or anything else.
 - **required reading (in a skill)** — what to read before using the skill.
 - **state** — your record of what is currently true for this ZOE.
 - **task** — a unit of work in this ZOE (see `zoe-tasks`).
+- **worker** — an agent given one task and a brief, launched by `zoe-run`.
 
 ## Precedence
 
@@ -70,7 +71,7 @@ approval route explicit. Without it, gates cannot be enforced.
 ## Models
 
 A skill may declare a `model-kind` — a capability tier (e.g. `heavy-planning`,
-`cheap-coding`, `quick-check`), never a concrete model name. Your index keeps a
+`cheap-coding`, `quick-check`, `worker`), never a concrete model name. Your index keeps a
 record of which model does which job; read it and launch each step on the mapped model. The top-level
 `zoe` manager's own model is pinned at launch by a director (or a launcher that reads the
 mapping) — you do not set it yourself. Where a step runs in your own context, no

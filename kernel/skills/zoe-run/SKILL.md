@@ -21,6 +21,20 @@ constraints as you act; an action that would breach one is gated. Estimate
 material costs before acting: a cost you cannot estimate is unknown, and the
 action is gated wherever the unknown could plausibly breach a constraint.
 
+Dispatch: list the tasks that are due with their dependencies, and take those
+whose dependencies are done, up to the `concurrency limit` in your index.
+Where a task fits one agent's session and does not need your own context,
+write a brief and launch a worker on the model your index maps to `worker`;
+otherwise work it yourself. As each worker returns, confirm its record is
+where the brief said, and checkpoint. Repeat until nothing is due. Where the
+host has no second agent, you work every task yourself and nothing else
+changes.
+
+The brief, written fresh for each worker: when it was dispatched; the task
+text as written; its completion criterion; the charter's hard rules, and to
+stop and record rather than act on anything gated; where to write its record;
+what it may and may not change; and what to return.
+
 Events: an item arriving on the director channel or wherever feedback arrives (see your
 index) is an event that triggers work. It becomes a task (triaged per
 `zoe-feedback` when it is feedback) and is worked when due, like any other.
