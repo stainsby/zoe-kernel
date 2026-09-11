@@ -20,9 +20,8 @@ an enterprise so new there is nothing to read.
    skill; the agents the index says this enterprise
    runs are visible on the host. On a failure here — or no index at all — hand off to
    `zoe-setup`, which runs with a director, and record what was found. A limitation the
-   index already records as a known
-   weakness (for example, a host that cannot run separate agents) is not a failure — do
-   not re-flag it.
+   index already records as a known weakness (for example, a host that cannot run
+   separate agents) is not a failure — do not re-flag it.
 2. Read the clock — never assume the time.
    Every timestamp this session comes from it.
 3. Read your index; everything else is located through it.
@@ -34,7 +33,11 @@ an enterprise so new there is nothing to read.
    advancing the work itself waits for the hand-off.
 6. Read the log tail and identify any interrupted step, to resume it from state and log.
 7. Name the live trigger — a director request, an approved item, inbound feedback, a due
-   check — and hand off. Nothing due means report a short state summary and stop.
+   check — and from it the kind of session, asking only if you cannot tell.
+   A management session records that it has started in the log
+   before you hand off; a work session that finds management is needed records a planning
+   item and carries on. Nothing due means report a short state summary and stop — offering
+   a management session in that summary where one is due and this session may open it.
 
 ## Must obey
 
@@ -47,6 +50,5 @@ handed over — that belongs to the skill you handed it to.
 ## Hand off
 
 `zoe-setup` when the wiring check fails or the enterprise is blank; `zoe-run` for due
-work; `zoe-redesign` when the trigger opens a full cycle; the interrupted step's own
-skill when resuming; whatever a director's specific request needs, once the wiring
-check has passed.
+work; `zoe-redesign` in a management session; the interrupted step's own skill when
+resuming; whatever a director's specific request needs, once the wiring check has passed.
