@@ -68,18 +68,17 @@ References: a skill may keep longer reference material in a references/ subfolde
 Point to specific files from Required Reading — some hosts will not find the folder on
 their own.
 
-Do:
+Possible actions:
 - create: write a new file in this format; record where your skills are kept in your index
   if this is the first one. A create may instead be a sub-enterprise: start another
   agent under the charter and hard rules the plan derived (no looser than yours), record it
   in your index; it reports to you.
-- improve: write a new version; keep the old.
-- delete: remove it from your active skills; keep its file so it can be restored.
+- improve: write a new version
+- delete: remove it from your active skills
 - edit the enterprise instructions
 
 How: build the new version alongside the old, check it (does it fit the format? does its
-own check pass?), switch to it, keep the old for rollback. Never edit in place the file you
-are currently running on.
+own check pass?), switch to it. Never edit in place the file you are currently running on.
 
 Never: edit a `zoe-` skill or an instruction file; take a gated action that has not been
 approved.
