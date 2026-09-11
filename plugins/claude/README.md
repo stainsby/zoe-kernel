@@ -91,7 +91,7 @@ times are to repair a missing instruction file, to apply an approved kernel upgr
 write a third:
 `.zoe/instructions/zoe.instructions.md`, a pinned copy of the kernel's instructions, and
 `.zoe/VERSION`, the kernel version they and the plugin's skills came from. Where the
-enterprise has no instructions file of its own, it writes an empty one from the kernel's
+enterprise has no instructions file of its own, it writes an unfilled copy of the kernel's
 template as well, for `zoe-setup` to fill in with the director. The instruction file is what
 the enterprise reads and what its index points at; the version file is what its upgrade
 comparison starts from. Neither lives only in the plugin: a plugin update replaces the
@@ -131,7 +131,8 @@ asks the director before the instruction file and `VERSION` are rewritten (by ru
 `zoe-claude-init` again). And on Claude Code an update is the adopter's own act: Anthropic's
 documentation states that third-party marketplaces have auto-update disabled by default, and
 an update then happens only when the adopter turns it on for the marketplace, installs
-explicitly, or an administrator enables it in managed settings for the organisation. Cowork's documentation describes an **Update** control on a marketplace and says
+explicitly, or an administrator enables it in managed settings for the organisation. Cowork's
+documentation describes an **Update** control on a marketplace and says
 Cowork "checks for plugin updates", but does not say whether one can apply without the
 person's action; until it does, treat a Cowork plugin update as something to confirm with the
 director, not something that cannot happen unasked.

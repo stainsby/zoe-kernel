@@ -47,7 +47,8 @@ plugin — and it is not named as if it were. The kernel's upgrade skill compare
 with the plugin's own `VERSION` (at the plugin's root, beside its `CHANGELOG/`), reads the
 changelog entries between the two, and on the director's approval runs this skill again to
 write the new files. Two index lines follow from this, for setup to record: `where the kernel
-came from` is this plugin, and `where the kernel's changelog is` is `${CLAUDE_PLUGIN_ROOT}/CHANGELOG/`, which the host
+came from` is this plugin, and `where the kernel's changelog is` is
+`${CLAUDE_PLUGIN_ROOT}/CHANGELOG/`, which the host
 resolves to whichever plugin version is installed.
 
 What differs is only how the environment is told to load it:
@@ -71,7 +72,11 @@ If you cannot tell which you are, say so and ask, rather than guessing.
    confirm it is the enterprise's project root. Do not infer it from where a shell happens to
    be. If `.zoe/kernel/` already exists there, the enterprise was installed by the manual
    route with the whole kernel in the project, and this skill is not for it: stop and say so,
-   rather than writing a second instruction file beside the first.
+   rather than writing a second instruction file beside the first. If
+   `kernel/instructions/zoe.instructions.md` exists with no `kernel/skills/` beside it, the
+   enterprise is on the plugin layout of kernel 1.3.0: carry out the move the changelog's 1.4.0
+   entry describes — the file to `.zoe/instructions/`, the empty `kernel/` removed, the old
+   import line replaced — rather than writing a second copy beside the first.
 
 2. **See what instructions the workspace already has, and talk to the person about them.** It
    may carry its own — a `CLAUDE.md`, an `AGENTS.md`, anything either of them imports — written
@@ -184,7 +189,8 @@ If you cannot tell which you are, say so and ask, rather than guessing.
    ```
 
    Where step 4 added import lines, every one must print `RESOLVES` and none `DANGLING`, and
-   there must be **at least two** — the kernel's file and the enterprise's; where it added a project instruction, the check is that the person
+   there must be **at least two** — the kernel's file and the enterprise's; where it added a
+   project instruction, the check is that the person
    has confirmed it and that you have said the check rests on their word; where it added
    neither, the check is that the instruction file is in the workspace and complete. In every
    case `.zoe/VERSION` must exist and match the plugin's — the `diff` prints `VERSION-MATCHES`
