@@ -21,7 +21,8 @@ and write "not yet created".
   it, say here what the arrangement is.}
 - where feedback arrives: {where messages from people using your work come in. Write "none"
   if there is nowhere yet.}
-- schedule: {what "due" and "this cycle" mean here, and how often you run feedback and your
+- schedule: {what "due" and "this cycle" mean here, what triggers an assessment and what
+  triggers a redesign (they need not be the same), and how often you run feedback and your
   checks. Checking for a new kernel has its own line below.}
 - date and time: {the timezone to use — normally the director's — and the format. Always
   record the offset, like 2026-06-14T07:38:29+08:00, so times stay in order.}

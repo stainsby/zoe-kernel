@@ -86,6 +86,9 @@ Do, with a director, through negotiation:
   whatever its risks demand) and how often each runs. Where a strand genuinely cannot be made
   checkable, name it as a known blind spot rather than inventing a number. A director reviews
   this; weak or gameable measures here cap everything later.
+- Ask what triggers an assessment, and what triggers a redesign — they need not be the same,
+  since assess is cheap and read-only while redesign changes skills. Record both answers in the
+  index's `schedule` line.
 - Your index: fill in what is known now and you may write — the enterprise name, the
   schedule, the kernel version and upstream, and the director channel: the full route for
   approval, feedback, and direction, with the approval route explicit within it (you can
