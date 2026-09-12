@@ -30,7 +30,8 @@ where the brief said, and checkpoint. Repeat until nothing is due. Where the
 host has no second agent, you work every task yourself and nothing else
 changes.
 
-The brief, written fresh for each worker: when it was dispatched; the task
+The brief, written fresh for each worker: when it was dispatched, as a clock
+reading — a worker that cannot read a clock uses it as its time; the task
 text as written; its completion criterion; the charter's hard rules, and to
 stop and record rather than act on anything gated; where to write its record;
 what it may and may not change; and what to return.

@@ -18,3 +18,8 @@ Draft: at the cut this file is renamed to the version it introduces, and the **F
    one may occur) — the hand-off now defers to it instead of contradicting it.
    **What to do:** nothing, unless one of your own skills cites `zoe-run`'s hand-off — re-read
    those against the new wording.
+2. **The worker brief's dispatch time is a clock reading.** In the brief paragraph of
+   `kernel/skills/zoe-run/SKILL.md`, "when it was dispatched" becomes "when it was dispatched,
+   as a clock reading — a worker that cannot read a clock uses it as its time". One line added.
+   **What to do:** nothing, unless your dispatch procedure types or rounds the time into a
+   brief — paste the output of your index's clock command instead.
