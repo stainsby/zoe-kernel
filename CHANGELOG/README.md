@@ -13,6 +13,7 @@ How to read an entry:
 - **Files** — the machine-derived added / removed / changed delta under `kernel/` for that
   release. Trivial host-rendering churn (frontmatter reserialisation, etc.) is excluded from
   the delta and called out separately where it occurred.
+- **Size** — the kernel's size before and after, and why it grew where it did.
 - **Adopter notes** — what changed and why it matters, which files/sections to compare
   first, any migration steps, and whether any of *your own* skills' "Required Reading" of a
   core skill is affected.
@@ -37,11 +38,13 @@ back-story, internal evidence and adopter names were removed. In neither pass wa
 account of what changed in its release altered, and every **Files** and **Size** paragraph is
 as first published.
 
-Size figures are over the whole `kernel/` tree as `wc` reports them (lines / words / bytes);
-bytes are authoritative.
+Size figures are over the whole `kernel/` tree. Up to 1.4.0 they are lines / words / bytes as
+`wc` reports them, bytes authoritative; from 1.4.1 they are tokens (tiktoken `cl100k_base`)
+with bytes beside them as the cross-check, tokens authoritative.
 
 ## Releases, newest first
 
+- [1.4.1](1.4.1.md) — 1.4.0 → 1.4.1 (a work session does not open a management session by its own act; the worker brief's dispatch time is a clock reading)
 - [1.4.0](1.4.0.md) — 1.3.0 → 1.4.0 (work and management sessions; tasks go to workers; an enterprise instructions file; checks run by something other than the agent; the changelog is a directory; the plugin ships VERSION and the changelog)
 - [1.3.0](1.3.0.md) — 1.2.1 → 1.3.0 (test a check both ways; ZOE installs as a plugin)
 - [1.2.1](1.2.1.md) — 1.2.0 → 1.2.1 (the kernel now asks for the index fields the 1.2.0 template actually creates)
