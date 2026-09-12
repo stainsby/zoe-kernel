@@ -27,8 +27,12 @@ itself. You own the charter and approve the big calls; it does the rest.
 **In Claude Code or Cowork**, install ZOE as a plugin: add the marketplace
 `stainsby/zoe-plugins`, then install `zoe-kernel` from it. Plugins arrive
 switched off, so enable it in the project you want to run as an enterprise.
-Then ask Claude to set ZOE up: that writes the kernel's instructions into the
-workspace and wires them in. `plugins/claude/README.md` has the detail.
+Then ask Claude to set ZOE up: that writes a pinned copy of the kernel's
+instructions and its version into `.zoe/`, and adds an
+`enterprise.instructions.md` at the workspace root if you have none. In Claude
+Code it wires them in for you; in Cowork it hands you the lines to paste into
+the project's Instructions, the one part you do yourself.
+`plugins/claude/README.md` has the detail.
 
 **Anywhere else**, point your AI at the instruction file and the skills under
 `kernel/` and ask it how to proceed. Or get your AI to read *this* file and
@@ -57,15 +61,16 @@ A ZOE runs a continuous loop:
 
 ```mermaid
 flowchart LR
-    O((Orient)) --> R[Redesign]
+    O((Orient)) -. work session .-> N[Run]
+    O -. management session .-> R[Redesign]
     O -.-> SU[Setup/Upgrade]
     SU --> R
     R --> G{needs approval?}
     G -- no --> S[Reskill]
     G -- yes --> W([Gate])
     W -. approval .-> S
-    S --> N[Run]
-    N --> A[Assess]
+    S --> N
+    N -. management session .-> A[Assess]
     A -- report --> R
     classDef entry stroke-width:3px
     class O entry
@@ -85,14 +90,19 @@ flowchart LR
 - **Assess** — judge the results against the charter's definition of success,
   honestly, using a separate agent from the one that did the work.
 
+Not every session runs the whole loop. An ordinary *work session* orients and
+runs. Redesign, Gate, Reskill and Assess belong to a *management session*, and
+each ZOE's index records when such a session may open. So do upgrades, sending
+feedback upstream, and revising the charter.
+
 Deciding, doing, and judging are deliberately kept apart — the agent that
 does the work never gets to be the agent that certifies it.
 
 ### Self-improvement
 
-Improvement is the first thing each cycle does (*Redesign*). Each cycle,
-the ZOE redesigns its own skill set — creating skills it's missing,
-sharpening ones that underperform, and deleting any dead weight.
+Improvement is the first management step (*Redesign*): the ZOE redesigns
+its own skill set — creating skills it's missing, sharpening ones that
+underperform, and deleting any dead weight.
 
 ### Sub-ZOEs
 
