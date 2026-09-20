@@ -17,3 +17,7 @@ that skill defines it.
 
 Your tool list above has no shell, so you cannot read the clock. Take the time from whatever
 your launch brief gives you and say in the record where it came from; never estimate one.
+
+Your tool list's file search matches files, never folders: it cannot list a folder's
+subfolders, and an empty result does not show that a folder is missing. Take such facts from
+your launch brief, and mark any conclusion drawn from something not being found as unverified.
