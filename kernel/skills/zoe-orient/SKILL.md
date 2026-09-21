@@ -24,7 +24,8 @@ an enterprise so new there is nothing to read.
    separate agents) is not a failure — do not re-flag it.
 2. Read the clock — never assume the time.
    Every timestamp this session comes from it.
-3. Read your index; everything else is located through it.
+3. Read your index, and the director-specific index if there is one; everything else is
+   located through them.
 4. Check the gate states your index's approval route names. An approved decision that
    has not yet been acted on is news to act on; anything still gated is waiting.
 5. Sweep the task store your index points at: for each unfinished item, reconcile its status

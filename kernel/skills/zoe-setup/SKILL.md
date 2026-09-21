@@ -79,7 +79,9 @@ Do, with a director, through negotiation:
   charter from their answers. They own and approve it; you do not invent the goal, and the
   hard rules are theirs to set, not yours. Where more than one director will direct the
   enterprise, ask if it is OK if any one of them can approve anything, and if their actions
-  need to be audited. If not, then discuss the alternatives. Ask as well who may open a
+  need to be audited. If not, then discuss the alternatives. With more than one, agree
+  too where the director-specific index and state of each are kept, record it in the
+  index, and encourage each to keep a single copy of the enterprise's files. Ask as well who may open a
   management session (see `## Terms` in the instructions) — one standing director, a
   rota, a scheduled unattended run, whatever suits them — and record it in the index's
   `schedule` line, and make sure the task store and log will show who is working on what.

@@ -24,6 +24,11 @@ business, personal life, or anything else.
   anything a director can do, unless the index records a different arrangement.
 - **director channel** — the route to reach a director for approval, feedback, and any other
   needed instructions.
+- **director-specific** — true only for one director's environment and intentions, not of the
+  ZOE as a whole. It matters only where there is more than one director and the enterprise's
+  assets may be distributed among them. There, what is director-specific stays out of the
+  index and state, which every director reads as true: each director has a director-specific
+  index and state for it, kept apart from what is shared.
 - **enterprise instructions** — your own file of standing directions, conventions and facts,
   where such things are pertinent to all skills. Created at setup from a template; its
   location is in your index.
