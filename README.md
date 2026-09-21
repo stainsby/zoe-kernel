@@ -202,7 +202,10 @@ Treat them as workable examples, not part of the kernel proper — adapt them
 freely to your setup, or write your own for another host. They may move to a
 separate ZOE-related project in time.
 
-Currently, there is only one host example:
+Currently, there are two:
 
 - `hosts/claude-code/` — **Claude Code**, as CLI or VS Code extension. This is
   a thoroughly tested case.
+- `hosts/any-host/` — a start file, `AGENTS.md`, for the many agent tools that read
+  that convention, with notes on what to check on yours. New, and tried only by
+  reading trial, not yet by running an enterprise on it.

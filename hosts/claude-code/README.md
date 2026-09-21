@@ -150,6 +150,13 @@ That is the non-interactive form, and it is what a scheduled run uses. Interacti
 `claude` and say "run the ZOE cycle" — or, if the enterprise is new, simply ask it how to
 proceed, and `zoe-setup` will take over and interview you for the charter.
 
+## Alongside another host
+
+If the enterprise is also run from another tool, give that tool `hosts/any-host/AGENTS.md`,
+as that folder's README describes. Claude Code ignores an `AGENTS.md` once a `CLAUDE.md` is
+present, so the two do not collide, and both point at the same kernel. Claude Code does not
+look in `.agents/skills/`, so the skills are linked twice, once for each.
+
 ## Models
 
 How models are chosen is the kernel's rule, not this host's — see `## Models` in
