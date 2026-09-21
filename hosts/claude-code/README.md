@@ -154,9 +154,12 @@ proceed, and `zoe-setup` will take over and interview you for the charter.
 
 How models are chosen is the kernel's rule, not this host's — see `## Models` in
 `kernel/instructions/zoe.instructions.md`, and the enterprise's index for which model
-does which job. Host-specific part only: to override a tier for your setup, add
-`model:` to your copies (Claude Code accepts aliases — `opus`, `sonnet`, `haiku` —
-which age better than full names).
+does which job. Host-specific part only: Claude Code does not read `model-kind`. In the
+stubs it is a label naming the tier, and the model comes from the manager, which names the
+index's model for that tier when it launches the agent. An agent launched with no model
+named runs on the manager's own. To give an agent a model for that case, add `model:` to
+your copies (Claude Code accepts aliases — `opus`, `sonnet`, `haiku` — which age better
+than full names); a model the manager names at launch still wins.
 
 ## Workers
 

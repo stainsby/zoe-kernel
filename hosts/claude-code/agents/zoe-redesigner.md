@@ -15,9 +15,8 @@ records which route it uses. Without them, say so and stop.
 Then read the `zoe-redesign` skill, the charter and the index skill, and produce your plan as
 that skill defines it.
 
-Your tool list above has no shell, so you cannot read the clock. Take the time from whatever
-your launch brief gives you and say in the record where it came from; never estimate one.
-
-Your tool list's file search matches files, never folders: it cannot list a folder's
-subfolders, and an empty result does not show that a folder is missing. Take such facts from
-your launch brief, and mark any conclusion drawn from something not being found as unverified.
+If you have no shell, you cannot read the clock: take the time from your launch brief and say
+in the record where it came from; never estimate one. Nor can you list a folder — file search
+matches files, never folders, so an empty result does not show that a folder is missing. Take
+such facts from your launch brief, and mark any conclusion drawn from something not being
+found as unverified.
