@@ -35,7 +35,7 @@ and write "not yet created".
 - where the kernel's changelog is: {the list of what changed in each kernel version}
 - how often to check for a newer kernel: {see `zoe-upgrade`}
 - host packaging: {where the per-host files live — the stubs, README and settings that let a
-  particular AI platform run this}
+  particular AI platform run this. They sit beside the kernel, never inside it.}
 - which model does which job: {your skills ask for a kind of model, such as "heavy
   planning". Say which real model each kind means. See `## Models` in the instructions.}
 - agents this enterprise runs: {which ones, and where their definitions live}
