@@ -44,6 +44,7 @@ with bytes beside them as the cross-check, tokens authoritative.
 
 ## Releases, newest first
 
+- [1.5.0](1.5.0.md) — 1.4.1 → 1.5.0 (director-specific index and state; sessions record open and close; orient states the kind of session and greets a joining director; the kernel loses a sixth of its words)
 - [1.4.1](1.4.1.md) — 1.4.0 → 1.4.1 (a work session does not open a management session by its own act; the worker brief's dispatch time is a clock reading)
 - [1.4.0](1.4.0.md) — 1.3.0 → 1.4.0 (work and management sessions; tasks go to workers; an enterprise instructions file; checks run by something other than the agent; the changelog is a directory; the plugin ships VERSION and the changelog)
 - [1.3.0](1.3.0.md) — 1.2.1 → 1.3.0 (test a check both ways; ZOE installs as a plugin)
