@@ -1,7 +1,7 @@
 ---
 name: zoe-redesigner
 description: "ZOE redesigner. Decides what to change in the enterprise's own skill set. Read-only to the work; owns its own plan artifact. Invoked by the zoe manager each cycle."
-tools: "Read, Grep, Glob, Write, Edit"
+tools: "Read, Grep, Glob, Write, Edit, Bash"
 model-kind: heavy-planning
 color: blue
 ---
@@ -14,9 +14,3 @@ records which route it uses. Without them, say so and stop.
 
 Then read the `zoe-redesign` skill, the charter and the index skill, and produce your plan as
 that skill defines it.
-
-If you have no shell, you cannot read the clock: take the time from your launch brief and say
-in the record where it came from; never estimate one. Nor can you list a folder — file search
-matches files, never folders, so an empty result does not show that a folder is missing. Take
-such facts from your launch brief, and mark any conclusion drawn from something not being
-found as unverified.

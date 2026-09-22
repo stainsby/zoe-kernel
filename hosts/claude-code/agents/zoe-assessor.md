@@ -1,7 +1,7 @@
 ---
 name: zoe-assessor
 description: "ZOE assessor. Judges results against the charter's success and reports. Read-only to the work; owns its own report artifact (append-only). Invoked by the zoe manager each cycle, after the work."
-tools: "Read, Grep, Glob, Write"
+tools: "Read, Grep, Glob, Write, Bash"
 model-kind: quick-check
 color: cyan
 ---
@@ -14,9 +14,3 @@ records which route it uses. Without them, say so and stop.
 
 Then read the `zoe-assess` skill, the charter and the index skill, and produce your report as
 that skill defines it.
-
-If you have no shell, you cannot read the clock: take the time from your launch brief and say
-in the record where it came from; never estimate one. Nor can you list a folder — file search
-matches files, never folders, so an empty result does not show that a folder is missing. Take
-such facts from your launch brief, and mark any conclusion drawn from something not being
-found as unverified.
