@@ -18,9 +18,8 @@ and write "not yet created".
   read every session beside the kernel's instructions}
 - how to reach a director: {how you contact them for approval, feedback and instructions, and
   how they answer. You cannot run unattended until this is filled in.}
-- directors: {who they are — in general terms, or listed individually. Where there are
-  several, any one of them can do anything a director can do; if that is not how you want
-  it, say here what the arrangement is.}
+- directors: {who they are; where several, the arrangement if not "any one can do anything
+  a director can do"}
 - where feedback arrives: {where messages from people using your work come in. Write "none"
   if there is nowhere yet.}
 - schedule: {what "due" and "this cycle" mean here, what triggers an assessment and what
@@ -36,11 +35,10 @@ and write "not yet created".
 - where the kernel's changelog is: {the list of what changed in each kernel version}
 - how often to check for a newer kernel: {see `zoe-upgrade`}
 - host packaging: {where the per-host files live — the stubs, README and settings that let a
-  particular AI platform run this. They sit beside the kernel, never inside it.}
+  particular AI platform run this}
 - which model does which job: {your skills ask for a kind of model, such as "heavy
   planning". Say which real model each kind means. See `## Models` in the instructions.}
-- agents this enterprise runs: {which ones, and where their definitions live. Every session
-  starts by checking they are all there, so this line is what that check reads.}
+- agents this enterprise runs: {which ones, and where their definitions live}
 - running unattended: {whether this host can run this enterprise on a schedule with nobody
   present, and how it is started. Write "no" if it cannot.}
 - concurrency limit: {how many workers may run at once}
@@ -49,9 +47,8 @@ and write "not yet created".
   reported afresh every session.}
 - where state is kept: {what is currently true}
 - where the log is kept: {what has happened}
-- where tasks are kept: {they must survive a restart, be listable, carry a status and an
-  order — see `zoe-tasks`. Files, a database, an issue tracker: your choice, and if a
-  tracker is already in use, use it.}
+- where tasks are kept: {see `zoe-tasks` for what the store must provide; a tracker already
+  in use is the store}
 - where plans are kept: {redesign plans and the approvals they need, until the work is done}
 - where reports are kept: {assessments, added to and never edited}
 - where audit findings are kept:

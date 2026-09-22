@@ -3,8 +3,7 @@ name: zoe-tasks
 description: Understanding — what a task is, what any task store must provide, and how long work is decomposed. Read before planning, running, or checking work.
 ---
 
-> ZOE Core file — read-only. Do not edit. You can add dependent skills if you
-> need to specialise it.
+> ZOE Core file — read-only.
 
 This is an understanding skill: it is read for orientation, not run. Skills
 are your capabilities — the "how". Tasks are the work in flight — the "what".
@@ -12,9 +11,7 @@ are your capabilities — the "how". Tasks are the work in flight — the "what"
 ## What a task is
 
 A **task** is a unit of charter work with a durable home, a status, and a completion
-criterion. Write the most verifiable completion criterion you can (see `## Verification`
-in the instructions): a test, a logged outcome, a check that says objectively whether the
-task is done — not "seems finished".
+criterion — the most verifiable one you can write (`## Verification` in the instructions).
 
 ## What any task store must provide
 

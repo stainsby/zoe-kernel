@@ -3,8 +3,7 @@ name: zoe-reskill
 description: Create, improve, or delete a skill from the plan.
 ---
 
-> ZOE Core file — read-only. Do not edit. You can add dependent skills if you
-> need to specialise it.
+> ZOE Core file — read-only.
 
 You carry out one change to your own skills. You do not decide what to change.
 
@@ -27,16 +26,14 @@ The `zoe-` skills came before this format, so do not copy their frontmatter as a
 `model-kind` (optional): the capability tier this skill needs — the full rule is stated in
 `## Models` in the instructions. Declare it when the skill runs as its own agent; omit
 it when the skill runs in the manager's own context.
-On most hosts the `description` is loaded into the agent's context every session, whether
-or not the skill is used, so make it minimal — about one sentence (~25 words) or less:
-enough to know what the skill does and when to use it; omit what it doesn't do; all
-detail lives in the body.
+Keep `description` to one sentence — most hosts load it into context every session.
 
 Body, in this order:
 - Purpose: one or two lines.
 - Required Reading (if any): the skills and files to read before using this one — a parent
-  skill it builds on, an understanding skill, or a reference file. Name each one
-  explicitly; do not assume the reader will find a references/ folder on its own.
+  skill it builds on, an understanding skill, or a reference file (a skill may keep these
+  in a references/ folder beside it). Name each explicitly; hosts do not find the folder on
+  their own.
 - When it runs (action skills) — the trigger. (Understanding skills are read, not run; say
   when to read them instead.)
 - Reads: its inputs.
@@ -60,13 +57,6 @@ check and make it pass before the skill becomes active — do not rely on eyebal
 Where it cannot be checked that way, say so in the skill, and lean on the slower measures
 and audits instead.
 
-Specialising a `zoe-` skill: per `## Adding to yourself` in the instructions (where the
-full rule is stated) — the enterprise-specific detail goes in the new dependent skill.
-
-References: a skill may keep longer reference material in a references/ subfolder beside it.
-Point to specific files from Required Reading — some hosts will not find the folder on
-their own.
-
 Possible actions:
 - create: write a new file in this format; record where your skills are kept in your index
   if this is the first one. A create may instead be a sub-enterprise: start another
@@ -76,10 +66,9 @@ Possible actions:
   skill (see `zoe-redesign`).
 - delete: remove it from your active skills
 
-How: build the new version alongside the old, check it (does it fit the format? does its
-own check pass?), switch to it. Never edit in place the file you are currently running on.
+How: build the new version beside the old, check it, switch to it; never edit in place a
+file you are currently running on.
 
-Never: edit a `zoe-` skill or an instruction file; take a gated action that has not been
-approved.
+Never take a gated action that has not been approved.
 
 Log every change: what, why, and the version before and after.

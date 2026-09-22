@@ -3,8 +3,7 @@ name: zoe-feedback
 description: Send the feedback you have gathered upstream, on the schedule your index sets. Also holds how feedback arriving from others is triaged.
 ---
 
-> ZOE Core file — read-only. Do not edit. You can add dependent skills if you
-> need to specialise it.
+> ZOE Core file — read-only.
 
 ## Upstream
 

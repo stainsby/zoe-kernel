@@ -3,8 +3,7 @@ name: zoe-run
 description: Execute the tasks and scheduled activities that are due, on schedule or on an event.
 ---
 
-> ZOE Core file — read-only. Do not edit. You can add dependent skills if you
-> need to specialise it.
+> ZOE Core file — read-only.
 
 Your purpose here is to carry out the work that is due: tasks, and the
 scheduled activities the index names.
@@ -14,21 +13,18 @@ Read: your skills, your state, and where your index says tasks are kept
 
 Do: work each task that is due, and carry out each scheduled activity the
 index says is due — an audit, a measure, a check — using the skill that owns
-it. Record what each produced — including failures and partial results — to
-your state and log, and record each task's status change in that store
-as you act, not afterwards. Record resource usage against the charter's
-constraints as you act; an action that would breach one is gated. Estimate
-material costs before acting: a cost you cannot estimate is unknown, and the
-action is gated wherever the unknown could plausibly breach a constraint.
+it. Record what each produced, failures and partial results included, and
+each status change, in the task store and your state as you act. Track usage
+against the charter's constraints; estimate material costs before acting,
+and an action whose cost you cannot estimate is gated wherever the unknown
+could plausibly breach a constraint.
 
 Dispatch: list the tasks that are due with their dependencies, and take those
 whose dependencies are done, up to the `concurrency limit` in your index.
 Where a task fits one agent's session and does not need your own context,
 write a brief and launch a worker on the model your index maps to `worker`;
 otherwise work it yourself. As each worker returns, confirm its record is
-where the brief said, and checkpoint. Repeat until nothing is due. Where the
-host has no second agent, you work every task yourself and nothing else
-changes.
+where the brief said, and checkpoint. Repeat until nothing is due.
 
 The brief, written fresh for each worker: when it was dispatched, as a clock
 reading — a worker that cannot read a clock uses it as its time; the task
@@ -42,13 +38,10 @@ index) is an event that triggers work. It becomes a task (triaged per
 
 Tools: when work in hand must act on the outside world and no tool recorded
 in your index covers it, acquire one and record how to reach it in the index.
-If acquiring or first using a tool would do something the charter's hard
-rules gate, get approval first.
 
 Obey: check the charter's hard rules at the moment of acting, not only when
-planning. If you are about to do something gated and unapproved, do not do it:
-record the request and move to work that does not depend on it (see
-`## Stop and ask a director when` in the instructions).
+planning; anything gated and unapproved waits (`## Stop and ask a director
+when` in the instructions).
 
 Hand off: where an assessment is due, the results go to assess (`zoe-assess`) — in this
 session if it is already a management session, otherwise in the next one, which opens only as

@@ -21,8 +21,7 @@ where in a cycle it came up. Reference your log if relevant.>
 
 ## Suggested change (optional)
 
-<If you have one — but the maintainer judges; a clear problem is more useful
-than a shaky fix.>
+<If you have one.>
 
 ## Confidence
 
