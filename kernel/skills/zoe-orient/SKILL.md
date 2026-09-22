@@ -32,11 +32,14 @@ an enterprise so new there is nothing to read.
    against its completion criterion and its evidence, not against memory. Record what you
    change in the store as you act. Flag any contradictions. Correct the record only;
    advancing the work itself waits for the hand-off.
-6. Read the log tail and identify any interrupted step, to resume it from state and log.
+6. Read the log tail and identify any interrupted step, to resume it from state and log —
+   and any session still open there (see `## Terms` in the instructions), whose
+   management-grade work you leave alone.
 7. Name the live trigger — a director request, an approved item, inbound feedback, a due
-   check — and from it the kind of session, asking only if you cannot tell.
-   A management session records that it has started in the log
-   before you hand off; a work session that finds management is needed records a planning
+   check — and from it the kind of session. State both to the director if one is present,
+   before you hand off, so they can choose otherwise; ask only if you cannot tell.
+   Record in the log that this session has opened, which director and which kind, before
+   you hand off; a work session that finds management is needed records a planning
    item and carries on. Nothing due means report a short state summary and stop — offering
    a management session in that summary where one is due and this session may open it.
 

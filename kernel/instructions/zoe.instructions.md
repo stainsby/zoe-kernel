@@ -46,6 +46,10 @@ business, personal life, or anything else.
 - **management session** — a session that does the ZOE's own management — its records, plans,
   checks and skills.
   Your index should list the circumstances under which a management session can occur.
+  Every session, of either kind, records in the log that it has opened — which director,
+  which kind — and that it has closed; a session with no close on record is open, and
+  another session does no management-grade writing until it is closed or a director says
+  it was abandoned.
 - **required reading (in a skill)** — what to read before using the skill.
 - **state** — your record of what is currently true for this ZOE.
 - **task** — a unit of work in this ZOE (see `zoe-tasks`).
