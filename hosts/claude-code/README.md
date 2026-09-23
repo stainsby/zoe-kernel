@@ -124,16 +124,17 @@ done
 m=0
 for l in .claude/skills/*; do
   [ -L "$l" ] || continue
-  m=$((m+1)); [ -e "$l" ] || echo "DANGLING: $l"
+  [ -e "$l" ] || { echo "DANGLING: $l"; continue; }
+  case "$(readlink -f "$l")" in */kernel/skills/*) m=$((m+1));; esac
 done
-[ "$m" -gt 0 ] || echo "FAIL no skills linked into .claude/skills/"
-echo "checked $n import line(s), $m skill link(s)"
+[ "$m" -gt 0 ] || echo "FAIL no kernel skills linked into .claude/skills/"
+echo "checked $n import line(s), $m kernel skill link(s)"
 ```
 
 It must print no `FAIL` and no `DANGLING`, and the last line must read `checked 1 import
-line(s), N skill link(s)`, where N is the number of skills the kernel ships — check it with
+line(s), N kernel skill link(s)`, where N is the number of skills the kernel ships — check it with
 `ls -d kernel/skills/*/ | wc -l` rather than trusting a number written here, which ages every
-time the kernel gains a skill. **The counts are the point, not decoration.** A check that only
+time the kernel gains a skill. Links to your own skills are checked for dangling but not counted. **The counts are the point, not decoration.** A check that only
 inspects what it finds passes silently when it finds nothing — which is exactly what happens
 if you were merging into an existing `CLAUDE.md` and the merge got missed. Claude Code gives
 no warning when an `@` import points at nothing, or when there is no import at all: it

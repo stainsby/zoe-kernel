@@ -191,7 +191,8 @@ If you cannot tell which you are, say so and ask, rather than guessing.
    ```
 
    Where step 4 added import lines, every one must print `RESOLVES` and none `DANGLING`, and
-   there must be **at least two** — the kernel's file and the enterprise's; where it added a
+   among them must be the two step 4 wrote — the kernel's `zoe.instructions.md` under `.zoe/`
+   and `enterprise.instructions.md` — other files' lines count for neither; where it added a
    project instruction, the check is that the person
    has confirmed it and that you have said the check rests on their word; where it added
    neither, the check is that the instruction file is in the workspace and complete. In every
