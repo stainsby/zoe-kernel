@@ -132,10 +132,11 @@ echo "checked $n import line(s), $m kernel skill link(s)"
 ```
 
 It must print no `FAIL` and no `DANGLING`, and the last line must read `checked 1 import
-line(s), N kernel skill link(s)`, where N is the number of skills the kernel ships — check it with
-`ls -d kernel/skills/*/ | wc -l` rather than trusting a number written here, which ages every
-time the kernel gains a skill. Links to your own skills are checked for dangling but not counted. **The counts are the point, not decoration.** A check that only
-inspects what it finds passes silently when it finds nothing — which is exactly what happens
+line(s), N kernel skill link(s)`, where N is the number of skills the kernel ships — check
+it with `ls -d kernel/skills/*/ | wc -l` rather than trusting a number written here, which
+ages every time the kernel gains a skill. Links to your own skills are checked for dangling
+but not counted. **The counts are the point, not decoration.** A check that only inspects
+what it finds passes silently when it finds nothing — which is exactly what happens
 if you were merging into an existing `CLAUDE.md` and the merge got missed. Claude Code gives
 no warning when an `@` import points at nothing, or when there is no import at all: it
 carries on without the kernel instructions, and the enterprise looks like it started
