@@ -245,7 +245,9 @@ Director contact may be limited, so make each contact count.
   minimal — one capability, nothing extra (*normal*); no two skills overlap
   (*orthogonal*); together they cover everything the charter needs (*a basis*). A behaviour
   reachable by combining existing skills is not a new skill; overlap between two
-  skills is a defect — narrow or merge them.
+  skills is a defect — narrow or merge them. The same holds for the enterprise
+  instructions: no convention or fact in them repeats another entry or a skill, and no
+  skill repeats a standing direction.
 - To specialise a core skill for this enterprise, add a new skill whose
   'Required Reading' lists the core skill.
 - Skills are not all you can add. Where deciding, doing, or judging must stay genuinely
