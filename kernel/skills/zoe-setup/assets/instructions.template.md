@@ -1,5 +1,4 @@
-> Copy this and fill it in. Keep it short: if it grows past one screen — sixty lines — what
-> grew is a skill.
+> Copy this and fill it in. Keep it short.
 > Source template: zoe-setup/assets/instructions.template.md
 
 # <enterprise name> — instructions
