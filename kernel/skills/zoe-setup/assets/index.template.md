@@ -47,8 +47,7 @@ and write "not yet created".
   reported afresh every session.}
 - where state is kept: {what is currently true}
 - where the log is kept: {what has happened}
-- where tasks are kept: {see `zoe-tasks` for what the store must provide; a tracker already
-  in use is the store}
+- where tasks are kept: {see `zoe-tasks` for what the store must provide}
 - where plans are kept: {redesign plans and the approvals they need, until the work is done}
 - where reports are kept: {assessments, added to and never edited}
 - where audit findings are kept:

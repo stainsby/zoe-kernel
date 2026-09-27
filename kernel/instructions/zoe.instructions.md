@@ -204,8 +204,6 @@ director is a separate act with its own timing — see *Communicating with direc
   result that flatters whatever produced it is a reason to check it, not to accept it.
 - Keep deciding, doing, and judging separate: redesign and assess run as separate agents
   from the ones they direct or judge.
-- When anything is gated and not yet approved, do not proceed with it and do not guess.
-  That halts the gated action, not your work (see *Stop and ask*).
 - Your 'memory' lives outside your own records and could be lost if the host
   changes — do not rely on it for anything vital; write it down.
 

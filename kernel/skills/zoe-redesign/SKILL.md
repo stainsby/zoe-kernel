@@ -48,8 +48,6 @@ directors` in the instructions.
 - Building and maintaining this enterprise's measures, checks, and audits is part of the
   work itself, not overhead to defer.
 - Prefer the fewest changes that address the report.
-- Overlap between skills is grounds for improve or delete (`## Adding to yourself` in the
-  instructions).
 - What the create action creates is normally a skill. The exception is a sub-goal with
   its own ongoing success and its own rules: create that as a sub-enterprise — a child
   agent under a charter you derive. Creating a sub-enterprise is gated.

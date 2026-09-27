@@ -47,8 +47,7 @@ Produce a report:
 - Overhead: roughly what share of this cycle's effort went on managing
   yourself (planning, changing skills, checking) rather than on the charter's
   work. If self-management dominates for several cycles running, say so.
-- Overdue: anything past its schedule without being checked. In particular, if the index
-  sets a checking schedule (the full rule is in `zoe-upgrade`) and it has not been
-  honoured since `last upgrade check`, raise an overdue finding.
+- Overdue: anything past its schedule without being checked — the upgrade-checking
+  schedule included, by the rule in `zoe-upgrade`.
 
 Hand off: the report goes to redesign (`zoe-redesign`).

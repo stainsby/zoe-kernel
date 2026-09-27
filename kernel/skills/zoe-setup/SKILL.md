@@ -68,12 +68,11 @@ Do, with a director, through negotiation:
   taken, and the independent audits the enterprise needs and their schedules; a blind spot
   is named, not given a number. A director reviews this — weak or gameable measures here
   cap everything later.
-- Ask what triggers an assessment, and what triggers a redesign — they need not be the same.
+- Ask what triggers an assessment, and what triggers a redesign.
   Record both answers in the index's `schedule` line.
-- Your index: fill in what is known now — the enterprise name, the schedule, the kernel
-  version and upstream, the director channel with its approval route explicit, where
-  feedback arrives (a real route, or "none"); leave the rest for the cycle to fill as it
-  creates things.
+- Your index: fill in what is known now — the enterprise name, the schedule, upstream, the
+  director channel with its approval route explicit, where feedback arrives; leave the rest
+  for the cycle to fill as it creates things.
 - Upgrade-checking: ask for a schedule or a deliberate "no" (`zoe-upgrade` says what it
   covers), record it in the index, and record the setup date in state as `last upgrade
   check`.

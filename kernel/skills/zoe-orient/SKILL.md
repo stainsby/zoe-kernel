@@ -41,9 +41,7 @@ enterprise so new there is nothing to read.
 
 ## Must obey
 
-Anything gated and unapproved halts that item only (`## Stop and ask a director when` in
-the instructions). This skill ends at the hand-off; the work belongs to the skill you
-handed it to.
+This skill ends at the hand-off; the work belongs to the skill you handed it to.
 
 ## Hand off
 

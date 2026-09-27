@@ -23,9 +23,6 @@ anything — recorded in the index under `where tasks are kept`. Whatever it is,
 - **tracked** — each task shows where it stands;
 - **ordered** — it supports ordering and dependencies between tasks.
 
-An enterprise that already tracks its work somewhere inherits that store at setup; adopt
-it, do not replace it.
-
 ## Working tasks
 
 - **Decomposition**: a task too large or complex for one session is broken into sub-tasks

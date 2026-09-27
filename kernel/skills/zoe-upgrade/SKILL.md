@@ -33,12 +33,9 @@ Do:
 - On approval: replace your kernel files whole with the new ones — never
   merge or hand-edit them — and update `kernel version` in your index.
 - After swapping kernel files, call `zoe-reconcile` to bring the enterprise's structure up
-  to the new kernel's shape; it follows the changelog span's migration steps and touches
-  only structure, never the charter content.
+  to the new kernel's shape.
 - Reset `last upgrade check` in state to now, whether the check ran or was declined.
 - Tell the enterprises below you (see your index) an upgrade is available. Each
   gates its own adoption; do not push it on them.
-
-Never: adopt a kernel without approval.
 
 Hand off: findings go to redesign (`zoe-redesign`).
