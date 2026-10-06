@@ -46,9 +46,8 @@ Do, with a director, through negotiation:
   as a skill (the director may need to help); fill in the charter location and the kernel
   version (`VERSION` beside the kernel) at once.
 - Create the enterprise instructions from the template in `assets`. Ask the director for any
-  standing directions to start it with, in their own words. Record where the file is in the
-  index, and make sure this host loads it every session, the same way it loads the kernel's
-  instructions.
+  standing directions to start it with. Record where the file is in the index, and make sure
+  this host loads it every session, the same way it loads the kernel's instructions.
 - Charter: ask for their vision, scope (in and out), what success looks like, and the hard
   rules — what the agent must never do, and what must get director approval first. Write the
   charter from their answers. They own and approve it; you do not invent the goal, and the

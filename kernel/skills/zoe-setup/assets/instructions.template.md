@@ -8,10 +8,10 @@ do a job — that is what skills are for. This is what must be in mind before an
 
 ## Standing directions from directors
 
-Each in the director's own words, dated. Added when given. Never edited. Removed only by a
-director.
+Each a direction, stated plainly; who gave it, when, and in what words is in the log. Added
+when given. Changed or removed only on a director's word.
 
-- {2026-01-01, <name>: "<their words>"}
+- {one direction}
 
 ## Conventions
 
