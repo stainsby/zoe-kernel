@@ -19,7 +19,9 @@ Do:
   the template now carries, apply the renames the changelog names (carrying the filled-in
   values across), and create any state stores the kernel now expects. Never drop, rename,
   or rewrite template sections beyond what the changelog names.
-- Follow the migration steps in each changelog entry in the span.
+- Follow the migration steps in each changelog entry in the span. Where a step depends on
+  something a director decides — how many directors, machines or hosts — put each case and
+  its consequence to a director, and ask which applies; never settle it from the records.
 - Check that every instruction file the host loads exists, following from the first file
   it reads through every file each names in turn; a broken pointer is a defect to fix now
   and record.
