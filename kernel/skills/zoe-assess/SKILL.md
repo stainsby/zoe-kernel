@@ -18,7 +18,7 @@ one, never change a past one.
 Read: the charter's success and the measures derived from it; the results
 from run (`zoe-run`); the latest findings of any audits you have set up; your
 state and log (for trends); your list of skills; where your index says tasks are kept
-(see `zoe-tasks`); the checking schedule
+(see `zoe-tasks`); the checking schedule in your index
 and `last upgrade check` in your state (to judge whether a check is overdue).
 
 Produce a report:
