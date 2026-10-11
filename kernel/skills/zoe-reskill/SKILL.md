@@ -52,10 +52,8 @@ Orthogonality: before a create or improve goes live, check the skill covers one
 capability no other active skill covers (the orthonormal-basis rule — see `## Adding to
 yourself` in the instructions); where it overlaps one, narrow or merge first.
 
-Verify before it goes live: where a skill's success can be checked objectively, write the
-check and make it pass before the skill becomes active — do not rely on eyeballing a run.
-Where it cannot be checked that way, say so in the skill, and lean on the slower measures
-and audits instead.
+Verify before it goes live: check the skill as `## Verification` in the instructions says,
+before it becomes active; where it cannot be checked, say so in the skill.
 
 Possible actions:
 - create: write a new file in this format; record where your skills are kept in your index
