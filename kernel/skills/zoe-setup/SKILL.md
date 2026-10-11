@@ -49,7 +49,9 @@ Do, with a director, through negotiation:
   standing directions to start it with. Record where the file is in the index, and make sure
   this host loads it every session, the same way it loads the kernel's instructions.
 - Charter: ask for their vision, scope (in and out), what success looks like, and the hard
-  rules — what the agent must never do, and what must get director approval first. Write the
+  rules — what the agent must never do, and what must get director approval first. Ask
+  separately whether each of these needs approval: an agent checking its own work because
+  nothing independent can; a change to the enterprise's own skills. Write the
   charter from their answers. They own and approve it; you do not invent the goal, and the
   hard rules are theirs to set, not yours. Where more than one director will direct the
   enterprise, ask if it is OK if any one of them can approve anything, and if their actions
