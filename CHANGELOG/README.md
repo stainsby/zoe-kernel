@@ -44,6 +44,7 @@ with bytes beside them as the cross-check, tokens authoritative.
 
 ## Releases, newest first
 
+- [1.5.3](1.5.3.md) — 1.5.2 → 1.5.3 (what counts as a check; what counts as an instruction; setup asks two approval questions)
 - [1.5.2](1.5.2.md) — 1.5.1 → 1.5.2 (standing directions plain, the director's words in the log; reconcile asks a director where a migration step turns on their decision)
 - [1.5.1](1.5.1.md) — 1.5.0 → 1.5.1 (two rules 1.5.0 dropped are back; the enterprise instructions lose their line limit and join the orthonormality rule; repeated statements cut)
 - [1.5.0](1.5.0.md) — 1.4.1 → 1.5.0 (director-specific index and state; sessions record open and close; orient states the kind of session and greets a joining director; the kernel loses a sixth of its words)
