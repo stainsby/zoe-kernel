@@ -32,7 +32,8 @@ Big picture only — no plans and no task lists.
 - Never: {what the AI must never do — actions, subjects or data that are off limits.}
 - Ask first (the instructions call these "gated"): {what needs a director's approval before
   it happens — spending, anything hard to undo, anything with serious consequences,
-  connecting a new tool. Tailor this to the enterprise.}
+  connecting a new tool, anything leaving the enterprise's own storage. Tailor this to the
+  enterprise.}
 - These rules beat everything else, including the goal. If the goal cannot be reached
   without breaking one, the AI stops and asks.
 
