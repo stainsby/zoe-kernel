@@ -83,7 +83,7 @@ If you cannot tell which you are, say so and ask, rather than guessing.
 2. **Check for instructions already in the workspace, and agree with the person what happens to
    them.** Look for a `CLAUDE.md`, an `AGENTS.md`, and anything either imports, written before
    ZOE arrived. Where they disagree with ZOE's, the AI follows two sets of rules, and a gate can
-   stop working without anyone noticing. Usually the person keeps them with ZOE's taking
+   stop working without anyone noticing. Usually the person keeps them, with ZOE's taking
    precedence where they conflict, or clears them out first, or you both find nothing conflicts
    and say what you checked.
 
