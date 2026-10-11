@@ -80,25 +80,16 @@ If you cannot tell which you are, say so and ask, rather than guessing.
    has run, set `.zoe/VERSION` back to `1.3.0`, the version they were on, so the upgrade skill
    reads the whole span rather than the plugin's own version.
 
-2. **See what instructions the workspace already has, and talk to the person about them.** It
-   may carry its own — a `CLAUDE.md`, an `AGENTS.md`, anything either of them imports — written
-   for whatever it was doing before ZOE arrived. Read them, and raise what you find.
+2. **Check for instructions already in the workspace, and agree with the person what happens to
+   them.** Look for a `CLAUDE.md`, an `AGENTS.md`, and anything either imports, written before
+   ZOE arrived. Where they disagree with ZOE's, the AI follows two sets of rules, and a gate can
+   stop working without anyone noticing. Usually the person keeps them with ZOE's taking
+   precedence where they conflict, or clears them out first, or you both find nothing conflicts
+   and say what you checked.
 
-   This is a conversation, not a form to fill in. The ZOE instructions order the charter,
-   themselves, the skills and your own judgement; they say nothing about instructions that were
-   already here, because the kernel cannot know what those are. So there is no rule for you to
-   apply — and two sets of standing directions that quietly disagree is how a gate stops being
-   enforced without anyone noticing. Work out together what should happen.
-
-   These are the shapes such a conversation usually takes, offered as a starting point rather
-   than a menu: the old instructions stay and ZOE's take precedence where they conflict; the old
-   ones are cleared out first; or you both satisfy yourselves that nothing really conflicts, in
-   which case say what you checked.
-
-   Two things are yours rather than theirs. **Delete nothing yourself.** And **say plainly if
-   anything already there would weaken a gate** — a direction to act without asking, to skip
-   approval, to push or publish unprompted; that belongs in the conversation whether or not they
-   raise it. Record whatever you settle on, so a later session is not left guessing.
+   **Delete nothing yourself.** **Say plainly if anything already there would weaken a gate** —
+   a direction to act without asking, to skip approval, to push or publish unprompted. Record
+   what you agree, so a later session is not left guessing.
 
 3. **Put the instruction file and `VERSION` in the workspace.** Where you can run commands:
 
