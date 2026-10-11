@@ -48,6 +48,10 @@ Do, with a director, through negotiation:
 - Create the enterprise instructions from the template in `assets`. Ask the director for any
   standing directions to start it with. Record where the file is in the index, and make sure
   this host loads it every session, the same way it loads the kernel's instructions.
+- Ask whether records should quote a director's words exactly, or only say what they
+  decided or asked. A quote lets a later reader check that what was said was recorded
+  faithfully, but where there are several directors, each one's words are read by the rest.
+  Not quoting is the default. Record the answer in the index.
 - Charter: ask for their vision, scope (in and out), what success looks like, and the hard
   rules — what the agent must never do, and what must get director approval first. Ask
   separately whether each of these needs approval: an agent checking its own work because

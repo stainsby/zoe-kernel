@@ -20,6 +20,8 @@ and write "not yet created".
   how they answer. You cannot run unattended until this is filled in.}
 - directors: {who they are; where several, the arrangement if not "any one can do anything
   a director can do"}
+- quote directors: {"yes" if records quote a director's words exactly, "no" if they only say
+  what was decided or asked. "no" unless a director chooses otherwise.}
 - where feedback arrives: {where messages from people using your work come in. Write "none"
   if there is nowhere yet.}
 - schedule: {what "due" and "this cycle" mean here, what triggers an assessment and what

@@ -8,7 +8,7 @@ do a job — that is what skills are for. This is what must be in mind before an
 
 ## Standing directions from directors
 
-Each a direction, stated plainly; who gave it, when, and in what words is in the log. Added
+Each a direction, stated plainly; who gave it and when is in the log. Added
 when given. Changed or removed only on a director's word.
 
 - {one direction}
