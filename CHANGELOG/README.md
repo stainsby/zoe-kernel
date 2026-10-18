@@ -44,6 +44,7 @@ with bytes beside them as the cross-check, tokens authoritative.
 
 ## Releases, newest first
 
+- [1.6.0](1.6.0.md) — 1.5.4 → 1.6.0 (several directors in one session; orient reads the index before the clock)
 - [1.5.4](1.5.4.md) — 1.5.3 → 1.5.4 (setup asks whether to quote directors; the default is not to)
 - [1.5.3](1.5.3.md) — 1.5.2 → 1.5.3 (what counts as a check; what counts as an instruction; setup asks two approval questions)
 - [1.5.2](1.5.2.md) — 1.5.1 → 1.5.2 (standing directions plain, the director's words in the log; reconcile asks a director where a migration step turns on their decision)
