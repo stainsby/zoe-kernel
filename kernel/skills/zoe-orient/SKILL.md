@@ -16,10 +16,10 @@ enterprise so new there is nothing to read.
    skill; the agents the index says this enterprise
    runs are visible on the host. On a failure here — or no index at all — hand off to
    `zoe-setup`, which runs with a director, and record what was found.
-2. Read the clock, in the timezone your index records; every timestamp this session
-   comes from it.
-3. Read your index, and the director-specific index if there is one; everything else is
-   located through them. Where the index says directors keep director-specific records and
+2. Read your index, and the director-specific index if there is one; everything else is
+   located through them. Then read the clock, in the timezone the index records; every
+   timestamp this session comes from it.
+3. Where the index says directors keep director-specific records and
    none are here, ask who is present. If they are one of the index's directors, they are
    working in a new copy of the files: create their director-specific index and state, and
    go on. If they are not, they become one only as the index's `directors` line allows. If
