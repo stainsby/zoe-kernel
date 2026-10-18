@@ -20,10 +20,11 @@ enterprise so new there is nothing to read.
    comes from it.
 3. Read your index, and the director-specific index if there is one; everything else is
    located through them. Where the index says directors keep director-specific records and
-   none are here, enquire: ask who is present. Among the index's directors, they are working
-   in a new copy of the files: create their director-specific index and state and go on. Not
-   among them, they have just joined: add them, create their records, and record in the log
-   that they joined and when, so every other director sees it.
+   none are here, ask who is present. If they are one of the index's directors, they are
+   working in a new copy of the files: create their director-specific index and state, and
+   go on. If they are not, they become one only as the index's `directors` line allows. If
+   they do, add them, create their records, and log that they joined and when, so that every
+   other director sees it.
 4. Check the gate states your index's approval route names. An approved decision that
    has not yet been acted on is news to act on; anything still gated is waiting.
 5. Sweep the task store your index points at: reconcile each unfinished item's status
@@ -33,9 +34,9 @@ enterprise so new there is nothing to read.
    and any session still open there (see `## Terms` in the instructions), whose
    management-grade work you leave alone.
 7. Name the live trigger — a director request, an approved item, inbound feedback, a due
-   check — and from it the kind of session. State both to the director if one is present,
+   check — and from it the kind of session. State both to any director present,
    before you hand off, so they can choose otherwise; ask only if you cannot tell.
-   Record in the log that this session has opened, which director and which kind, before
+   Record in the log that this session has opened, which channel and which kind, before
    you hand off; a work session that finds management is needed records a planning
    item and carries on. Nothing due means report a short state summary and stop — offering
    a management session in that summary where one is due and this session may open it.

@@ -16,10 +16,12 @@ and write "not yet created".
 - where the charter is: {the file or place holding it}
 - where the enterprise instructions are: {your own standing directions, conventions and facts,
   read every session beside the kernel's instructions}
-- how to reach a director: {how you contact them for approval, feedback and instructions, and
-  how they answer. You cannot run unattended until this is filled in.}
-- directors: {who they are; where several, the arrangement if not "any one can do anything
-  a director can do"}
+- how to reach a director: {how you contact them for approval, feedback and instructions, how
+  they answer, and how each director is identified there (for example, the host's sign-in).
+  You cannot run unattended until this is filled in.}
+- directors: {who they are, or how someone becomes one (for example, anyone with access to a
+  named channel); where several, the arrangement if not "any one can do anything a director
+  can do"}
 - quote directors: {"yes" if records quote a director's words exactly, "no" if they only say
   what was decided or asked. "no" unless a director chooses otherwise.}
 - where feedback arrives: {where messages from people using your work come in. Write "none"

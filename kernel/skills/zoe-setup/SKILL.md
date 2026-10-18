@@ -58,8 +58,9 @@ Do, with a director, through negotiation:
   nothing independent can; a change to the enterprise's own skills. Write the
   charter from their answers. They own and approve it; you do not invent the goal, and the
   hard rules are theirs to set, not yours. Where more than one director will direct the
-  enterprise, ask if it is OK if any one of them can approve anything, and if their actions
-  need to be audited. If not, then discuss the alternatives. With more than one, agree
+  enterprise, ask how someone becomes one, if it is OK if any one of them can approve
+  anything, and if their actions need to be audited. If not, then discuss the
+  alternatives. With more than one, agree
   too where the director-specific index and state of each are kept, record it in the
   index, and encourage each to keep a single copy of the enterprise's files. Ask as well who may open a
   management session (see `## Terms` in the instructions) — one standing director, a
@@ -76,8 +77,8 @@ Do, with a director, through negotiation:
 - Ask what triggers an assessment, and what triggers a redesign.
   Record both answers in the index's `schedule` line.
 - Your index: fill in what is known now — the enterprise name, the schedule, upstream, the
-  director channel with its approval route explicit, where feedback arrives; leave the rest
-  for the cycle to fill as it creates things.
+  director channel with its approval route explicit and how each director is identified on
+  it, where feedback arrives; leave the rest for the cycle to fill as it creates things.
 - Upgrade-checking: ask for a schedule or a deliberate "no" (`zoe-upgrade` says what it
   covers), record it in the index, and record the setup date in state as `last upgrade
   check`.

@@ -32,8 +32,8 @@ text as written; its completion criterion; the charter's hard rules, and to
 stop and record rather than act on anything gated; where to write its record;
 what it may and may not change; and what to return.
 
-Events: an item arriving on the director channel or wherever feedback arrives (see your
-index) is an event that triggers work. It becomes a task (triaged per
+Events: a director's item on the director channel, or an item where feedback arrives (see
+your index), is an event that triggers work. It becomes a task (triaged per
 `zoe-feedback` when it is feedback) and is worked when due, like any other.
 
 Tools: when work in hand must act on the outside world and no tool recorded
